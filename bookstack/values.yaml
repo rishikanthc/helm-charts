@@ -40,8 +40,6 @@ service:
 mariadb:
   nameOverride: bookstack-db
   fullnameOverride: bookstack-db
-  global:
-    storageClass: longhorn
 
   auth:
     database: bookstack
