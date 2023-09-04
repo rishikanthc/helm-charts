@@ -42,6 +42,7 @@ service:
 ## Postgres config
 
 postgresql:
+  enabled: false
   nameOverride: miniflux-db
   fullnameOverride: miniflux-db
 
