@@ -7,10 +7,10 @@ controller:
   strategy: RollingUpdate
 
 env:
-  baseURL:
+  BASE_URL:
     secretKeyRef:
       name: miniflux
-      key: baseURL
+      key: baseUrl
 
 ingress:
   main:
