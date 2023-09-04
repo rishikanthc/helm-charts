@@ -34,3 +34,33 @@ service:
         protocol: TCP
         port: 8080
         targetPort: 8080
+
+
+## Postgres config
+
+postgresql:
+  nameOverride: miniflux-db
+  fullnameOverride: miniflux-db
+
+  global:
+    storageClass: longhorn
+
+    postgresql:
+      auth:
+        username: miniflux
+        database: miniflux
+        existingSecret: miniflux-db-secret
+
+        secretKeys:
+          adminPasswordKey: admin-password
+          userPasswordKey: user-password
+          replicationPasswordKey: replication-password
+    auth:
+      username: miniflux
+      database: miniflux
+      existingSecret: miniflux-db-secret
+
+      secretKeys:
+        adminPasswordKey: admin-password
+        userPasswordKey: user-password
+        replicationPasswordKey: replication-password
