@@ -11,6 +11,10 @@ env:
     secretKeyRef:
       name: miniflux
       key: baseUrl
+  DATABASE_URL:
+    secretKeyRef:
+      name: miniflux
+      key: dbUrl
 
 ingress:
   main:
