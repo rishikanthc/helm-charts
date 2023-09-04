@@ -7,6 +7,7 @@ controller:
   strategy: RollingUpdate
 
 env:
+  APP_URL: ""
   DB_HOST: bookstack-db.default.svc.cluster.local
   DB_PORT: 3306
   DB_DATABASE: bookstack
@@ -38,6 +39,7 @@ service:
         targetPort: 80
 
 mariadb:
+  enabled: true
   nameOverride: bookstack-db
   fullnameOverride: bookstack-db
 
@@ -49,3 +51,21 @@ mariadb:
   primary:
     persistence:
       size: 1Gi
+
+mariadb-galera:
+  enabled: false
+  nameOverride: bookstack-db
+  fullnameOverride: bookstack-db
+
+  existingSecret: bookstack-db-secret
+
+  db:
+    user: bookstack
+    name: bookstack
+
+  galera:
+    bootstrap:
+      bootstrapFromNode: 0
+
+  persistence:
+    size: 1Gi

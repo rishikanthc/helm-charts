@@ -20,3 +20,8 @@ dependencies:
   - name: mariadb
     repository: https://charts.bitnami.com/bitnami
     version: 13.1.1
+    condition: mariadb.enabled
+  - name: mariadb-galera
+    repository: https://charts.bitnami.com/bitnami
+    version: 9.1.1
+    condition: mariadb-galera.enabled
