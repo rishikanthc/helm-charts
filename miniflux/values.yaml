@@ -19,7 +19,7 @@ env:
 
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
       - host: ""
@@ -29,8 +29,6 @@ ingress:
 
     tls:
       - secretName: miniflux-tls
-        hosts:
-          - ""
 
 service:
   main:
