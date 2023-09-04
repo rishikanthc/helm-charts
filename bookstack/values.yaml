@@ -1,0 +1,53 @@
+image:
+  repository: lscr.io/linuxserver/bookstack
+  pullPolicy: IfNotPresent
+  tag: v23.08.2-ls103
+
+controller:
+  strategy: RollingUpdate
+
+env:
+  DB_HOST: bookstack-db.default.svc.cluster.local
+  DB_PORT: 3306
+  DB_DATABASE: bookstack
+  DB_USERNAME: bookstack
+  DB_PASSWORD:
+    secretKeyRef:
+      name: bookstack-secret
+      key: dbPassword
+
+ingress:
+  main:
+    enabled: false
+    ingressClassName: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: bookstack-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 80
+        targetPort: 80
+
+mariadb:
+  nameOverride: bookstack-db
+  fullnameOverride: bookstack-db
+  global:
+    storageClass: longhorn
+
+  auth:
+    database: bookstack
+    username: bookstack
+    existingSecret: bookstack-db-secret
+
+  primary:
+    persistence:
+      size: 1Gi

@@ -1,0 +1,9 @@
+dependencies:
+- name: common
+  repository: https://bjw-s.github.io/helm-charts
+  version: 1.5.1
+- name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 13.1.1
+digest: sha256:1279cc1de69a29cdbbf7b9adeed27c695e1cfd995619cbec18140c111bd5ca41
+generated: "2023-09-04T11:12:05.71891-04:00"

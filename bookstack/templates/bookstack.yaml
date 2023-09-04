@@ -1,0 +1,23 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "miniflux.hardcodedValues" -}}
+
+  {{- if not .Values.global.nameOverride }}
+  global:
+    nameOverride: "{{ .Release.Name }}"
+  {{- end }}
+
+  probes:
+    liveness:
+      custom: true
+      spec:
+        httpGet:
+          path: /status
+          port: 80
+
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "miniflux.hardcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}

@@ -1,0 +1,22 @@
+apiVersion: v2
+name: bookstack
+description: A Helm chart for deploying BookStack
+sources:
+  - https://github.com/BookStackApp/BookStack
+
+type: application
+version: 0.1.0
+appVersion: "v23.08.2-ls103"
+kubeVersion: ">=1.22.0-0"
+keywords:
+  - bookStack
+  - wiki
+  - documentation
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
+  - name: mariadb
+    repository: https://charts.bitnami.com/bitnami
+    version: 13.1.1

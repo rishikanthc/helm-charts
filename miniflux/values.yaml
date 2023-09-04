@@ -68,3 +68,7 @@ postgresql:
         adminPasswordKey: admin-password
         userPasswordKey: user-password
         replicationPasswordKey: replication-password
+
+    primary:
+      persistence:
+        size: 1Gi
