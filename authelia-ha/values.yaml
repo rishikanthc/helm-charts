@@ -1,3 +1,95 @@
+authelia:
+  domain: "example.com"
+
+  ingress:
+    enabled: true
+    certManager: false
+    subdomain: auth
+
+    tls:
+      enabled: false
+      secret: authelia-tls
+
+    traefikCRD:
+      enabled: false
+      entryPoints:
+        - websecure
+      sticky: true
+
+  pod:
+    kind: StatefulSet
+    replicas: 2
+
+    env:
+      - name: TZ
+        value: "USA/Los_Angeles"
+
+    resources:
+      requests:
+        cpu: "0.25"
+        memory: 128Mi
+      limits:
+        cpu: "2.00"
+        memory: 1Gi
+
+  configMap:
+    enabled: true
+
+    log:
+      level: debug
+
+    session:
+      redis:
+        enabled: true
+        enabledSecret: true
+        maximumActiveConnections: 8
+        minimumIdleConnections: 2
+        host: session-db.default.svc.cluster.local
+        port: 26379
+
+        high_availability:
+          enabled: true
+          enabledSecret: true
+          sentinel_name: redis-master
+
+    storage:
+      local:
+        enabled: false
+      mysql:
+        enabled: false
+      postgres:
+        enabled: true
+        host: storage-db-postgresql.default.svc.cluster.local
+        port: 5432
+        database: authelia
+        username: authelia
+
+  certificates:
+    existingSecret: authelia-tls
+
+  secret:
+    existingSecret: authelia-app
+    jwt:
+      key: jwt
+    ldap:
+      key: ldap-password
+    storage:
+      key: storage-password
+    storageEncryptionKey:
+      key: storageEncryptionKey
+    session:
+      key: session
+    redis:
+      key: redis-password
+    redisSentinel:
+      key: redis-password
+    smtp:
+      key: smtp
+    # oidcPrivateKey:
+    #   key: oidcPrivateKey
+    # oidcHMACSecret:
+    #   key: oidcHMACSecret
+
 postgresql-ha:
   nameOverride: storage-db
   fullnameOverride: storage-db
