@@ -8,7 +8,7 @@ postgresql-ha:
   postgresql:
     username: authelia
     database: authelia
-    existingSecret: authelia-secrets
+    existingSecret: authelia-storage
 
   persistence:
     enabled: true
@@ -22,7 +22,7 @@ redis:
     storageClass: "local-path"
 
   auth:
-    existingSecret: authelia-secrets
+    existingSecret: authelia-session
     existingSecretPasswordKey: redis-password
 
   master:
