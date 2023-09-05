@@ -1,0 +1,32 @@
+postgresql-ha:
+  global:
+    storageClass: "local-path"
+
+  postgresql:
+    username: authelia
+    database: authelia
+    existingSecret: authelia-secrets
+
+  persistence:
+    enabled: true
+    size: 1Gi
+
+redis:
+  global:
+    storageClass: "local-path"
+
+  auth:
+    existingSecret: authelia-secrets
+    existingSecretPasswordKey: redis-password
+
+  master:
+    persistence:
+      size: 1Gi
+
+  replica:
+    persistence:
+      size: 1Gi
+
+  sentinel:
+    enabled: true
+    masterSet: redis-master
