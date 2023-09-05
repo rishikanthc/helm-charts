@@ -1,4 +1,7 @@
 postgresql-ha:
+  nameOverride: storage-db
+  fullnameOverride: storage-db
+
   global:
     storageClass: "local-path"
 
@@ -12,6 +15,9 @@ postgresql-ha:
     size: 1Gi
 
 redis:
+  nameOverride: session-db
+  fullnameOverride: session-db
+
   global:
     storageClass: "local-path"
 
