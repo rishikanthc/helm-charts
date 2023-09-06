@@ -16,12 +16,6 @@ env:
     secretKeyRef:
       name: bookstack-db-secret
       key: mariadb-password
-  CACHE_DRIVER: redis
-  SESSION_DRIVER: redis
-  REDIS_SERVERS:
-    secretKeyRef:
-      name: bookstack-session-secret
-      key: url
 
 ingress:
   main:
