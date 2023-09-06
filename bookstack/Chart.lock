@@ -8,5 +8,8 @@ dependencies:
 - name: mariadb-galera
   repository: https://charts.bitnami.com/bitnami
   version: 9.1.1
-digest: sha256:0ffe46a8f3161d3217d17cf34980ce1f5c98db2c35e1e3068b7efee772b0db6a
-generated: "2023-09-04T11:48:41.750997-04:00"
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: 18.0.0
+digest: sha256:a6aa42b0a5b7fa10a4fe09661b3682c2f2471a01570cba9d83a98387de3d2b0e
+generated: "2023-09-05T20:11:20.623345-04:00"
