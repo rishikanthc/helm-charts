@@ -77,6 +77,7 @@ mariadb-galera:
     size: 1Gi
 
 redis:
+  enabled: false
   nameOverride: bookstack-sessions-db
   fullnameOverride: bookstack-sessions-db
   auth:
