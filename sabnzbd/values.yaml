@@ -49,9 +49,10 @@ persistence:
     retain: true
   media:
     enabled: true
-    existingClaim: skidobo
+    type: nfs
+    server: 207.246.100
+    path: /mnt/blockstorage/skidobo
     mountPath: /media
-    subPath: media-stack
     retain: true
 
 resources:
