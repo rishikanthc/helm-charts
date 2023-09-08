@@ -1,0 +1,55 @@
+image:
+  repository: ghcr.io/onedr0p/sabnzbd
+  tag: 4.0.3
+
+ingress:
+  main:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      host: sabnzbd.${DOMAIN}
+      paths:
+        - path: /
+          pathType: Prefix
+    tls:
+      - secretName: sabnzbd-tls
+
+env:
+  TZ: America/Los_Angeles
+  SABNZBD__HOST_WHITELIST_ENTRIES: >-
+    sabnzbd,
+    sabnzbd.downloads,
+    sabnzbd.downloads.svc,
+    sabnzbd.downloads.svc.cluster,
+    sabnzbd.downloads.svc.cluster.local,
+    sabnzbd.${DOMAIN}
+
+envFrom:
+  - secretRef:
+      name: sabnzbd-secret
+
+podSecurityContext:
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 24Mi
+    retain: true
+  media:
+    enabled: true
+    existingClaim: sabnzbd-data
+    mountPath: /media
+    retain: true
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 1Gi
+  limits:
+    memory: 2Gi
