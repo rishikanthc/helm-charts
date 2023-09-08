@@ -50,7 +50,9 @@ persistence:
   media:
     enabled: true
     type: nfs
-    server: 207.246.100
+    server: 207.246.100.141
+    # hostPath:
+    #   path: /mnt/blockstorage/skidobo/me
     path: /mnt/blockstorage/skidobo
     mountPath: /media
     retain: true
