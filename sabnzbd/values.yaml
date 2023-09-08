@@ -10,22 +10,27 @@ service:
         port: 8080
         targetPort: 8080
 
-
 ingress:
   main:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - host: nzbd.rkth.io
-        paths:
-          - path: /
-            pathType: Prefix
+      host: nzbd.rkth.io
+      paths:
+        - path: /
+          pathType: Prefix
     tls:
       - secretName: sabnzbd-tls
 
 env:
   TZ: America/Los_Angeles
-
+  SABNZBD__HOST_WHITELIST_ENTRIES: >-
+    sabnzbd,
+    sabnzbd.appsapce,
+    sabnzbd.appsapce.svc,
+    sabnzbd.appsapce.svc.cluster,
+    sabnzbd.appsapce.svc.cluster.local,
+    nzbd.rkth.io
 
 envFrom:
   - secretRef:
