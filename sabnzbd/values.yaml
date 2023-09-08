@@ -2,6 +2,12 @@ image:
   repository: ghcr.io/onedr0p/sabnzbd
   tag: 4.0.3
 
+service:
+  main:
+    ports:
+      http:
+        port: 8080
+
 ingress:
   main:
     enabled: true
@@ -45,6 +51,7 @@ persistence:
     enabled: true
     existingClaim: sabnzbd-data
     mountPath: /media
+    subPath: media-stack
     retain: true
 
 resources:
