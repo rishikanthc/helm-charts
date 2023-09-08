@@ -49,7 +49,7 @@ persistence:
     retain: true
   media:
     enabled: true
-    existingClaim: sabnzbd-data
+    existingClaim: skidobo
     mountPath: /media
     subPath: media-stack
     retain: true
