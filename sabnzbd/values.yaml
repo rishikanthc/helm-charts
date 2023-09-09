@@ -40,13 +40,15 @@ envFrom:
       name: sabnzbd-secret
 
 podSecurityContext:
-  priviliged: true
   runAsUser: 568
   fsGroup: 568
   runAsGroup: 568
   fsGroupChangePolicy: "OnRootMismatch"
   supplementalGroups:
     - 100
+
+securityContext:
+  privileged: true
 
 persistence:
   config:
