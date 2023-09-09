@@ -16,7 +16,7 @@ ingress:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - host: nzbd.rkth.io
+      - host: ${SAB__DOMAIN}
         paths:
           - path: /
             pathType: Prefix
