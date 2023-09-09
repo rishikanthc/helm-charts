@@ -1,0 +1,9 @@
+dependencies:
+- name: common
+  repository: https://bjw-s.github.io/helm-charts
+  version: 1.5.1
+- name: postgresql-ha
+  repository: https://charts.bitnami.com/bitnami
+  version: 11.9.2
+digest: sha256:f47af6737b8aae7b8bded5915a7034fea977c1a03aa01f362b11e9f1fdb1b7b9
+generated: "2023-09-09T16:08:03.761008-04:00"

@@ -1,0 +1,16 @@
+apiVersion: v2
+name: radarr
+description: A Helm chart for radarr
+type: application
+
+version: 0.1.0
+appVersion: "5.0.2"
+kubeVersion: ">=1.22.0-0"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
+  - name: postgresql-ha
+    repository: https://charts.bitnami.com/bitnami
+    version: 11.9.2
