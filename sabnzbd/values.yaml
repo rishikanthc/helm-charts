@@ -57,12 +57,12 @@ persistence:
     accessMode: ReadWriteOnce
     size: 24Mi
     retain: true
-  downloads:
+  media:
     enabled: true
     type: nfs
     server: 207.246.100.141
     path: /mnt/blockstorage/skidobo/media-stack
-    mountPath: /downloads
+    mountPath: /media
     accessMode: ReadWriteMany
     retain: true
   # media:
