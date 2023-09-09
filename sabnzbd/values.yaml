@@ -13,10 +13,10 @@ service:
 
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
-      - host: sabnzbd.${SAB__DOMAIN}
+      - host: ""
         paths:
           - path: /
             pathType: Prefix
