@@ -116,7 +116,7 @@ postgresql-ha:
   postgresql:
     username: radarr
     database: radarr, radarr-log
-    existingSecret: radarr-db-secret
+    existingSecret: radarr-secret
 
   persistence:
     enabled: true
