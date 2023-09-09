@@ -61,6 +61,7 @@ persistence:
     server: 207.246.100.141
     path: /mnt/blockstorage/skidobo/media-stack
     mountPath: /downloads
+    accessMode: ReadWriteMany
     retain: true
   # media:
   #   enabled: true
