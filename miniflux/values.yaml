@@ -38,6 +38,13 @@ service:
         port: 8080
         targetPort: 8080
 
+resources:
+  requests:
+    cpu: 500m
+    memory: 1Gi
+  limits:
+    memory: 2Gi
+
 
 ## Postgres config
 

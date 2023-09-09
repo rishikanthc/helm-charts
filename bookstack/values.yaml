@@ -38,6 +38,13 @@ service:
         port: 80
         targetPort: 80
 
+resources:
+  requests:
+    cpu: 800m
+    memory: 2Gi
+  limits:
+    memory: 4Gi
+
 mariadb:
   enabled: true
   nameOverride: bookstack-db
