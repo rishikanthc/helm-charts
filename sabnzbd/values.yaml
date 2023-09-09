@@ -97,7 +97,6 @@ addons:
     securityContext:
       runAsUser: 0
       runAsGroup: 0
-      fsGroup: 0
 
     scripts:
       up:
