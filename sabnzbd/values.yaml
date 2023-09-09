@@ -16,7 +16,7 @@ ingress:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - host: ${SAB__DOMAIN}
+      - host: sabnzbd.${SAB__DOMAIN}
         paths:
           - path: /
             pathType: Prefix
