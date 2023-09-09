@@ -40,10 +40,13 @@ envFrom:
       name: sabnzbd-secret
 
 podSecurityContext:
-  runAsUser: 1000
-  fsGroup: 1000
-  runAsGroup: 1000
+  priviliged: true
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
   fsGroupChangePolicy: "OnRootMismatch"
+  supplementalGroups:
+    - 100
 
 persistence:
   config:
@@ -52,13 +55,20 @@ persistence:
     accessMode: ReadWriteOnce
     size: 24Mi
     retain: true
-  media:
+  downloads:
     enabled: true
     type: nfs
     server: 207.246.100.141
     path: /mnt/blockstorage/skidobo/media-stack
-    mountPath: /media
+    mountPath: /downloads
     retain: true
+  # media:
+  #   enabled: true
+  #   type: nfs
+  #   server: 207.246.100.141
+  #   path: /mnt/blockstorage/skidobo/media-stack
+  #   mountPath: /media
+  #   retain: true
 
 resources:
   requests:
