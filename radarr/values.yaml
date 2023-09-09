@@ -2,16 +2,13 @@ image:
   repository: ghcr.io/onedr0p/radarr-develop
   tag: 5.0.2
 
-controller:
-  type: statefulset
-  strategy: RollingUpdate
 
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
-      - host: "rrr.rkth.io"
+      - host: rrr.rkth.io
         paths:
           - path: /
             pathType: Prefix
