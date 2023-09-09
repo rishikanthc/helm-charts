@@ -3,11 +3,12 @@ image:
   tag: 4.7.5.7809
 
 controller:
+  type: statefulset
   strategy: RollingUpdate
 
 ingress:
   main:
-    enabled: false
+    enabled: true
     ingressClassName: traefik
     hosts:
       - host: rrr.rkth.io
