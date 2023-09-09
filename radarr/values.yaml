@@ -52,7 +52,7 @@ env:
     valueFrom:
       secretKeyRef:
         name: radarr-secret
-        key: postgres-password
+        key: password
 
 resources:
   requests:
