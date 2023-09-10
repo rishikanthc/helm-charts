@@ -1,0 +1,20 @@
+postgresql:
+  nameOverride: lidarr-db
+  fullnameOverride: lidarr-db
+  global:
+    sotrageClass: longhorn
+
+  postgresql:
+    auth:
+      username: lidarr
+      database: lidarr
+      existingSecret: lidarr-secret
+
+      secretKeys:
+        adminPasswordKey: admin-password
+        userPasswordKey: user-password
+        replicationPasswordKey: replication-password
+
+  primary:
+    persistence:
+      size: 1Gi
