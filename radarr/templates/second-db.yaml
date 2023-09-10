@@ -10,5 +10,5 @@ spec:
       containers:
       - name: create-db
         image: bitnami/postgresql:latest
-        command: ['psql', '-h', 'radarr-db', '-U', 'radarr', '-d', 'radarr-log', '-c', 'CREATE DATABASE newdb;']
+        command: ['psql', '-h', 'radarr-db.appspace.svc.cluster.local', '-U', 'radarr', '-d', 'radarr-log', '-c', 'CREATE DATABASE newdb;']
       restartPolicy: OnFailure

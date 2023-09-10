@@ -52,7 +52,7 @@ env:
     valueFrom:
       secretKeyRef:
         name: radarr-secret
-        key: password
+        key: user-password
 
 resources:
   requests:
