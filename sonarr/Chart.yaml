@@ -1,0 +1,15 @@
+apiVersion: v2
+name: sonarr
+description: A Helm chart for sonarr
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+kubeVersion: ">=1.22.0-0"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 12.11.1
