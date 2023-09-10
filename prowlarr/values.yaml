@@ -94,3 +94,24 @@ probes:
       failureThreshold: 3
   startup:
     enabled: false
+
+postgresql:
+  nameOverride: prowlarr-db
+  fullnameOverride: prowlarr-db
+  global:
+    storageClass: longhorn
+
+    postgresql:
+      auth:
+        username: prowlarr
+        database: prowlarr
+        existingSecret: prowlarr-secret
+
+        secretKeys:
+          adminPasswordKey: admin-password
+          userPasswordKey: user-password
+          replicationPasswordKey: replication-password
+  primary:
+    persistence:
+      storageClass: longhorn
+      size: 1Gi

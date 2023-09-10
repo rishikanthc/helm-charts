@@ -6,6 +6,7 @@ metadata:
 
 spec:
   template:
+    ttlSecondsAfterFinished: 120
     spec:
       containers:
       - name: create-db
