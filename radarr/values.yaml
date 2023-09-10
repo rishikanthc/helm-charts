@@ -106,6 +106,8 @@ probes:
 
 
 postgresql:
+  nameOverride: radarr-db
+  fullnameOverride: radarr-db
   global:
     storageClass: longhorn
 
