@@ -28,10 +28,10 @@ env:
 
   SABNZBD__HOST_WHITELIST_ENTRIES: >-
     sabnzbd,
-    sabnzbd.appsapce,
-    sabnzbd.appsapce.svc,
-    sabnzbd.appsapce.svc.cluster,
-    sabnzbd.appsapce.svc.cluster.local,
+    sabnzbd.appspace,
+    sabnzbd.appspace.svc,
+    sabnzbd.appspace.svc.cluster,
+    sabnzbd.appspace.svc.cluster.local,
     zbd.rkth.io
 
 envFrom:
