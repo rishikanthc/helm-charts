@@ -24,8 +24,8 @@ service:
     ports:
       http:
         protocol: TCP
-        port: 9696
-        targetPort: 9696
+        port: 8686
+        targetPort: 8686
 
 persistence:
   config:
