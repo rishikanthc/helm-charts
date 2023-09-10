@@ -17,7 +17,7 @@ spec:
           - '-U'
           - radarr
           - '-d'
-          - radarrdb
+          - radarr-db
           - '-c'
           - 'CREATE DATABASE radarr-log;'
         env:
