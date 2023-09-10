@@ -47,6 +47,7 @@ podSecurityContext:
 env:
   TZ: America/Los_Angeles
   PROWLARR__URL_BASE: https://prr.rkth.io
+  PROWLARR__LOG_LEVEL: debug
   PROWLARR__POSTGRES_MAIN_DB: prowlarr
   PROWLARR__POSTGRES_LOG_DB: prowlarr_log
   PROWLARR__POSTGRES_HOST: prowlarr-db.appspace.svc.cluster.local
