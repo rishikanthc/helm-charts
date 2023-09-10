@@ -105,18 +105,21 @@ probes:
     enabled: false
 
 
-postgresql-ha:
-  nameOverride: radarr-db
-  fullnameOverride: radarr-db
-
+postgresql:
   global:
-    storageClass: "longhorn"
+    storageClass: longhorn
 
-  postgresql:
-    username: radarr
-    database: radarr
-    existingSecret: radarr-secret
+    postgresql:
+      auth:
+        username: radarr
+        database: radarr
+        existingSecret: radarr-secret
 
-  persistence:
-    enabled: true
-    size: 1Gi
+        secretKeys:
+          adminPasswordKey: admin-password
+          userPasswordKey: user-password
+          replicationPasswordKey: replication-password
+  primary:
+    persistence:
+      storageClass: longhorn
+      size: 1Gi
