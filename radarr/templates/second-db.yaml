@@ -2,11 +2,12 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-db
-  namespace: appspace
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 
 spec:
   template:
-    ttlSecondsAfterFinished: 120
     spec:
       containers:
       - name: create-db

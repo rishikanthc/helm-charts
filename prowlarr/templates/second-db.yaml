@@ -2,10 +2,11 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-db-prowlarr
-  namespace: appspace
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 
 spec:
-  ttlSecondsAfterFinished: 120
   template:
     spec:
       containers:
