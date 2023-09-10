@@ -11,7 +11,7 @@ ingress:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - host: prr.rkth.io
+      - host: lrr.rkth.io
         paths:
           - path: /
             pathType: Prefix
