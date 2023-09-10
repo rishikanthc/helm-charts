@@ -11,4 +11,10 @@ spec:
       - name: create-db
         image: bitnami/postgresql:latest
         command: ['psql', '-h', 'radarr-db.appspace.svc.cluster.local', '-U', 'radarr', '-d', 'radarr-log', '-c', 'CREATE DATABASE newdb;']
+        env:
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: radarr-secret
+                key: user-password
       restartPolicy: OnFailure
