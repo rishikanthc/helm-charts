@@ -70,31 +70,14 @@ resources:
     memory: 512Mi
     cpu: 100m
 
-# probes:
-#   liveness:
-#     enabled: true
-#     custom: true
-#     spec:
-#       httpGet:
-#         path: /ping
-#         port: 9696
-#       initialDelaySeconds: 0
-#       periodSeconds: 10
-#       timeoutSeconds: 1
-#       failureThreshold: 3
-#   readiness:
-#     enabled: true
-#     custom: true
-#     spec:
-#       httpGet:
-#         path: /ping
-#         port: 9696
-#       initialDelaySeconds: 0
-#       periodSeconds: 10
-#       timeoutSeconds: 1
-#       failureThreshold: 3
-#   startup:
-#     enabled: false
+initContainers:
+  init-db:
+    image: ghcr.io/onedr0p/postgres-init:14.9
+    imagePullPolicy: IfNotPresent
+    envFrom:
+      - secretRef:
+          name: prowlarr-init-secret
+
 
 postgresql:
   nameOverride: prowlarr-db
