@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-db
+  namespace: appspace
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: create-db
+        image: bitnami/postgresql-ha:15.4.0
+        command: ['psql', '-h', 'radarr-db', '-U', 'radarr', '-d', 'radarr-log', '-c', 'CREATE DATABASE newdb;']
+      restartPolicy: OnFailure
