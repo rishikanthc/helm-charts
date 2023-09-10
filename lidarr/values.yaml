@@ -1,3 +1,67 @@
+image:
+  repository: ghcr.io/onedr0p/lidarr
+  tag: 1.3.5.3530
+
+controller:
+  type: statefulset
+  strategy: RollingUpdate
+
+ingress:
+  main:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - host: lrr.rkth.io
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: lidarr-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 8686
+        targetPort: 8686
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 24Mi
+    retain: true
+    mountPath: /config
+
+podSecurityContext:
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+  supplementalGroups:
+    - 100
+
+env:
+  TZ: America/Los_Angeles
+  LIDARR__URL_BASE: https://lrr.rkth.io
+  LIDARR__LOG_LEVEL: debug
+  LIDARR__POSTGRES_MAIN_DB: lidarr
+  LIDARR__POSTGRES_LOG_DB: lidarr_log
+  LIDARR__POSTGRES_HOST: lidarr-db.appspace.svc.cluster.local
+  LIDARR__POSTGRES_USER:
+    valueFrom:
+      secretKeyRef:
+        name: lidarr-secret
+        key: username
+  LIDARR__POSTGRES_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: lidarr-secret
+        key: user-password
+
 postgresql:
   nameOverride: lidarr-db
   fullnameOverride: lidarr-db
