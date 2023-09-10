@@ -25,7 +25,6 @@ ingress:
 
 env:
   TZ: America/Los_Angeles
-  DOCKER_MODS: ghcr.io/gilbn/theme.park:sabnzbd
 
   SABNZBD__HOST_WHITELIST_ENTRIES: >-
     sabnzbd,
@@ -33,7 +32,7 @@ env:
     sabnzbd.appsapce.svc,
     sabnzbd.appsapce.svc.cluster,
     sabnzbd.appsapce.svc.cluster.local,
-    nzbd.rkth.io
+    zbd.rkth.io
 
 envFrom:
   - secretRef:
