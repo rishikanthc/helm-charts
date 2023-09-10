@@ -51,6 +51,15 @@ env:
         name: sonarr-secret
         key: user-password
 
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 24Mi
+    retain: true
+    mountPath: /config
+
 resources:
   requests:
     cpu: 0.5
