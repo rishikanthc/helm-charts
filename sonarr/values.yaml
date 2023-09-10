@@ -1,70 +1,70 @@
-image:
-  repository: ghcr.io/onedr0p/sonarr
-  tag: 3.0.10.1567
+# image:
+#   repository: ghcr.io/onedr0p/sonarr
+#   tag: 3.0.10.1567
 
-controller:
-  type: statefulset
-  strategy: RollingUpdate
+# controller:
+#   type: statefulset
+#   strategy: RollingUpdate
 
-ingress:
-  main:
-    enabled: true
-    ingressClassName: traefik
-    hosts:
-      - host: srr.rkth.io
-        paths:
-          - path: /
-            pathType: Prefix
+# ingress:
+#   main:
+#     enabled: true
+#     ingressClassName: traefik
+#     hosts:
+#       - host: srr.rkth.io
+#         paths:
+#           - path: /
+#             pathType: Prefix
 
-    tls:
-      - secretName: sonarr-tls
+#     tls:
+#       - secretName: sonarr-tls
 
-service:
-  main:
-    ports:
-      http:
-        protocol: TCP
-        port: 8989
-        targetPort: 8989
+# service:
+#   main:
+#     ports:
+#       http:
+#         protocol: TCP
+#         port: 8989
+#         targetPort: 8989
 
-podSecurityContext:
-  runAsUser: 568
-  fsGroup: 568
-  runAsGroup: 568
-  fsGroupChangePolicy: "OnRootMismatch"
-  supplementalGroups:
-    - 100
+# podSecurityContext:
+#   runAsUser: 568
+#   fsGroup: 568
+#   runAsGroup: 568
+#   fsGroupChangePolicy: "OnRootMismatch"
+#   supplementalGroups:
+#     - 100
 
-env:
-  TZ: America/Los_Angeles
-  SONARR__POSTGRES_HOST: sonarr-db.appspace.svc.cluster.local
-  SONARR__POSTGRES_MAIN_DB: sonarr
-  SONARR__POSTGRES_LOG_DB: sonarr_log
-  SONARR__POSTGRES_USER:
-    valueFrom:
-      secretKeyRef:
-        name: sonarr-secret
-        key: username
-  SONARR__POSTGRES_PASSWORD:
-    valueFrom:
-      secretKeyRef:
-        name: sonarr-secret
-        key: user-password
+# env:
+#   TZ: America/Los_Angeles
+#   SONARR__POSTGRES_HOST: sonarr-db.appspace.svc.cluster.local
+#   SONARR__POSTGRES_MAIN_DB: sonarr
+#   SONARR__POSTGRES_LOG_DB: sonarr_log
+#   SONARR__POSTGRES_USER:
+#     valueFrom:
+#       secretKeyRef:
+#         name: sonarr-secret
+#         key: username
+#   SONARR__POSTGRES_PASSWORD:
+#     valueFrom:
+#       secretKeyRef:
+#         name: sonarr-secret
+#         key: user-password
 
-resources:
-  requests:
-    cpu: 0.5
-    memory: 512Mi
-  limits:
-    cpu: 1
-    memory: 1Gi
+# resources:
+#   requests:
+#     cpu: 0.5
+#     memory: 512Mi
+#   limits:
+#     cpu: 1
+#     memory: 1Gi
 
-initContainers:
-  init-db:
-    image: ghcr.io/onedr0p/postgres-init:14.9
-    envFrom:
-      - secretRef:
-          name: sonarr-init-secret
+# initContainers:
+#   init-db:
+#     image: ghcr.io/onedr0p/postgres-init:14.9
+#     envFrom:
+#       - secretRef:
+#           name: sonarr-init-secret
 
 postgresql:
   nameOverride: sonarr-db

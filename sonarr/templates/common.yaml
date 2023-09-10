@@ -1,15 +1,15 @@
----
-{{- include "bjw-s.common.loader.init" . }}
+# ---
+# {{- include "bjw-s.common.loader.init" . }}
 
-{{- define "sonarr.hardcodedValues" -}}
+# {{- define "sonarr.hardcodedValues" -}}
 
-  {{- if not .Values.global.nameOverride }}
-  global:
-    nameOverride: "{{ .Release.Name }}"
-  {{- end }}
+#   {{- if not .Values.global.nameOverride }}
+#   global:
+#     nameOverride: "{{ .Release.Name }}"
+#   {{- end }}
 
-{{- end -}}
-{{- $_ := mergeOverwrite .Values (include "sonarr.hardcodedValues" . | fromYaml) -}}
+# {{- end -}}
+# {{- $_ := mergeOverwrite .Values (include "sonarr.hardcodedValues" . | fromYaml) -}}
 
-{{/* Render the templates */}}
-{{ include "bjw-s.common.loader.generate" . }}
+# {{/* Render the templates */}}
+# {{ include "bjw-s.common.loader.generate" . }}
