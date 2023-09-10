@@ -19,7 +19,7 @@ spec:
           - '-d'
           - radarr
           - '-c'
-          - 'CREATE DATABASE radarr-log;'
+          - 'CREATE DATABASE radarr_log;'
         env:
           - name: PGPASSWORD
             valueFrom:

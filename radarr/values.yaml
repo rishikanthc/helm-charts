@@ -41,7 +41,7 @@ env:
   TP_THEME: nord
   RADARR__APPLICATION_URL: https://rrr.rkth.io
   RADARR__POSTGRES_MAIN_DB: radarr
-  RADARR__POSTGRES_LOG_DB: radarr-log
+  RADARR__POSTGRES_LOG_DB: radarr_log
   RADARR__POSTGRES_HOST: radarr-db.appspace.svc.cluster.local
   RADARR__POSTGRES_USER:
     valueFrom:
