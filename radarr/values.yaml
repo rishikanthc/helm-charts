@@ -56,8 +56,8 @@ env:
 
 resources:
   requests:
-    cpu: 10m
-    memory: 256Mi
+    cpu: 0.5
+    memory: 512Mi
   limits:
     memory: 2Gi
 
@@ -78,31 +78,39 @@ persistence:
     accessMode: ReadWriteMany
     retain: true
 
-probes:
-  liveness:
-    enabled: true
-    custom: true
-    spec:
-      httpGet:
-        path: /ping
-        port: http
-      initialDelaySeconds: 0
-      periodSeconds: 10
-      timeoutSeconds: 1
-      failureThreshold: 3
-  readiness:
-    enabled: true
-    custom: true
-    spec:
-      httpGet:
-        path: /ping
-        port: http
-      initialDelaySeconds: 0
-      periodSeconds: 10
-      timeoutSeconds: 1
-      failureThreshold: 3
-  startup:
-    enabled: false
+initContainers:
+  init-db:
+    image: ghcr.io/onedr0p/postgres-init:14.9
+    imagePullPolicy: IfNotPresent
+    envFrom:
+      - secretRef:
+          name: radarr-init-secret
+
+# probes:
+#   liveness:
+#     enabled: true
+#     custom: true
+#     spec:
+#       httpGet:
+#         path: /ping
+#         port: http
+#       initialDelaySeconds: 0
+#       periodSeconds: 10
+#       timeoutSeconds: 1
+#       failureThreshold: 3
+#   readiness:
+#     enabled: true
+#     custom: true
+#     spec:
+#       httpGet:
+#         path: /ping
+#         port: http
+#       initialDelaySeconds: 0
+#       periodSeconds: 10
+#       timeoutSeconds: 1
+#       failureThreshold: 3
+#   startup:
+#     enabled: false
 
 
 postgresql:
