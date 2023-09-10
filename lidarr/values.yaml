@@ -46,7 +46,6 @@ podSecurityContext:
 
 env:
   TZ: America/Los_Angeles
-  PROWLARR__URL_BASE: https://prr.rkth.io
   PROWLARR__LOG_LEVEL: debug
   PROWLARR__POSTGRES_MAIN_DB: lidarr
   PROWLARR__POSTGRES_LOG_DB: lidarr_log
