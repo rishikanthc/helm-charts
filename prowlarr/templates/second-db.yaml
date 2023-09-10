@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-db
+  namespace: appspace
+
+spec:
+  ttlSecondsAfterFinished: 120
+  template:
+    spec:
+      containers:
+      - name: create-db
+        image: bitnami/postgresql:latest
+        command:
+          - psql
+          - '-h'
+          - prowlarr-db.appspace.svc.cluster.local
+          - '-U'
+          - prowlarr
+          - '-d'
+          - prowlarr
+          - '-c'
+          - 'CREATE DATABASE prowlarr_log;'
+        env:
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: prowlarr-secret
+                key: user-password
+      restartPolicy: OnFailure
