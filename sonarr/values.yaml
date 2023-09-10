@@ -35,7 +35,7 @@ podSecurityContext:
   supplementalGroups:
     - 100
 
-envFrom:
+env:
   TZ: America/Los_Angeles
   SONARR__POSTGRES_HOST: sonarr-db.appspace.svc.cluster.local
   SONARR__POSTGRES_MAIN_DB: sonarr
