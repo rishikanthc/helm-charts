@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: create-db
+  name: create-db-prowlarr
   namespace: appspace
 
 spec:
@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-      - name: create-db
+      - name: create-db-prowlarr
         image: bitnami/postgresql:latest
         command:
           - psql
