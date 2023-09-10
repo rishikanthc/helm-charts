@@ -9,6 +9,6 @@ spec:
     spec:
       containers:
       - name: create-db
-        image: bitnami/postgresql-ha:15.4.0
+        image: bitnami/postgresql:latest
         command: ['psql', '-h', 'radarr-db', '-U', 'radarr', '-d', 'radarr-log', '-c', 'CREATE DATABASE newdb;']
       restartPolicy: OnFailure
