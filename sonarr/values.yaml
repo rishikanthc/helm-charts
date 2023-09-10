@@ -78,7 +78,7 @@ postgresql:
         database: sonarr
         existingSecret: sonarr-secret
 
-        secretKeyRef:
+        secretKeys:
           adminPasswordKey: admin-password
           userPasswordKey: user-password
           replicationPasswordKey: replication-password
