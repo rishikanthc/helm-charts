@@ -64,11 +64,11 @@ env:
 
 resources:
   requests:
-    cpu: 10m
-    memory: 256Mi
-  limits:
+    cpu: 0.5
     memory: 512Mi
-    cpu: 100m
+  limits:
+    memory: 1Gi
+    cpu: 1
 
 initContainers:
   init-db:
