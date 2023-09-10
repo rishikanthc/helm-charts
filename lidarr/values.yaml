@@ -11,7 +11,7 @@ ingress:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - host: lrr.rkth.io
+      - host: prr.rkth.io
         paths:
           - path: /
             pathType: Prefix
@@ -24,8 +24,8 @@ service:
     ports:
       http:
         protocol: TCP
-        port: 8686
-        targetPort: 8686
+        port: 9696
+        targetPort: 9696
 
 persistence:
   config:
@@ -46,39 +46,56 @@ podSecurityContext:
 
 env:
   TZ: America/Los_Angeles
-  LIDARR__URL_BASE: https://lrr.rkth.io
-  LIDARR__LOG_LEVEL: debug
-  LIDARR__POSTGRES_MAIN_DB: lidarr
-  LIDARR__POSTGRES_LOG_DB: lidarr_log
-  LIDARR__POSTGRES_HOST: lidarr-db.appspace.svc.cluster.local
-  LIDARR__POSTGRES_USER:
+  PROWLARR__URL_BASE: https://prr.rkth.io
+  PROWLARR__LOG_LEVEL: debug
+  PROWLARR__POSTGRES_MAIN_DB: lidarr
+  PROWLARR__POSTGRES_LOG_DB: lidarr_log
+  PROWLARR__POSTGRES_HOST: lidarr-db.appspace.svc.cluster.local
+  PROWLARR__POSTGRES_USER:
     valueFrom:
       secretKeyRef:
         name: lidarr-secret
         key: username
-  LIDARR__POSTGRES_PASSWORD:
+  PROWLARR__POSTGRES_PASSWORD:
     valueFrom:
       secretKeyRef:
         name: lidarr-secret
         key: user-password
 
+resources:
+  requests:
+    cpu: 0.5
+    memory: 512Mi
+  limits:
+    memory: 1Gi
+    cpu: 1
+
+initContainers:
+  init-db:
+    image: ghcr.io/onedr0p/postgres-init:14.9
+    imagePullPolicy: IfNotPresent
+    envFrom:
+      - secretRef:
+          name: lidarr-init-secret
+
+
 postgresql:
   nameOverride: lidarr-db
   fullnameOverride: lidarr-db
   global:
-    sotrageClass: longhorn
+    storageClass: longhorn
 
-  postgresql:
-    auth:
-      username: lidarr
-      database: lidarr
-      existingSecret: lidarr-secret
+    postgresql:
+      auth:
+        username: lidarr
+        database: lidarr
+        existingSecret: lidarr-secret
 
-      secretKeys:
-        adminPasswordKey: admin-password
-        userPasswordKey: user-password
-        replicationPasswordKey: replication-password
-
+        secretKeys:
+          adminPasswordKey: admin-password
+          userPasswordKey: user-password
+          replicationPasswordKey: replication-password
   primary:
     persistence:
+      storageClass: longhorn
       size: 1Gi
