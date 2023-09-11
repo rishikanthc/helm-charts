@@ -63,9 +63,9 @@ resources:
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
-    accessMode: ReadWriteOnce
-    size: 24Mi
+    type: nfs
+    server: 207.246.100.141
+    path: /mnt/blockstorage/skidobo/media-stack/configs/radarr
     retain: true
     mountPath: /config
   media:
@@ -84,33 +84,6 @@ initContainers:
     envFrom:
       - secretRef:
           name: radarr-init-secret
-
-# probes:
-#   liveness:
-#     enabled: true
-#     custom: true
-#     spec:
-#       httpGet:
-#         path: /ping
-#         port: http
-#       initialDelaySeconds: 0
-#       periodSeconds: 10
-#       timeoutSeconds: 1
-#       failureThreshold: 3
-#   readiness:
-#     enabled: true
-#     custom: true
-#     spec:
-#       httpGet:
-#         path: /ping
-#         port: http
-#       initialDelaySeconds: 0
-#       periodSeconds: 10
-#       timeoutSeconds: 1
-#       failureThreshold: 3
-#   startup:
-#     enabled: false
-
 
 postgresql:
   nameOverride: radarr-db
@@ -131,4 +104,4 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
-      size: 1Gi
+      size: 512Mi

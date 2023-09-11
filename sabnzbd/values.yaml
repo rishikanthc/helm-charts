@@ -52,9 +52,10 @@ securityContext:
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
-    accessMode: ReadWriteOnce
-    size: 24Mi
+    type: nfs
+    server: 207.246.100.141
+    path: /mnt/blockstorage/skidobo/media-stack/configs/sabnzbd
+    mountPath: /config
     retain: true
   media:
     enabled: true
@@ -64,13 +65,6 @@ persistence:
     mountPath: /media
     accessMode: ReadWriteMany
     retain: true
-  # media:
-  #   enabled: true
-  #   type: nfs
-  #   server: 207.246.100.141
-  #   path: /mnt/blockstorage/skidobo/media-stack
-  #   mountPath: /media
-  #   retain: true
 
 resources:
   requests:
@@ -80,30 +74,30 @@ resources:
     memory: 2Gi
 
 
-addons:
-  vpn:
-    enabled: false
-    type: gluetun
+# addons:
+#   vpn:
+#     enabled: false
+#     type: gluetun
 
-    gluetun:
-      image:
-        repository: docker.io/qmcgaw/gluetun
-        tag: v3.35.0
+#     gluetun:
+#       image:
+#         repository: docker.io/qmcgaw/gluetun
+#         tag: v3.35.0
 
-    env:
-      TZ: America/Los_Angeles
+#     env:
+#       TZ: America/Los_Angeles
 
-    securityContext:
-      runAsUser: 0
-      runAsGroup: 0
+#     securityContext:
+#       runAsUser: 0
+#       runAsGroup: 0
 
-    scripts:
-      up:
-        |-
-        !/bin/sh
-        echo "connected" > /shared/vpnstatus
+#     scripts:
+#       up:
+#         |-
+#         !/bin/sh
+#         echo "connected" > /shared/vpnstatus
 
-      down:
-        |-
-        !/bin/sh
-        echo "disconnected" > /shared/vpnstatus
+#       down:
+#         |-
+#         !/bin/sh
+#         echo "disconnected" > /shared/vpnstatus

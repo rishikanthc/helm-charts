@@ -54,9 +54,9 @@ env:
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
-    accessMode: ReadWriteOnce
-    size: 24Mi
+    type: nfs
+    server: 207.246.100.141
+    path: /mnt/blockstorage/skidobo/media-stack/configs/sonarr
     retain: true
     mountPath: /config
   media:
@@ -103,4 +103,4 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
-      size: 1Gi
+      size: 512Mi

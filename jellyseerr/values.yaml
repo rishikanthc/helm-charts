@@ -37,9 +37,9 @@ env:
 persistence:
   config:
     enabled: true
-    storageClass: longhorn
-    accessMode: ReadWriteOnce
-    size: 24Mi
+    type: nfs
+    server: 207.246.100.141
+    path: /mnt/blockstorage/skidobo/media-stack/configs/jellyseerr
     retain: true
     mountPath: /app/config
 
