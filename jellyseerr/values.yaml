@@ -1,0 +1,51 @@
+image:
+  repository: docker.io/fallenbagel/jellyseerr
+  tag: 1.6.0
+
+ingress:
+  main:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - host: jrr.rkth.io
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: jellyseerr-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 5055
+        targetPort: 5055
+
+podSecurityContext:
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+  supplementalGroups:
+    - 100
+
+env:
+  TZ: America/Los_Angeles
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 24Mi
+    retain: true
+    mountPath: /app/config
+
+resources:
+  requests:
+    cpu: 0.5
+    memory: 1Gi
+  limits:
+    memory: 2Gi
