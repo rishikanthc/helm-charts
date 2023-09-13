@@ -40,21 +40,38 @@ service:
 
 resources:
   requests:
-    cpu: 0.5
-    memory: 1Gi
+    cpu: 0.25
+    memory: 256Mi
   limits:
-    memory: 2Gi
+    cpu: 1
+    memory: 1Gi
 
 
 ## Postgres config
-
-postgresql:
+postgresql-ha:
   enabled: false
   nameOverride: miniflux-db
   fullnameOverride: miniflux-db
 
   global:
-    storageClass: longhorn
+    storageClass: "local-path"
+
+  postgresql:
+    username: miniflux
+    database: miniflux
+    existingSecret: miniflux-db-secret
+
+  persistence:
+    enabled: true
+    size: 3Gi
+
+postgresql:
+  enabled: true
+  nameOverride: miniflux-db
+  fullnameOverride: miniflux-db
+
+  global:
+    storageClass: "local-path"
 
     postgresql:
       auth:
@@ -75,7 +92,3 @@ postgresql:
         adminPasswordKey: admin-password
         userPasswordKey: user-password
         replicationPasswordKey: replication-password
-
-    primary:
-      persistence:
-        size: 1Gi

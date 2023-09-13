@@ -31,3 +31,7 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     version: 12.10.0
     condition: postgresql.enabled
+  - name: postgresql-ha
+    repository: https://charts.bitnami.com/bitnami
+    version: 11.9.2
+    condition: postgresql-ha.enabled
