@@ -4,7 +4,9 @@ image:
   tag: 2.0.47
 
 controller:
-  strategy: RollingUpdate
+  main:
+    type: statefulset
+    replicas: 2
 
 env:
   RUN_MIGRATIONS: 1
