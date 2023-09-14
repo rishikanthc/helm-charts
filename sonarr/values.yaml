@@ -2,16 +2,13 @@ image:
   repository: ghcr.io/onedr0p/sonarr
   tag: 3.0.10.1567
 
-controller:
-  type: statefulset
-  strategy: RollingUpdate
 
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
-      - host: srr.rkth.io
+      - host: ""
         paths:
           - path: /
             pathType: Prefix
@@ -37,7 +34,7 @@ podSecurityContext:
 
 env:
   TZ: America/Los_Angeles
-  SONARR__POSTGRES_HOST: sonarr-db.appspace.svc.cluster.local
+  SONARR__POSTGRES_HOST: sonarr-db.default.svc.cluster.local
   SONARR__POSTGRES_MAIN_DB: sonarr
   SONARR__POSTGRES_LOG_DB: sonarr_log
   SONARR__POSTGRES_USER:
@@ -103,4 +100,3 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
-      size: 512Mi
