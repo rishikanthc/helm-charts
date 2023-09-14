@@ -2,16 +2,13 @@ image:
   repository: ghcr.io/onedr0p/prowlarr
   tag: 1.7.4.3769
 
-controller:
-  type: statefulset
-  strategy: RollingUpdate
 
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
-      - host: prr.rkth.io
+      - host: ""
         paths:
           - path: /
             pathType: Prefix
@@ -30,9 +27,6 @@ service:
 persistence:
   config:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack/configs/prowlarr
     retain: true
     mountPath: /config
 
@@ -46,11 +40,11 @@ podSecurityContext:
 
 env:
   TZ: America/Los_Angeles
-  PROWLARR__URL_BASE: https://prr.rkth.io
+  PROWLARR__URL_BASE: ""
   PROWLARR__LOG_LEVEL: debug
   PROWLARR__POSTGRES_MAIN_DB: prowlarr
   PROWLARR__POSTGRES_LOG_DB: prowlarr_log
-  PROWLARR__POSTGRES_HOST: prowlarr-db.appspace.svc.cluster.local
+  PROWLARR__POSTGRES_HOST: prowlarr-db.default.svc.cluster.local
   PROWLARR__POSTGRES_USER:
     valueFrom:
       secretKeyRef:
@@ -67,7 +61,7 @@ resources:
     cpu: 1
     memory: 1Gi
   limits:
-    memory: 1.5Gi
+    memory: 2Gi
     cpu: 2
 
 initContainers:
@@ -98,4 +92,3 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
-      size: 512Mi
