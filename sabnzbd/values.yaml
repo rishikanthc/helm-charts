@@ -70,30 +70,30 @@ resources:
     memory: 2Gi
 
 
-# addons:
-#   vpn:
-#     enabled: false
-#     type: gluetun
+addons:
+  vpn:
+    enabled: false
+    type: gluetun
 
-#     gluetun:
-#       image:
-#         repository: docker.io/qmcgaw/gluetun
-#         tag: v3.35.0
+    gluetun:
+      image:
+        repository: docker.io/qmcgaw/gluetun
+        tag: v3.35.0
 
-#     env:
-#       TZ: America/Los_Angeles
+    env:
+      TZ: America/Los_Angeles
 
-#     securityContext:
-#       runAsUser: 0
-#       runAsGroup: 0
+    securityContext:
+      runAsUser: 0
+      runAsGroup: 0
 
-#     scripts:
-#       up:
-#         |-
-#         !/bin/sh
-#         echo "connected" > /shared/vpnstatus
+    scripts:
+      up:
+        |-
+        !/bin/sh
+        echo "connected" > /shared/vpnstatus
 
-#       down:
-#         |-
-#         !/bin/sh
-#         echo "disconnected" > /shared/vpnstatus
+      down:
+        |-
+        !/bin/sh
+        echo "disconnected" > /shared/vpnstatus
