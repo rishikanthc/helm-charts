@@ -1,5 +1,6 @@
 controller:
-  replicas: 1
+  type: StatefulSet
+  replicas: 2
 
 image:
   repository: ghcr.io/miniflux/miniflux
