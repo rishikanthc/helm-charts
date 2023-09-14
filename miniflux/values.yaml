@@ -1,6 +1,5 @@
 controller:
   replicas: 1
-  strategy: RollingUpdate
 
 image:
   repository: ghcr.io/miniflux/miniflux
