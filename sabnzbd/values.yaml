@@ -26,13 +26,14 @@ ingress:
 env:
   TZ: America/Los_Angeles
 
+  # add hostname as well as all possible subdomains to the whitelist
+  # change 'default' to the namespace where sabnzbd is deployed
   SABNZBD__HOST_WHITELIST_ENTRIES: >-
     sabnzbd,
-    sabnzbd.appspace,
-    sabnzbd.appspace.svc,
-    sabnzbd.appspace.svc.cluster,
-    sabnzbd.appspace.svc.cluster.local,
-    zbd.rkth.io
+    sabnzbd.default,
+    sabnzbd.default.svc,
+    sabnzbd.default.svc.cluster,
+    sabnzbd.default.svc.cluster.local
 
 envFrom:
   - secretRef:
@@ -52,16 +53,10 @@ securityContext:
 persistence:
   config:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack/configs/sabnzbd
     mountPath: /config
     retain: true
   media:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack
     mountPath: /media
     accessMode: ReadWriteMany
     retain: true
