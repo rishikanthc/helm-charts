@@ -2,16 +2,13 @@ image:
   repository: ghcr.io/onedr0p/lidarr
   tag: 1.3.5.3530
 
-controller:
-  type: statefulset
-  strategy: RollingUpdate
 
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
-      - host: lrr.rkth.io
+      - host: ""
         paths:
           - path: /
             pathType: Prefix
@@ -30,16 +27,10 @@ service:
 persistence:
   config:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack/configs/lidarr
     retain: true
     mountPath: /config
   media:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack
     mountPath: /media
     accessMode: ReadWriteMany
     retain: true
@@ -57,7 +48,7 @@ env:
   PROWLARR__LOG_LEVEL: debug
   PROWLARR__POSTGRES_MAIN_DB: lidarr
   PROWLARR__POSTGRES_LOG_DB: lidarr_log
-  PROWLARR__POSTGRES_HOST: lidarr-db.appspace.svc.cluster.local
+  PROWLARR__POSTGRES_HOST: lidarr-db.default.svc.cluster.local
   PROWLARR__POSTGRES_USER:
     valueFrom:
       secretKeyRef:
@@ -74,7 +65,7 @@ resources:
     cpu: 1
     memory: 1Gi
   limits:
-    memory: 1.5Gi
+    memory: 2Gi
     cpu: 2
 
 initContainers:
@@ -105,4 +96,3 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
-      size: 512Mi
