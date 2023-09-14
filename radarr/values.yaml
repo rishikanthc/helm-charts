@@ -35,7 +35,7 @@ env:
   TZ: America/Los_Angeles
   RADARR__POSTGRES_MAIN_DB: radarr
   RADARR__POSTGRES_LOG_DB: radarr_log
-  RADARR__POSTGRES_HOST: radarr-db.appspace.svc.cluster.local
+  RADARR__POSTGRES_HOST: radarr-db.default.svc.cluster.local
   RADARR__POSTGRES_USER:
     valueFrom:
       secretKeyRef:
