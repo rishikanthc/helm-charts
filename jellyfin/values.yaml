@@ -2,16 +2,12 @@ image:
   repository: ghcr.io/onedr0p/jellyfin
   tag: 10.8.10
 
-controller:
-  type: statefulset
-  strategy: RollingUpdate
-
 ingress:
   main:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     hosts:
-      - host: jfn.rkth.io
+      - host: ""
         paths:
           - path: /
             pathType: Prefix
@@ -33,16 +29,10 @@ env:
 persistence:
   config:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack/configs/jellyfin
     retain: true
     mountPath: /config
   media:
     enabled: true
-    type: nfs
-    server: 207.246.100.141
-    path: /mnt/blockstorage/skidobo/media-stack/media
     mountPath: /data/media
     retain: true
   transcode:
