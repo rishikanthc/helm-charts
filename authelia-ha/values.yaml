@@ -17,20 +17,17 @@ authelia:
       sticky: true
 
   pod:
-    kind: StatefulSet
-    replicas: 2
-
     env:
       - name: TZ
         value: "USA/Los_Angeles"
 
     resources:
       requests:
-        cpu: "0.5"
-        memory: 512Mi
+        cpu: "0.25"
+        memory: 256Mi
       limits:
-        cpu: "2.00"
-        memory: 2Gi
+        cpu: 1
+        memory: 1Gi
 
   configMap:
     enabled: true
