@@ -9,10 +9,10 @@ image:
 
 env:
   RUN_MIGRATIONS: 1
-  BASE_URL:
-    secretKeyRef:
-      name: miniflux
-      key: baseUrl
+  # BASE_URL:
+  #   secretKeyRef:
+  #     name: miniflux
+  #     key: baseUrl
   DATABASE_URL:
     secretKeyRef:
       name: miniflux
