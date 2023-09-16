@@ -49,11 +49,11 @@ env:
 
 resources:
   requests:
-    cpu: 1
+    cpu: 0.5
     memory: 1Gi
   limits:
     memory: 2Gi
-    cpu: 2
+    cpu: 1
 
 persistence:
   config:
