@@ -1,7 +1,6 @@
-controller:
-  type: statefulset
-  replicas: 2
-
+# controller:
+#   type: statefulset
+#   replicas: 2
 image:
   repository: ghcr.io/miniflux/miniflux
   pullPolicy: IfNotPresent
