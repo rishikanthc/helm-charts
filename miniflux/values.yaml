@@ -20,7 +20,7 @@ env:
 ingress:
   main:
     enabled: false
-    ingressClassName: traefik
+    ingressClassName: ""
     hosts:
       - host: ""
         paths:
