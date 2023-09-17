@@ -73,6 +73,9 @@ initContainers:
 postgresql:
   nameOverride: lidarr-db
   fullnameOverride: lidarr-db
+  architecture: replication
+  replication:
+    applicationName: prowlarr
   global:
     storageClass: longhorn
 
@@ -89,3 +92,6 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
+
+  readReplicas:
+    replicaCount: 2
