@@ -39,11 +39,3 @@ persistence:
     enabled: true
     retain: true
     mountPath: /app/config
-
-resources:
-  requests:
-    cpu: 1
-    memory: 1Gi
-  limits:
-    cpu: 2
-    memory: 2Gi
