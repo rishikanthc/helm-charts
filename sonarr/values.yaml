@@ -59,13 +59,6 @@ persistence:
     accessMode: ReadWriteMany
     retain: true
 
-resources:
-  requests:
-    cpu: 0.5
-    memory: 1Gi
-  limits:
-    cpu: 1
-    memory: 2Gi
 
 initContainers:
   init-db:

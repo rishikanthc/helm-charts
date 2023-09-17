@@ -47,13 +47,7 @@ env:
         name: radarr-secret
         key: user-password
 
-resources:
-  requests:
-    cpu: 0.5
-    memory: 1Gi
-  limits:
-    memory: 2Gi
-    cpu: 1
+
 
 persistence:
   config:
