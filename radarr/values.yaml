@@ -71,6 +71,9 @@ initContainers:
 postgresql:
   nameOverride: radarr-db
   fullnameOverride: radarr-db
+  architecture: replication
+  replication:
+    applicationName: radarr
   global:
     storageClass: longhorn
 
@@ -87,3 +90,6 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn
+
+  readReplicas:
+    replicaCount: 2
