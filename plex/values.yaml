@@ -1,0 +1,48 @@
+controller:
+  type: statefulset
+image:
+  repository: ghcr.io/onedr0p/plex
+  tag: 1.32.5.756-8f4248874
+
+ingress:
+  main:
+    enabled: false
+    ingressClassName: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: plex-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 32400
+        targetPort: 32400
+
+persistence:
+  config:
+    enabled: true
+    retain: true
+    mountPath: /config
+  transcode:
+    enabled: true
+    type: emptyDir
+
+env:
+  TZ: America/Los_Angeles
+
+podSecurityContext:
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+  supplementalGroups:
+    - 44
+    - 105
+    - 10000
