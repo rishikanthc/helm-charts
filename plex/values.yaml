@@ -1,7 +1,7 @@
 controller:
   type: statefulset
 image:
-  repository: ghcr.io/onedr0p/plex
+  repository: docker.io/plexinc/pms-docker
   tag: 1.32.5.7516-8f4248874
 
 ingress:
@@ -36,7 +36,7 @@ persistence:
   media:
     enabled: true
     retain: true
-    mountPath: /media
+    mountPath: /data
 
 env:
   TZ: America/Los_Angeles
