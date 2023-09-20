@@ -20,10 +20,46 @@ ingress:
 service:
   main:
     ports:
-      http:
-        protocol: TCP
-        port: 32400
-        targetPort: 32400
+      ports:
+        http:
+          port: 32400
+          protocol: TCP
+        dlna-tcp:
+          port: 32469
+          protocol: TCP
+          enabled: true
+        dlna-udp:
+          port: 1900
+          protocol: UDP
+          enabled: true
+        plex-companion:
+          port: 3005
+          protocol: TCP
+          enabled: true
+        discovery-udp:
+          port: 5353
+          protocol: UDP
+          enabled: true
+        plex-roku:
+          port: 8324
+          protocol: TCP
+          enabled: true
+        gdm-32410:
+          port: 32410
+          protocol: UDP
+          enabled: true
+        gdm-32412:
+          port: 32412
+          protocol: UDP
+          enabled: true
+        gdm-32413:
+          port: 32413
+          protocol: UDP
+          enabled: true
+        gdm-32414:
+          port: 32414
+          protocol: UDP
+          enabled: true
 
 persistence:
   config:
