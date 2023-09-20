@@ -82,7 +82,7 @@ persistence:
 
 env:
   TZ: America/Los_Angeles
-  ALLOWED_NETWORKS: "10.0.0.0/16"
+  # ALLOWED_NETWORKS: "10.0.0.0/16"
 
 podSecurityContext:
   runAsUser: 107
