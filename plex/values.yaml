@@ -1,7 +1,7 @@
 controller:
   type: statefulset
 image:
-  repository: docker.io/plexinc/pms-docker
+  repository: ghcr.io/onedr0p/plex-beta
   tag: 1.32.5.7516-8f4248874
 
 ingress:
@@ -42,10 +42,9 @@ env:
   TZ: America/Los_Angeles
 
 podSecurityContext:
-  runAsUser: 1000
-  fsGroup: 1000
-  runAsGroup: 1000
+  runAsUser: 107
+  fsGroup: 111
+  runAsGroup: 111
   # fsGroupChangePolicy: "OnRootMismatch"
-  # supplementalGroups:
-  #   - 27
-  #   - 100
+  supplementalGroups:
+    - 1000
