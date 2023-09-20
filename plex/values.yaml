@@ -46,7 +46,6 @@ podSecurityContext:
   fsGroup: 1000
   runAsGroup: 1000
   fsGroupChangePolicy: "OnRootMismatch"
-  # supplementalGroups:
-  #   - 44
-  #   - 105
-  #   - 10000
+  supplementalGroups:
+    - 27
+    - 100
