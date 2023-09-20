@@ -42,9 +42,9 @@ env:
   TZ: America/Los_Angeles
 
 podSecurityContext:
-  runAsUser: 1000
-  fsGroup: 1000
-  runAsGroup: 1000
+  runAsUser: 107
+  fsGroup: 111
+  runAsGroup: 111
   fsGroupChangePolicy: "OnRootMismatch"
   # supplementalGroups:
   #   - 27
