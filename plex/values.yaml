@@ -22,43 +22,50 @@ service:
     ports:
       http:
         port: 32400
-        protocol: TCP
-      dlna-tcp:
+        targetPort: 32400
+        nodePort: 32400
+      dnla-tcp:
+        enabled: true
         port: 32469
         protocol: TCP
+        targetPort: 32469
+        nodePort: 32469
+      dnla-udp:
         enabled: true
-      dlna-udp:
         port: 1900
         protocol: UDP
+        targetPort: 1900
+        nodePort: 1900
+      bonjour-udp:
         enabled: true
-      plex-companion:
-        port: 3005
-        protocol: TCP
-        enabled: true
-      discovery-udp:
         port: 5353
         protocol: UDP
+        targetPort: 5353
+        nodePort: 5353
+      gdm-1:
         enabled: true
-      plex-roku:
-        port: 8324
-        protocol: TCP
-        enabled: true
-      gdm-32410:
         port: 32410
         protocol: UDP
+        targetPort: 32410
+        nodePort: 32410
+      gdm-2:
         enabled: true
-      gdm-32412:
         port: 32412
         protocol: UDP
+        targetPort: 32412
+        nodePort: 32412
+      gdm-3:
         enabled: true
-      gdm-32413:
         port: 32413
         protocol: UDP
+        targetPort: 32413
+        nodePort: 32413
+      gdm-4:
         enabled: true
-      gdm-32414:
         port: 32414
         protocol: UDP
-        enabled: true
+        targetPort: 32414
+        nodePort: 32414
 
 persistence:
   config:
@@ -75,6 +82,7 @@ persistence:
 
 env:
   TZ: America/Los_Angeles
+  ALLOWED_NETWORKS: "10.0.0.0/16"
 
 podSecurityContext:
   runAsUser: 107
