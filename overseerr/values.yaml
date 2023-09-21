@@ -1,0 +1,39 @@
+image:
+  repository: sctx/overseerr
+  tag: 1.33.2
+
+ingress:
+  main:
+    enabled: false
+    ingressClassName: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: overseerr-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 5055
+        targetPort: 5055
+
+podSecurityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+  runAsGroup: 1000
+  fsGroupChangePolicy: "OnRootMismatch"
+
+persistence:
+  config:
+    enabled: true
+    retain: true
+    mountPath: /app/config
+
+env:
+  TZ: America/Los_Angeles
