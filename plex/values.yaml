@@ -1,6 +1,6 @@
 image:
   repository: plexinc/pms-docker
-  tag: 1.32.5.7349-8f4248874
+  tag: 1.32.5.7516-8f4248874
 
 ingress:
   main:
@@ -17,8 +17,8 @@ ingress:
 
 service:
   main:
-    type: LoadBalancer
-    externalTrafficPolicy: Cluster
+    # type: LoadBalancer
+    # externalTrafficPolicy: Cluster
     ports:
       http:
         port: 32400
@@ -82,12 +82,11 @@ persistence:
 
 env:
   TZ: America/Los_Angeles
-  # ALLOWED_NETWORKS: "10.0.0.0/16"
 
 podSecurityContext:
-  runAsUser: 107
-  fsGroup: 111
-  runAsGroup: 111
+  runAsUser: 1000
+  fsGroup: 1000
+  runAsGroup: 1000
   # fsGroupChangePolicy: "OnRootMismatch"
-  supplementalGroups:
-    - 1000
+  # supplementalGroups:
+  #   - 1000
