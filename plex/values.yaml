@@ -1,5 +1,5 @@
 image:
-  repository: plexinc/pms-docker
+  repository: ghcr.io/onedr0p
   tag: 1.32.5.7516-8f4248874
 
 ingress:
