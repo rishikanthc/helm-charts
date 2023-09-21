@@ -46,3 +46,28 @@ persistence:
   config:
     enabled: true
     mountPath: /config
+
+
+addons:
+  vpn:
+    enabled: false
+
+    gluetun:
+      image:
+        repository: docker.io/qmcgaw/gluetun
+        tag: v3.35.0
+
+    scripts:
+      down:
+        |-
+        #!/bin/bash
+        echo "disconnected" > /shared/vpnstatus
+
+      up:
+        |-
+        #!/bin/bash
+        echo "connected" > /shared/vpnstatus
+
+    securityContext:
+      runAsUser: 0
+      runAsGroup: 0
