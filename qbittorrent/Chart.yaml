@@ -1,14 +1,11 @@
 apiVersion: v2
 name: qbittorrent
 description: A Helm chart for qbittorrent
+
 type: application
 version: 0.1.0
-appVersion: "4.5.5"
+appVersion: "1.16.0"
 kubeVersion: ">=1.22.0-0"
-keywords:
-  - qbittorrent
-  - torrent
-  - downloader
 
 dependencies:
   - name: common

@@ -1,11 +1,6 @@
 image:
   repository: ghcr.io/onedr0p/qbittorrent
-  pullPolicy: IfNotPresent
   tag: 4.5.5
-
-env:
-  TZ: America/Los_Angeles
-  QBITTORRENT__USE_PROFILE: true
 
 ingress:
   main:
@@ -22,79 +17,32 @@ ingress:
 
 service:
   main:
-    enabled: true
     ports:
       http:
         protocol: TCP
         port: 8080
         targetPort: 8080
-  # bittorrent:
-  #   enabled: true
-  #   type: LoadBalancer
-  #   externalTrafficPolicy: Local
-  #   ports:
-  #     bittorrent:
-  #       protocol: TCP
-  #       port: 50413
-  #       targetPort: 50413
+  torrent:
+    enabled: true
+    type: LoadBalancer
+    externalTrafficPolicy: Local
+    ports:
+      torrent:
+        protocol: TCP
+        port: 50413
+        targetPort: 50413
+
+env:
+  TZ: America/Los_Angeles
 
 podSecurityContext:
-  fsGroup: 568
-  runAsUser: 568
-  runAsGroup: 568
+  runAsUser: 1000
+  fsGroup: 1000
+  runAsGroup: 1000
+  fsGroupChangePolicy: "OnRootMismatch"
 
-resources:
-  requests:
-    cpu: 10m
-    memory: 250Mi
-  limits:
-    cpu: 500m
-    memory: 2Gi
 
 persistence:
   config:
     enabled: true
-    nameOverride: qbittorrent-config
-    # storageClass: longhorn
     mountPath: /config
-    retain: true
-  downloads:
-    enabled: true
-    existingClaim: qbittorrent-downloads
-    mountPath: /downloads
-  shared:
-    enabled: true
-    type: emptyDir
-    mountPath: /shared
-
-addons:
-  vpn:
-    enabled: true
-    type: gluetun
-
-    gluetun:
-      image:
-        repository: docker.io/qmcgaw/gluetun
-        pullPolicy: IfNotPresent
-        tag: v3.35.0
-
-    env:
-      TZ: America/Los_Angeles
-
-    scripts:
-      up:
-        |-
-        #!/bin/sh
-        echo "connected" > /shared/vpnstatus
-      down:
-        |-
-        #!/bin/sh
-        echo "disconnected" > /shared/vpnstatus
-
-    securityContext:
-      capabilities:
-        add:
-          - NET_ADMIN
-          - SYS_MODULE
-      runAsUser: 0
-      runAsGroup: 0
