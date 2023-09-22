@@ -23,11 +23,11 @@ authelia:
 
     resources:
       requests:
-        cpu: "0.25"
-        memory: 256Mi
+        cpu: "100m"
+        memory: "128Mi"
       limits:
-        cpu: 1
-        memory: 1Gi
+        cpu: "500m"
+        memory: "512Mi"
 
   configMap:
     enabled: true
