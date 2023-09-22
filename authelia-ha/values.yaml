@@ -99,6 +99,14 @@ postgresql-ha:
     database: authelia
     existingSecret: authelia-storage
 
+    resources:
+      requests:
+        cpu: "250m"
+        memory: "512Mi"
+      limits:
+        cpu: "500m"
+        memory: "1Gi"
+
   persistence:
     enabled: true
     size: 1Gi
@@ -117,11 +125,32 @@ redis:
   master:
     persistence:
       size: 1Gi
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
 
   replica:
     persistence:
       size: 1Gi
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
 
   sentinel:
     enabled: true
     masterSet: redis-master
+    resources:
+      requests:
+        cpu: "600m"
+        memory: "768Mi"
+      limits:
+        cpu: 1
+        memory: "1Gi"
