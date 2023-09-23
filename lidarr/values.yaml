@@ -73,19 +73,17 @@ initContainers:
 postgresql:
   nameOverride: lidarr-db
   fullnameOverride: lidarr-db
-  replication:
-    applicationName: prowlarr
 
-    postgresql:
-      auth:
-        username: lidarr
-        database: lidarr
-        existingSecret: lidarr-secret
+  auth:
+    username: lidarr
+    database: lidarr
+    existingSecret: lidarr-secret
 
-        secretKeys:
-          adminPasswordKey: admin-password
-          userPasswordKey: user-password
-          replicationPasswordKey: replication-password
+    secretKeys:
+      adminPasswordKey: admin-password
+      userPasswordKey: user-password
+      replicationPasswordKey: replication-password
+
   primary:
     persistence:
       storageClass: longhorn-custom

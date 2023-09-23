@@ -71,19 +71,15 @@ initContainers:
 postgresql:
   nameOverride: radarr-db
   fullnameOverride: radarr-db
-  replication:
-    applicationName: radarr
+  auth:
+    username: radarr
+    database: radarr
+    existingSecret: radarr-secret
 
-    postgresql:
-      auth:
-        username: radarr
-        database: radarr
-        existingSecret: radarr-secret
-
-        secretKeys:
-          adminPasswordKey: admin-password
-          userPasswordKey: user-password
-          replicationPasswordKey: replication-password
+    secretKeys:
+      adminPasswordKey: admin-password
+      userPasswordKey: user-password
+      replicationPasswordKey: replication-password
   primary:
     persistence:
       storageClass: longhorn-custom

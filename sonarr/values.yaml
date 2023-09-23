@@ -70,19 +70,16 @@ initContainers:
 postgresql:
   nameOverride: sonarr-db
   fullnameOverride: sonarr-db
-  replication:
-    applicationName: prowlarr
 
-    postgresql:
-      auth:
-        username: sonarr
-        database: sonarr
-        existingSecret: sonarr-secret
+  auth:
+    username: sonarr
+    database: sonarr
+    existingSecret: sonarr-secret
 
-        secretKeys:
-          adminPasswordKey: admin-password
-          userPasswordKey: user-password
-          replicationPasswordKey: replication-password
+    secretKeys:
+      adminPasswordKey: admin-password
+      userPasswordKey: user-password
+      replicationPasswordKey: replication-password
 
   primary:
     persistence:

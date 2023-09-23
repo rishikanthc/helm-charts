@@ -44,7 +44,7 @@ env:
   PROWLARR__LOG_LEVEL: debug
   PROWLARR__POSTGRES_MAIN_DB: prowlarr
   PROWLARR__POSTGRES_LOG_DB: prowlarr_log
-  PROWLARR__POSTGRES_HOST: prowlarr-db-primary.default.svc.cluster.local
+  PROWLARR__POSTGRES_HOST: prowlarr-db.default.svc.cluster.local
   PROWLARR__POSTGRES_USER:
     valueFrom:
       secretKeyRef:
@@ -69,19 +69,15 @@ initContainers:
 postgresql:
   nameOverride: prowlarr-db
   fullnameOverride: prowlarr-db
-  replication:
-    applicationName: prowlarr
+  auth:
+    username: prowlarr
+    database: prowlarr
+    existingSecret: prowlarr-secret
 
-    postgresql:
-      auth:
-        username: prowlarr
-        database: prowlarr
-        existingSecret: prowlarr-secret
-
-        secretKeys:
-          adminPasswordKey: admin-password
-          userPasswordKey: user-password
-          replicationPasswordKey: replication-password
+    secretKeys:
+      adminPasswordKey: admin-password
+      userPasswordKey: user-password
+      replicationPasswordKey: replication-password
   primary:
     persistence:
       storageClass: longhorn-custom
