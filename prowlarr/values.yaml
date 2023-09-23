@@ -72,8 +72,6 @@ postgresql:
   architecture: replication
   replication:
     applicationName: prowlarr
-  global:
-    storageClass: longhorn
 
     postgresql:
       auth:
@@ -87,7 +85,9 @@ postgresql:
           replicationPasswordKey: replication-password
   primary:
     persistence:
-      storageClass: longhorn
+      storageClass: longhorn-custom
 
   readReplicas:
-    replicaCount: 2
+    replicaCount: 1
+    persistence:
+      storageClass: longhorn
