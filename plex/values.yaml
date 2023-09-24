@@ -1,6 +1,11 @@
+# hostNetwork: true
+# dnsPolicy: ClusterFirstWithHostNet
+
 image:
-  repository: ghcr.io/onedr0p/plex
-  tag: 1.32.5.7516-8f4248874
+  repository: linuxserver/plex
+  tag: 1.32.5
+  # repository: ghcr.io/onedr0p/plex
+  # tag: 1.32.5.7516-8f4248874
 
 ingress:
   main:
@@ -18,54 +23,55 @@ ingress:
 service:
   main:
     type: LoadBalancer
-    externalTrafficPolicy: Local
+    # externalTrafficPolicy: Local
+    loadBalancerIP: 132.239.17.99
     ports:
       http:
         port: 32400
         targetPort: 32400
         nodePort: 32400
-      # dnla-tcp:
-      #   enabled: true
-      #   port: 32469
-      #   protocol: TCP
-      #   targetPort: 32469
-      #   nodePort: 32469
-      # dnla-udp:
-      #   enabled: true
-      #   port: 1900
-      #   protocol: UDP
-      #   targetPort: 1900
-      #   nodePort: 1900
-      # bonjour-udp:
-      #   enabled: true
-      #   port: 5353
-      #   protocol: UDP
-      #   targetPort: 5353
-      #   nodePort: 5353
-      # gdm-1:
-      #   enabled: true
-      #   port: 32410
-      #   protocol: UDP
-      #   targetPort: 32410
-      #   nodePort: 32410
-      # gdm-2:
-      #   enabled: true
-      #   port: 32412
-      #   protocol: UDP
-      #   targetPort: 32412
-      #   nodePort: 32412
-      # gdm-3:
-      #   enabled: true
-      #   port: 32413
-      #   protocol: UDP
-      #   targetPort: 32413
-      #   nodePort: 32413
-      # gdm-4:
-      #   enabled: true
-      #   port: 32414
-      #   protocol: UDP
-      #   targetPort: 32414
-      #   nodePort: 32414
+      dnla-tcp:
+        enabled: true
+        port: 32469
+        protocol: TCP
+        targetPort: 32469
+        nodePort: 32469
+      dnla-udp:
+        enabled: true
+        port: 1900
+        protocol: UDP
+        targetPort: 1900
+        nodePort: 1900
+      bonjour-udp:
+        enabled: true
+        port: 5353
+        protocol: UDP
+        targetPort: 5353
+        nodePort: 5353
+      gdm-1:
+        enabled: true
+        port: 32410
+        protocol: UDP
+        targetPort: 32410
+        nodePort: 32410
+      gdm-2:
+        enabled: true
+        port: 32412
+        protocol: UDP
+        targetPort: 32412
+        nodePort: 32412
+      gdm-3:
+        enabled: true
+        port: 32413
+        protocol: UDP
+        targetPort: 32413
+        nodePort: 32413
+      gdm-4:
+        enabled: true
+        port: 32414
+        protocol: UDP
+        targetPort: 32414
+        nodePort: 32414
 
 persistence:
   config:
