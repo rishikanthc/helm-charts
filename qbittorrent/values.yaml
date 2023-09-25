@@ -62,7 +62,7 @@ addons:
     gluetun:
       image:
         repository: docker.io/qmcgaw/gluetun
-        tag: v3.35.0
+        tag: latest
 
     scripts:
       down:
