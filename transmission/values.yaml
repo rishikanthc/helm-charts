@@ -1,0 +1,79 @@
+image:
+  repository: ghcr.io/onedr0p/transmission
+  tag: 4.0.3
+
+ingress:
+  main:
+    enabled: false
+    ingressClassName: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: transmission-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 9091
+        targetPort: 9091
+  torrent:
+    enabled: true
+    type: LoadBalancer
+    externalTrafficPolicy: Local
+    ports:
+      torrent:
+        protocol: TCP
+        port: 51413
+        targetPort: 51413
+
+env:
+  TRANSMISSION__PORT_FORWARDING_ENABLED: true
+
+
+podSecurityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+  runAsGroup: 1000
+  fsGroupChangePolicy: "OnRootMismatch"
+
+persistentVolumeClaim:
+  enabled: true
+  mountPath: /config
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+addons:
+  vpn:
+    enabled: false
+
+    gluetun:
+      image:
+        repository: docker.io/qmcgaw/gluetun
+        tag: latest
+
+    scripts:
+      down:
+        |-
+        #!/bin/bash
+        echo "disconnected" > /shared/vpnstatus
+
+      up:
+        |-
+        #!/bin/bash
+        echo "connected" > /shared/vpnstatus
+
+    securityContext:
+      runAsUser: 0
+      runAsGroup: 0
