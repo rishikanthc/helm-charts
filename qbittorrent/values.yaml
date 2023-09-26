@@ -22,15 +22,15 @@ service:
         protocol: TCP
         port: 8080
         targetPort: 8080
-  torrent:
-    enabled: true
-    type: LoadBalancer
-    externalTrafficPolicy: Local
-    ports:
-      torrent:
-        protocol: TCP
-        port: 50413
-        targetPort: 50413
+  # torrent:
+  #   enabled: true
+  #   type: LoadBalancer
+  #   externalTrafficPolicy: Local
+  #   ports:
+  #     torrent:
+  #       protocol: TCP
+  #       port: 50413
+  #       targetPort: 50413
 
 env:
   TZ: America/Los_Angeles
