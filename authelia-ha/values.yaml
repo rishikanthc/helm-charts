@@ -87,7 +87,7 @@ authelia:
     # oidcHMACSecret:
     #   key: oidcHMACSecret
 
-postgresql-ha:
+postgresql:
   nameOverride: storage-db
   fullnameOverride: storage-db
 
@@ -95,21 +95,25 @@ postgresql-ha:
     storageClass: "local-path"
 
   postgresql:
-    username: authelia
-    database: authelia
-    existingSecret: authelia-storage
+    auth:
+      username: authelia
+      database: authelia
+      existingSecret: authelia-storage
 
+      secretKeys:
+        adminPasswordKey: admin-password
+        userPasswordKey: user-password
+        replicationPasswordKey: replication-password
+
+  primary:
     resources:
-      requests:
-        cpu: "250m"
-        memory: "512Mi"
       limits:
         cpu: "500m"
         memory: "1Gi"
 
-  persistence:
-    enabled: true
-    size: 1Gi
+    persistence:
+      enabled: true
+      size: 1Gi
 
 redis:
   nameOverride: session-db
