@@ -1,0 +1,13 @@
+apiVersion: v2
+name: flood
+description: A Helm chart for Flood
+
+type: application
+version: 0.1.0
+appVersion: "4.7.0"
+kubeVersion: ">=1.22.0-0"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
