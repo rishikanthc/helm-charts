@@ -24,8 +24,8 @@ service:
         targetPort: 9091
   torrent:
     enabled: true
-    type: LoadBalancer
-    externalTrafficPolicy: Local
+    # type: LoadBalancer
+    # externalTrafficPolicy: Local
     ports:
       torrent:
         protocol: TCP
