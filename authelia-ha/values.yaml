@@ -94,16 +94,16 @@ postgresql:
   global:
     storageClass: "local-path"
 
-  postgresql:
-    auth:
-      username: authelia
-      database: authelia
-      existingSecret: authelia-storage
+    postgresql:
+      auth:
+        username: authelia
+        database: authelia
+        existingSecret: authelia-storage
 
-      secretKeys:
-        adminPasswordKey: admin-password
-        userPasswordKey: user-password
-        replicationPasswordKey: replication-password
+        secretKeys:
+          adminPasswordKey: admin-password
+          userPasswordKey: user-password
+          replicationPasswordKey: replication-password
 
   primary:
     resources:
