@@ -1,0 +1,72 @@
+
+image:
+  repository: ghcr.io/hotio/qbittorrent
+  tag: release-4.5.5
+
+ingress:
+  main:
+    enabled: false
+    ingressClassName: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: qbittorrent-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 8080
+        targetPort: 8080
+
+env:
+  TZ: America/Los_Angeles
+
+podSecurityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+  runAsGroup: 1000
+  fsGroupChangePolicy: "OnRootMismatch"
+
+
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+addons:
+  vpn:
+    enabled: false
+
+    gluetun:
+      image:
+        repository: docker.io/qmcgaw/gluetun
+        tag: latest
+
+    scripts:
+      down:
+        |-
+        #!/bin/bash
+        echo "disconnected" > /shared/vpnstatus
+
+      up:
+        |-
+        #!/bin/bash
+        echo "connected" > /shared/vpnstatus
+
+    securityContext:
+      runAsUser: 0
+      runAsGroup: 0

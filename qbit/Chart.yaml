@@ -1,0 +1,14 @@
+apiVersion: v2
+name: qbit
+description: A Helm chart for qbittorrent with VueTorrent
+
+type: application
+version: 0.1.0
+appVersion: "4.5.5"
+
+kubeVersion: ">=1.22.0-0"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
