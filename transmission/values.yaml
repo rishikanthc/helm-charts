@@ -22,15 +22,15 @@ service:
         protocol: TCP
         port: 9091
         targetPort: 9091
-  torrent:
-    enabled: true
-    # type: LoadBalancer
-    # externalTrafficPolicy: Local
-    ports:
-      torrent:
-        protocol: TCP
-        port: 51413
-        targetPort: 51413
+  # torrent:
+  #   enabled: true
+  #   type: LoadBalancer
+  #   externalTrafficPolicy: Local
+  #   ports:
+  #     torrent:
+  #       protocol: TCP
+  #       port: 51413
+  #       targetPort: 51413
 
 env:
   TRANSMISSION__PORT_FORWARDING_ENABLED: true
