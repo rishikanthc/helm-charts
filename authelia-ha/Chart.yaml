@@ -19,7 +19,7 @@ keywords:
 dependencies:
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: 12.10.0
+    version: 13.0.0
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 18.0.0
