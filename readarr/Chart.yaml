@@ -1,0 +1,15 @@
+apiVersion: v2
+name: readarr
+description: A Helm chart for readarr
+
+
+type: application
+version: 0.1.0
+appVersion: "0.3.6.2232"
+
+kubeVersion: ">=1.22.0-0"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
