@@ -3,7 +3,7 @@ name: sabnzbd
 description: A Helm chart for SabNZBD
 type: application
 version: 0.1.0
-appVersion: "4.0.3"
+appVersion: "4.1.0"
 kubeVersion: ">=1.22.0-0"
 
 dependencies:
