@@ -20,8 +20,8 @@ service:
     ports:
       http:
         protocol: TCP
-        port: 7878
-        targetPort: 7878
+        port: 6767
+        targetPort: 6767
 
 podSecurityContext:
   runAsUser: 568
