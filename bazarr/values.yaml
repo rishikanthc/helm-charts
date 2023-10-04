@@ -1,0 +1,46 @@
+image:
+  repository: ghcr.io/onedr0p/bazarr
+  tag: 4.7.5.7809
+
+ingress:
+  main:
+    enabled: false
+    ingressClassName: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: bazarr-tls
+
+service:
+  main:
+    ports:
+      http:
+        protocol: TCP
+        port: 7878
+        targetPort: 7878
+
+podSecurityContext:
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+  supplementalGroups:
+    - 100
+
+env:
+  TZ: America/Los_Angeles
+
+persistence:
+  config:
+    enabled: true
+    retain: true
+    mountPath: /config
+  media:
+    enabled: true
+    mountPath: /media
+    accessMode: ReadWriteMany
+    retain: true
