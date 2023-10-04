@@ -13,3 +13,6 @@ dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
     version: 1.5.1
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 12.11.1
