@@ -5,7 +5,7 @@ image:
   # repository: linuxserver/plex
   # tag: 1.32.5
   repository: ghcr.io/onedr0p/plex-beta
-  tag: 1.32.6.7521-24e4dff81
+  tag: 1.32.6.7557-1cf77d501
   # tag: 1.32.5.7516-8f4248874
 
 ingress:
