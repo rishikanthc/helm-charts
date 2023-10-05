@@ -1,0 +1,12 @@
+apiVersion: v2
+name: tautulli
+description: A Helm chart for tautulli
+
+type: application
+version: 0.1.0
+appVersion: "2.13.1"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
