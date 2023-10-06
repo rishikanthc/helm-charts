@@ -1,0 +1,35 @@
+image:
+  repository: ghcr.io/recyclarr/recyclarr
+  tag: 6.0.1
+
+
+env:
+  TZ: America/Los_Angeles
+
+  # add hostname as well as all possible subdomains to the whitelist
+  # change 'default' to the namespace where sabnzbd is deployed
+
+podSecurityContext:
+  runAsUser: 568
+  fsGroup: 568
+  runAsGroup: 568
+  fsGroupChangePolicy: "OnRootMismatch"
+  supplementalGroups:
+    - 100
+
+securityContext:
+  privileged: true
+
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+    retain: true
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
