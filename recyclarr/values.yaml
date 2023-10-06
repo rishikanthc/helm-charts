@@ -17,6 +17,10 @@ podSecurityContext:
   supplementalGroups:
     - 100
 
+service:
+  main:
+    enabled: false
+
 securityContext:
   privileged: true
 
