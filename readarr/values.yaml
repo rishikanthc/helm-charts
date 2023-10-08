@@ -71,8 +71,8 @@ initContainers:
           name: readarr-init-secret
 
 postgresql:
-  # nameOverride: readarr-db
-  # fullnameOverride: readarr-db
+  nameOverride: readarr-db
+  fullnameOverride: readarr-db
   auth:
     username: readarr
     database: readarr
