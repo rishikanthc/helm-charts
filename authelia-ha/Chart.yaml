@@ -7,7 +7,7 @@ sources:
   - http://authelia.com/
 
 version: 0.1.0
-appVersion: "1.16.0"
+appVersion: "4.37.5"
 kubeVersion: ">=1.22.0-0"
 
 keywords:
@@ -17,9 +17,9 @@ keywords:
   - sso
 
 dependencies:
-  - name: postgresql
+  - name: postgresql-ha
     repository: https://charts.bitnami.com/bitnami
-    version: 13.0.0
+    version: 11.9.2
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 18.0.0
