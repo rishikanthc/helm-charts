@@ -3,7 +3,7 @@ name: sonarr
 description: A Helm chart for sonarr
 type: application
 version: 0.1.0
-appVersion: "4.0.0.688"
+appVersion: "4.0.0.697"
 kubeVersion: ">=1.22.0-0"
 
 dependencies:
