@@ -5,7 +5,7 @@ description: A Helm chart for readarr
 
 type: application
 version: 0.1.0
-appVersion: "0.3.6.2232"
+appVersion: "0.3.7"
 
 kubeVersion: ">=1.22.0-0"
 
