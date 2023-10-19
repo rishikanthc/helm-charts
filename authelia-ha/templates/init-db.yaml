@@ -1,21 +1,21 @@
 ---
 {{- if .Values.initdb.enabled }}
-  apiVersion: batch/v1
-  kind: Job
-  metadata:
-    name: {{ .Release.Name }}-init-db-job
-    annotations:
-        "helm.sh/hook": pre-install
-        "helm.sh/hook-delete-policy": hook-succeeded
-  spec:
-    template:
-      spec:
-        containers:
-        - name: init-db
-          image: ghcr.io/onedr0p/postgres-init:14.9
-          imagePullPolicy: IfNotPresent
-          envFrom:
-          - secretRef:
-              name: {{ .Values.initdb.secretName }}
-        restartPolicy: OnFailure
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-init-db-job
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: init-db
+        image: ghcr.io/onedr0p/postgres-init:14.9
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+            name: {{ .Values.initdb.secretName }}
+      restartPolicy: OnFailure
 {{- end }}
