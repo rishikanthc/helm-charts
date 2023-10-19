@@ -88,6 +88,7 @@ authelia:
     #   key: oidcHMACSecret
 
 postgresql-ha:
+  enabled: false
   nameOverride: storage-db
   fullnameOverride: storage-db
 
@@ -109,6 +110,7 @@ postgresql-ha:
     size: 1Gi
 
 redis:
+  enabled: false
   nameOverride: session-db
   fullnameOverride: session-db
 

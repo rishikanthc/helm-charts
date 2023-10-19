@@ -20,9 +20,11 @@ dependencies:
   - name: postgresql-ha
     repository: https://charts.bitnami.com/bitnami
     version: 11.9.2
+    condition: postgresql-ha.enabled
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 18.0.0
+    condition: redis.enabled
   - name: authelia
     repository: https://charts.authelia.com
     version: 0.8.57
