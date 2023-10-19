@@ -90,7 +90,7 @@ initdb:
   enabled: true
 
 postgresql-ha:
-  enabled: true
+  enabled: false
   nameOverride: storage-db
   fullnameOverride: storage-db
 
@@ -112,7 +112,7 @@ postgresql-ha:
     size: 1Gi
 
 redis:
-  enabled: true
+  enabled: false
   nameOverride: session-db
   fullnameOverride: session-db
 
