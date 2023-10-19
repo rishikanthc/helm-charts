@@ -1,8 +1,11 @@
-{{ if .Values.init-db.enabled }}
+{{- if .Values.init-db.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ .Release.Name }}-init-db-job
+  annotations:
+      "helm.sh/hook": pre-install
+      "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
     spec:
@@ -14,4 +17,4 @@ spec:
         - secretRef:
             name: {{ .Values.init-db.secretName }}
       restartPolicy: OnFailure
-{{ end }}
+{{- end }}
