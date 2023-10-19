@@ -4,7 +4,7 @@
 image:
   repository: ghcr.io/miniflux/miniflux
   pullPolicy: IfNotPresent
-  tag: 2.0.47
+  tag: 2.0.49-distroless
 
 env:
   RUN_MIGRATIONS: 1
@@ -41,11 +41,10 @@ service:
 resources:
   requests:
     cpu: 0.25
-    memory: 256Mi
+    memory: 128Mi
   limits:
     cpu: 0.5
-    memory: 512Mi
-
+    memory: 256Mi
 
 ## Postgres config
 postgresql-ha:
@@ -66,7 +65,7 @@ postgresql-ha:
     size: 3Gi
 
 postgresql:
-  enabled: true
+  enabled: false
   nameOverride: miniflux-db
   fullnameOverride: miniflux-db
 
