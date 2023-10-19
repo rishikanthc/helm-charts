@@ -86,6 +86,8 @@ authelia:
     #   key: oidcPrivateKey
     # oidcHMACSecret:
     #   key: oidcHMACSecret
+initdb:
+  enabled: false
 
 postgresql-ha:
   enabled: false
