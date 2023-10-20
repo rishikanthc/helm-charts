@@ -68,35 +68,35 @@ initContainers:
 
 postgresql:
   enabled: false
-  nameOverride: prowlarr-db
-  fullnameOverride: prowlarr-db
-  auth:
-    username: prowlarr
-    database: prowlarr
-    existingSecret: prowlarr-secret
+#   nameOverride: prowlarr-db
+#   fullnameOverride: prowlarr-db
+#   auth:
+#     username: prowlarr
+#     database: prowlarr
+#     existingSecret: prowlarr-secret
 
-    secretKeys:
-      adminPasswordKey: admin-password
-      userPasswordKey: user-password
-      replicationPasswordKey: replication-password
-  primary:
-    persistence:
-      storageClass: longhorn-custom
+#     secretKeys:
+#       adminPasswordKey: admin-password
+#       userPasswordKey: user-password
+#       replicationPasswordKey: replication-password
+#   primary:
+#     persistence:
+#       storageClass: longhorn-custom
 
 
 postgresql-ha:
   enabled: false
-  nameOverride: prowlarr-db
-  fullnameOverride: prowlarr-db
+#   nameOverride: prowlarr-db
+#   fullnameOverride: prowlarr-db
 
-  global:
-    storageClass: "local-path"
+#   global:
+#     storageClass: "local-path"
 
-  postgresql:
-    # username: prowlarr
-    # database: prowlarr
-    existingSecret: prowlarr-secret
+#   postgresql:
+#     username: postgres
+#     # database: prowlarr
+#     existingSecret: prowlarr-secret
 
-  persistence:
-    enabled: true
-    size: 3Gi
+#   persistence:
+#     enabled: true
+#     size: 3Gi
