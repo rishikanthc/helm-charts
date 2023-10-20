@@ -82,3 +82,21 @@ postgresql:
   primary:
     persistence:
       storageClass: longhorn-custom
+
+
+postgresql-ha:
+  enabled: false
+  nameOverride: prowlarr-db
+  fullnameOverride: prowlarr-db
+
+  global:
+    storageClass: "local-path"
+
+  postgresql:
+    username: prowlarr
+    database: prowlarr
+    existingSecret: prowlarr-secret
+
+  persistence:
+    enabled: true
+    size: 3Gi
