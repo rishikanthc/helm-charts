@@ -5,7 +5,6 @@ kind: Job
 metadata:
   name: {{ .Release.Name }}-init-db-job
 spec:
-  ttlSecondsAfterFinished: 30
   template:
     spec:
       containers:
