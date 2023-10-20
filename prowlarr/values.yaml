@@ -67,6 +67,7 @@ initContainers:
 
 
 postgresql:
+  enabled: false
   nameOverride: prowlarr-db
   fullnameOverride: prowlarr-db
   auth:
