@@ -93,8 +93,8 @@ postgresql-ha:
     storageClass: "local-path"
 
   postgresql:
-    username: prowlarr
-    database: prowlarr
+    # username: prowlarr
+    # database: prowlarr
     existingSecret: prowlarr-secret
 
   persistence:
