@@ -68,6 +68,7 @@ initContainers:
           name: sonarr-init-secret
 
 postgresql:
+  enabled: false
   nameOverride: sonarr-db
   fullnameOverride: sonarr-db
 
