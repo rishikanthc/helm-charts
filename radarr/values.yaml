@@ -69,6 +69,7 @@ initContainers:
           name: radarr-init-secret
 
 postgresql:
+  enabled: false
   nameOverride: radarr-db
   fullnameOverride: radarr-db
   auth:
