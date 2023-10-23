@@ -114,6 +114,17 @@ postgresql-ha:
     enabled: true
     size: 1Gi
 
+  pgpool:
+    customUsersSecret: authelia-pgpool-creds
+
+    numInitChildren: 32
+    maxPool: 4
+    childLifeTime: 300
+    connectionLifeTime: 0
+    clientIdleLimit: 0
+    authenticationTimeout: 60
+
+
 redis:
   enabled: false
   nameOverride: session-db
