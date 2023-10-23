@@ -125,7 +125,7 @@ postgresql-ha:
     size: 1Gi
 
   pgpool:
-    customUsersSecret: authelia-pgpool-creds
+    customUsersSecret: authelia-pgpool-secret
 
     numInitChildren: 32
     maxPool: 4
