@@ -103,9 +103,12 @@ postgresql-ha:
     existingSecret: authelia-storage
 
     resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
       limits:
         cpu: "500m"
-        memory: "1Gi"
+        memory: "512Mi"
 
   persistence:
     enabled: true
