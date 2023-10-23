@@ -110,6 +110,16 @@ postgresql-ha:
         cpu: "500m"
         memory: "512Mi"
 
+    podLabels:
+      app: storage-db
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: storage-db
+
   persistence:
     enabled: true
     size: 1Gi
