@@ -27,4 +27,4 @@ dependencies:
     condition: redis.enabled
   - name: authelia
     repository: https://charts.authelia.com
-    version: 0.8.57
+    version: 0.8.58
