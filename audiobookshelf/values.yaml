@@ -28,7 +28,7 @@ ingress:
     annotations:
       kubernetes.io/ingress.class: traefik
     hosts:
-      - host: audiobookshelf.advplyr.com
+      - host: ""
         paths:
           - path: /
             pathType: Prefix
