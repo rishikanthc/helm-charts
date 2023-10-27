@@ -13,6 +13,14 @@ controllers:
           tag: 0.7.9
           # -- image pull policy
           pullPolicy: Always
+      email:
+        image:
+          # -- image repository
+          repository: jvmilazz0/kavitaemail
+          # -- image tag
+          tag: 0.1.24
+          # -- image pull policy
+          pullPolicy: Always
 
 service:
   main:
@@ -21,6 +29,14 @@ service:
       http:
         port: 5000
         targetPort: 5000
+  email:
+    enabled: true
+    controller: main
+    primary: false
+    ports:
+      http:
+        port: 5003
+        targetPort: 5003
 
 ingress:
   main:
@@ -44,6 +60,15 @@ persistence:
     accessMode: ReadWriteOnce
     size: 1Gi
     mountPath: /kavita/config
+
+  advancedMounts:
+    main:
+      email:
+        enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        mountPath: /app/config
   # audiobooks:
   #   enabled: true
   #   mountPath: /audiobooks
