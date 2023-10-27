@@ -1,0 +1,70 @@
+defaultPodOptions:
+  labels:
+    app: seafile
+
+controllers:
+  main:
+    containers:
+      main:
+        envFrom:
+          - secretRef:
+              name: seafile-secret
+        image:
+          # -- image repository
+          repository:  seafileltd/seafile-mc
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 80
+        targetPort: 80
+      https:
+        port: 443
+        targetPort: 443
+
+ingress:
+  main:
+    enabled: true
+    an annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service: main
+    tls:
+      - secretName: seafile-tls
+
+mariadb:
+  enabled: true
+  nameOverride: seafile-db
+  fullnameOverride: seafile-db
+
+  commonLabels:
+    app: seafile
+
+  auth:
+    existingSecret: seafile-db-secret
+
+  primary:
+    persistence:
+      enabled: true
+      storageClass: "longhorn"
+      size: 3Gi
+
+  secondary:
+    persistence:
+      enabled: true
+      storageClass: "longhorn"
+      size: 3Gi
+
+memcached:
+  enabled: true
