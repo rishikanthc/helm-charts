@@ -1,0 +1,101 @@
+
+defaultPodOptions:
+  labels:
+    app: paperless-ngx
+
+controllers:
+  main:
+    containers:
+      main:
+        envFrom:
+          - secretRef:
+              name: paperless-ngx-secret
+        image:
+          # -- image repository
+          repository: ghcr.io/paperless-ngx/paperless-ngx
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 8000
+        targetPort: 8000
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+    tls:
+      - secretName: paperless-ngx-tls
+
+persistence:
+  data:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /usr/src/paperless/data
+
+postgresql-ha:
+  enabled: false
+  nameOverride: paperless-db
+  fullnameOverride: paperless-db
+
+  global:
+    storageClass: "local-path"
+
+  postgresql:
+    username: paperless
+    database: paperless
+    existingSecret: paperless-ngx-secret
+
+  persistence:
+    enabled: true
+    size: 3Gi
+
+redis:
+  enabled: true
+  nameOverride: paperless-broker
+  fullnameOverride: paperless-broker
+
+  global:
+    storageClass: "local-path"
+
+  # auth:
+  #   existingSecret: paperless-broker
+  #   existingSecretPasswordKey: redis-password
+
+  master:
+    persistence:
+      size: 1Gi
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+
+  replica:
+    persistence:
+      size: 1Gi
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
