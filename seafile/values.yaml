@@ -32,14 +32,15 @@ service:
 ingress:
   main:
     enabled: true
-    an annotations:
+    annotations:
       kubernetes.io/ingress.class: traefik
     hosts:
       - host: ""
         paths:
           - path: /
             pathType: Prefix
-            service: main
+            service:
+              name: main
     tls:
       - secretName: seafile-tls
 
