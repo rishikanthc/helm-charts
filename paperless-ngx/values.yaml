@@ -18,6 +18,17 @@ controllers:
           # -- image pull policy
           pullPolicy: Always
 
+      tika:
+        image:
+          repository: ghcr.io/paperless-ngx/tika
+          tag: latest
+          pullPolicy: Always
+      gotenberg:
+        image:
+          repository: docker.io/gotenberg/gotenberg
+          tag: 7.8
+          pullPolicy: IfNotPresent
+
 service:
   main:
     enabled: true
@@ -25,6 +36,21 @@ service:
       http:
         port: 8000
         targetPort: 8000
+  # tika:
+  #   controller: main
+  #   enabled: true
+  #   primary: false
+  #   ports:
+  #     http:
+  #       port: 9998
+  #       targetPort: 9998
+  # gotenberg:
+  #   enabled: true
+  #   primary: false
+  #   ports:
+  #     http:
+  #       port: 3000
+  #       targetPort: 3000
 
 ingress:
   main:
