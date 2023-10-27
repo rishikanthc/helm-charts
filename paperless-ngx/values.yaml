@@ -50,7 +50,7 @@ persistence:
     mountPath: /usr/src/paperless/data
 
 postgresql-ha:
-  enabled: false
+  enabled: true
   nameOverride: paperless-db
   fullnameOverride: paperless-db
 
@@ -60,7 +60,7 @@ postgresql-ha:
   postgresql:
     username: paperless
     database: paperless
-    existingSecret: paperless-ngx-secret
+    existingSecret: paperless-db-secret
 
   persistence:
     enabled: true
