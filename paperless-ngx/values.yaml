@@ -66,6 +66,16 @@ postgresql-ha:
     enabled: true
     size: 3Gi
 
+  pgpool:
+    customUsersSecret: paperless-pgpool-secret
+
+    numInitChildren: 32
+    maxPool: 4
+    childLifeTime: 300
+    connectionLifeTime: 0
+    clientIdleLimit: 0
+    authenticationTimeout: 60
+
 redis:
   enabled: true
   nameOverride: paperless-broker
