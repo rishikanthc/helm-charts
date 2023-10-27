@@ -1,0 +1,58 @@
+defaultPodOptions:
+  labels:
+    app: kavita
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: ghcr.io/kareadita/kavita
+          # -- image tag
+          tag: 0.7.9
+          # -- image pull policy
+          pullPolicy: Always
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 5000
+        targetPort: 5000
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+    tls:
+      - secretName: kavita-tls
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /kavita/config
+  # audiobooks:
+  #   enabled: true
+  #   mountPath: /audiobooks
+  #   accessMode: ReadWriteOnce
+  # podcasts:
+  #   enabled: true
+  #   mountPath: /podcasts
+  #   accessMode: ReadWriteOnce
+  # metadata:
+  #   enabled: true
+  #   mountPath: /metadata
+  #   accessMode: ReadWriteOnce

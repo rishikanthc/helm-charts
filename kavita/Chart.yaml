@@ -1,0 +1,13 @@
+apiVersion: v2
+name: kavita
+description: A Helm chart for Kavita
+
+type: application
+
+version: 0.1.0
+appVersion: "0.7.9"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 2.0.3
