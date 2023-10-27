@@ -75,8 +75,9 @@ redis:
     storageClass: "local-path"
 
   auth:
-    existingSecret: paperless-broker
-    existingSecretPasswordKey: redis-password
+    enabled: false
+    # existingSecret: paperless-broker
+    # existingSecretPasswordKey: redis-password
 
   master:
     persistence:
