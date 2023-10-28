@@ -23,9 +23,6 @@ service:
     enabled: true
     ports:
       http:
-        port: 80
-        targetPort: 80
-      https:
         port: 443
         targetPort: 443
 
