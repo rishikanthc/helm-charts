@@ -46,8 +46,8 @@ mariadb:
   enabled: true
   nameOverride: seafile-db
   fullnameOverride: seafile-db
-  # image:
-  #   tag: 10.11
+  image:
+    tag: 10.11
 
   commonLabels:
     app: seafile
@@ -57,17 +57,17 @@ mariadb:
     existingSecret: seafile-db-secret
 
   primary:
-    podSecurityContext:
-      runAsUser: 0
-      fsGroup: 0
-      runAsGroup: 0
+    # podSecurityContext:
+    #   runAsUser: 0
+    #   fsGroup: 0
+    #   runAsGroup: 0
     # extraEnvVars:
     #   - name: MYSQL_ROOT_PASSWORD
     #     value: "PJXMXhEn4WBDwmxMphzHa7wyqKHQm9ZN"
-    configuration: |
-      [mysqld]
-      skip-name-resolve=0
-      max_allowed_packet=256M
+    # configuration: |
+    #   [mysqld]
+    #   skip-name-resolve=0
+    #   max_allowed_packet=256M
     persistence:
       enabled: true
       storageClass: "longhorn"
