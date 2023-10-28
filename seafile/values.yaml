@@ -57,6 +57,10 @@ mariadb:
     existingSecret: seafile-db-secret
 
   primary:
+    podSecurityContext:
+      runAsUser: 0
+      fsGroup: 0
+      runAsGroup: 0
     # extraEnvVars:
     #   - name: MYSQL_ROOT_PASSWORD
     #     value: "PJXMXhEn4WBDwmxMphzHa7wyqKHQm9ZN"
