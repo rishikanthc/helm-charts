@@ -1,0 +1,13 @@
+apiVersion: v2
+name: homarr
+description: A Helm chart for Homarr
+
+
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 2.0.3

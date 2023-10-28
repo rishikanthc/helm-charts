@@ -1,0 +1,53 @@
+
+defaultPodOptions:
+  labels:
+    app: homarr
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: ghcr.io/advplyr/homarr
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 7575
+        targetPort: 7575
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+    tls:
+      - secretName: homarr-tls
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /app/data/configs
+  icons:
+    enanbled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /app/public/icons
