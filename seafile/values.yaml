@@ -41,7 +41,8 @@ ingress:
             pathType: Prefix
             service:
               name: main
-              port: https
+              port:
+                number: 443
     tls:
       - secretName: seafile-tls
 
