@@ -53,6 +53,7 @@ mariadb:
     app: seafile
 
   auth:
+    usePasswordFiles: true
     existingSecret: seafile-db-secret
 
   primary:
