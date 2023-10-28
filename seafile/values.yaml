@@ -23,11 +23,11 @@ service:
     enabled: true
     ports:
       http:
-        primary: false
+        primary: true
         port: 80
         targetPort: 80
       https:
-        primary: true
+        primary: false
         port: 443
         targetPort: 443
 
@@ -43,8 +43,7 @@ ingress:
             pathType: Prefix
             service:
               name: main
-              port:
-                number: 443
+              port: http
     tls:
       - secretName: seafile-tls
 
