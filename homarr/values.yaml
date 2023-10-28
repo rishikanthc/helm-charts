@@ -49,5 +49,5 @@ persistence:
     enanbled: true
     storageClass: longhorn
     accessMode: ReadWriteOnce
-    size: 128i
+    size: 128Mi
     mountPath: /app/public/icons
