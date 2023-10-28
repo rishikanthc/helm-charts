@@ -46,20 +46,20 @@ mariadb:
   enabled: true
   nameOverride: seafile-db
   fullnameOverride: seafile-db
-  image:
-    tag: 10.11
+  # image:
+  #   tag: 10.11
 
   commonLabels:
     app: seafile
 
   auth:
-    usePasswordFiles: true
+    # usePasswordFiles: true
     existingSecret: seafile-db-secret
 
   primary:
-    extraEnvVars:
-      - name: MYSQL_ROOT_PASSWORD
-        value: "PJXMXhEn4WBDwmxMphzHa7wyqKHQm9ZN"
+    # extraEnvVars:
+    #   - name: MYSQL_ROOT_PASSWORD
+    #     value: "PJXMXhEn4WBDwmxMphzHa7wyqKHQm9ZN"
     persistence:
       enabled: true
       storageClass: "longhorn"
