@@ -64,10 +64,10 @@ mariadb:
     # extraEnvVars:
     #   - name: MYSQL_ROOT_PASSWORD
     #     value: "PJXMXhEn4WBDwmxMphzHa7wyqKHQm9ZN"
-    # configuration: |
-    #   [mysqld]
-    #   skip-name-resolve=0
-    #   max_allowed_packet=256M
+    configuration: |
+      [mysqld]
+      skip-name-resolve=0
+      max_allowed_packet=256M
     persistence:
       enabled: true
       storageClass: "longhorn"
