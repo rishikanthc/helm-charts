@@ -21,6 +21,7 @@ controllers:
 service:
   main:
     enabled: true
+    externalTrafficPolicy: Local
     ports:
       http:
         port: 80
