@@ -9,7 +9,7 @@ controllers:
       main:
         image:
           # -- image repository
-          repository: ghcr.io/advplyr/homarr
+          repository: ghcr.io/ajnart/homarr
           # -- image tag
           tag: latest
           # -- image pull policy
