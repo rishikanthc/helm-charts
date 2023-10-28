@@ -21,6 +21,7 @@ controllers:
 service:
   main:
     enabled: true
+    type: LoadBalancer
     externalTrafficPolicy: Local
     ports:
       http:
