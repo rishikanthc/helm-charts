@@ -1,0 +1,67 @@
+
+defaultPodOptions:
+  labels:
+    app: pydio
+
+controllers:
+  main:
+    containers:
+      main:
+        envFrom:
+          - secretRef:
+              name: pydio-secret
+        image:
+          # -- image repository
+          repository:  pydio/cells
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 8080
+        targetPort: 8080
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+
+    tls:
+      - secretName: pydio-tls
+
+mariadb:
+  enabled: true
+  nameOverride: pydio-db
+  fullnameOverride: pydio-db
+
+  commonLabels:
+    app: pydio
+
+  auth:
+    existingSecret: pydio-db-secret
+
+  primary:
+    persistence:
+      enabled: true
+      storageClass: "longhorn"
+      size: 3Gi
+
+  secondary:
+    persistence:
+      enabled: true
+      storageClass: "longhorn"
+      size: 3Gi
