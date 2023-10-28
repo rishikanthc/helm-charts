@@ -47,7 +47,7 @@ mariadb:
   nameOverride: seafile-db
   fullnameOverride: seafile-db
   image:
-    tag: 10.11
+    tag: 8
 
   commonLabels:
     app: seafile
