@@ -43,11 +43,11 @@ persistence:
     enabled: true
     storageClass: longhorn
     accessMode: ReadWriteOnce
-    size: 1Gi
+    size: 16Mi
     mountPath: /app/data/configs
   icons:
     enanbled: true
     storageClass: longhorn
     accessMode: ReadWriteOnce
-    size: 128Mi
+    size: 16Mi
     mountPath: /app/public/icons
