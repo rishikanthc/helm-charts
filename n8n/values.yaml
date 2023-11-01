@@ -1,0 +1,49 @@
+defaultPodOptions:
+  labels:
+    app: n8n
+
+controllers:
+  main:
+    containers:
+      main:
+        envFrom:
+          - secretRef:
+              name: n8n-secrets
+        image:
+          # -- image repository
+          repository: docker.n8n.io/n8nio/n8n
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+service:
+  main:
+    enabled: true
+    ports:
+      http:
+        port: 5678
+        targetPort: 5678
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+    tls:
+      - secretName: n8n-tls
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /home/node/.n8n
