@@ -9,4 +9,4 @@ dependencies:
   repository: https://charts.authelia.com
   version: 0.8.58
 digest: sha256:accdb657da592e05182e9262281515f70bac1d21a900a023f345e7f795162b6c
-generated: "2023-10-24T22:18:40.778341-07:00"
+generated: "2023-11-06T15:41:33.535776-08:00"
