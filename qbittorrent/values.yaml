@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/rishikanthc/qbittorrent-vue
-  tag: 4.6.0
+  tag: q4.5.5-v1.7.4
 
 ingress:
   main:
