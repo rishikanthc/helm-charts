@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/rishikanthc/qbittorrent-vue
-  tag: q4.5.5-v1.7.4
+  tag: 4.6.0
 
 ingress:
   main:
@@ -41,7 +41,6 @@ podSecurityContext:
   runAsGroup: 1000
   fsGroupChangePolicy: "OnRootMismatch"
 
-
 persistence:
   config:
     enabled: true
@@ -65,13 +64,11 @@ addons:
         tag: latest
 
     scripts:
-      down:
-        |-
+      down: |-
         #!/bin/bash
         echo "disconnected" > /shared/vpnstatus
 
-      up:
-        |-
+      up: |-
         #!/bin/bash
         echo "connected" > /shared/vpnstatus
 
