@@ -2,10 +2,9 @@ apiVersion: v2
 name: readarr
 description: A Helm chart for readarr
 
-
 type: application
 version: 0.1.0
-appVersion: "0.3.8"
+appVersion: "0.3.10.2287"
 
 kubeVersion: ">=1.22.0-0"
 
