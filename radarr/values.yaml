@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/onedr0p/radarr-develop
-  tag: 5.1.1.8195
+  tag: 5.1.2
 
 ingress:
   main:
@@ -46,8 +46,6 @@ env:
       secretKeyRef:
         name: radarr-secret
         key: user-password
-
-
 
 persistence:
   config:
