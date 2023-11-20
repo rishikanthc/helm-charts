@@ -2,7 +2,7 @@ apiVersion: v2
 name: prowlarr
 description: A Helm chart for prowlarr
 type: application
-version: 0.1.1
+version: 0.1.2
 
 appVersion: "1.10.2.4064"
 kubeVersion: ">=1.22.0-0"
