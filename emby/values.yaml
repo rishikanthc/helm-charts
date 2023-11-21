@@ -1,0 +1,46 @@
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: ghcr.io/onedr0p/emby
+          tag: 4.7.14.0
+          pullPolicy: IfNotPresent
+
+service:
+  main:
+    ports:
+      http:
+        port: 8096
+        targetPort: 8096
+      https:
+        enabled: true
+        port: 8920
+        targetPort: 8920
+
+ingress:
+  main:
+    enabled: true
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+    tls:
+      - secretName: emby-tls
+
+persistence:
+  config:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /config
+
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+  fsGroupChangePolicy: "OnRootMismatch"
