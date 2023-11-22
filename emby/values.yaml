@@ -3,9 +3,9 @@ controllers:
     containers:
       main:
         image:
-          repository: ghcr.io/onedr0p/emby
-          tag: 4.7.14.0
-          pullPolicy: IfNotPresent
+          repository: emby/embyserver
+          tag: latest
+          pullPolicy: Always
 
 service:
   main:
