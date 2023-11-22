@@ -21,6 +21,8 @@ service:
 ingress:
   main:
     enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
     hosts:
       - host: ""
         paths:
@@ -34,6 +36,7 @@ ingress:
 persistence:
   config:
     enabled: true
+    storageClass: longhorn
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     size: 1Gi
