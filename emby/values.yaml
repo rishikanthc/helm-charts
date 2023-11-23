@@ -13,7 +13,7 @@ controllers:
 
 service:
   main:
-    type: ClusterIP
+    # type: ClusterIP
     ports:
       http:
         port: 8096
@@ -45,8 +45,8 @@ persistence:
     mountPath: /config
 
 defaultPodOptions:
-  dnsPolicy: ClusterFirstWithHostNet
-  hostNetwork: true
+  # dnsPolicy: ClusterFirstWithHostNet
+  # hostNetwork: true
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
