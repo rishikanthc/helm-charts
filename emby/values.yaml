@@ -13,6 +13,7 @@ controllers:
 
 service:
   main:
+    type: ClusterIP
     ports:
       http:
         port: 8096
