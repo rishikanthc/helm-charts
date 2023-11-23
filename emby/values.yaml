@@ -38,8 +38,6 @@ ingress:
 
 persistence:
   config:
-    storageClass: longhorn
-    existingClaim: emby-config
     accessMode: ReadWriteOnce
     size: 1Gi
     mountPath: /config
