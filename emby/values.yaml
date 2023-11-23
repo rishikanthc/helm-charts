@@ -23,20 +23,20 @@ service:
         port: 8920
         targetPort: 8920
 
-ingress:
-  main:
-    enabled: true
-    className: traefik
-    hosts:
-      - host: ""
-        paths:
-          - path: /
-            pathType: Prefix
-            service:
-              name: main
-              port: http
-    tls:
-      - secretName: emby-tls
+# ingress:
+#   main:
+#     enabled: true
+#     className: traefik
+#     hosts:
+#       - host: ""
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             service:
+#               name: main
+#               port: http
+#     tls:
+#       - secretName: emby-tls
 
 persistence:
   config:
