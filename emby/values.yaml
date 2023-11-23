@@ -20,9 +20,7 @@ service:
 
 ingress:
   main:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: traefik
+    className: traefik
     hosts:
       - host: ""
         paths:
@@ -30,19 +28,21 @@ ingress:
             pathType: Prefix
             service:
               name: main
+              port: http
     tls:
       - secretName: emby-tls
 
 persistence:
   config:
-    enabled: true
     storageClass: longhorn
-    type: persistentVolumeClaim
+    existingClaim: emby-config
     accessMode: ReadWriteOnce
     size: 1Gi
     mountPath: /config
-# podSecurityContext:
-#   runAsUser: 1000
-#   runAsGroup: 1000
-#   fsGroup: 1000
-#   fsGroupChangePolicy: "OnRootMismatch"
+
+defaultPodOptions:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: "OnRootMismatch"
