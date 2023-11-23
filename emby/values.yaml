@@ -24,6 +24,7 @@ service:
 
 ingress:
   main:
+    enabled: true
     className: traefik
     hosts:
       - host: ""
@@ -32,7 +33,7 @@ ingress:
             pathType: Prefix
             service:
               name: main
-              port: https
+              port: http
     tls:
       - secretName: emby-tls
 
