@@ -43,6 +43,7 @@ persistence:
     accessMode: ReadWriteOnce
     size: 1Gi
     mountPath: /config
+    retain: true
   transcode:
     accessMode: ReadWriteOnce
     size: 10Gi
