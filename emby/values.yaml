@@ -1,3 +1,7 @@
+global:
+  labels:
+    - app: emby
+
 controllers:
   main:
     containers:
@@ -41,6 +45,8 @@ persistence:
     mountPath: /config
 
 defaultPodOptions:
+  dnsPolicy: ClusterFirstWithHostNet
+  hostNetwork: true
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
