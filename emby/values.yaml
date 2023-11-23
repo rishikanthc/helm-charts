@@ -40,12 +40,14 @@ service:
 
 persistence:
   config:
+    enabled: true
     storageClass: longhorn
     accessMode: ReadWriteOnce
     size: 1Gi
     mountPath: /config
     retain: true
   transcode:
+    enabled: true
     storageClass: longhorn
     accessMode: ReadWriteOnce
     size: 10Gi
