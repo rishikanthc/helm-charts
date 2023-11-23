@@ -32,7 +32,7 @@ ingress:
             pathType: Prefix
             service:
               name: main
-              port: http
+              port: https
     tls:
       - secretName: emby-tls
 
