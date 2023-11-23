@@ -43,10 +43,14 @@ persistence:
     accessMode: ReadWriteOnce
     size: 1Gi
     mountPath: /config
+  transcode:
+    accessMode: ReadWriteOnce
+    size: 10Gi
+    mountPath: /transcode
 
 defaultPodOptions:
-  # dnsPolicy: ClusterFirstWithHostNet
-  # hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  hostNetwork: true
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
