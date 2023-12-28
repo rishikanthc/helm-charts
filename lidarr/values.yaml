@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/onedr0p/lidarr-develop
-  tag: 2.0.3
+  tag: 2.1.1.3877
 
 ingress:
   main:
