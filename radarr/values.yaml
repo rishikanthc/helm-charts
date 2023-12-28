@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/onedr0p/radarr-develop
-  tag: 5.2.2.8288
+  tag: 5.2.6
 
 ingress:
   main:
