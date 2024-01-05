@@ -28,6 +28,7 @@ controllers:
 
         env:
           VPN_TYPE: wireguard
+          VPN_INTERFACE: wg0
 
         securityContext:
           runAsUser: 0
