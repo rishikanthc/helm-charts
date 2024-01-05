@@ -36,22 +36,6 @@ controllers:
             add:
               - NET_ADMIN
 
-      port-forward:
-        dependsOn: gluetun
-        image:
-          repository: snoringdragon/gluetun-qbittorrent-port-manager
-          tag: 1.3
-        env:
-          - name: QBITTORRENT_SERVER
-            value: localhost
-          - name: QBITTORRENT_PORT
-            value: "8080"
-          - name: PORT_FORWARDED
-            value: "/tmp/gluetun/forwarded_port"
-        securityContext:
-          runAsUser: 0
-          runAsGroup: 0
-
 service:
   main:
     type: ClusterIP
@@ -68,12 +52,12 @@ persistence:
     enabled: true
     mountPath: /config
 
-  gluetun-data:
-    type: emptyDir
-    advancedMounts:
-      main:
-        gluetun:
-          - path: /tmp/gluetun
-        port-forward:
-          - path: /tmp/gluetun
-            readOnly: true
+  # gluetun-data:
+  #   type: emptyDir
+  #   advancedMounts:
+  #     main:
+  #       gluetun:
+  #         - path: /tmp/gluetun
+  #       port-forward:
+  #         - path: /tmp/gluetun
+  #           readOnly: true
