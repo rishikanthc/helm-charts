@@ -1,77 +1,74 @@
-image:
-  repository: ghcr.io/rishikanthc/qbittorrent-vue
-  tag: q4.5.5-v1.7.4
-
-ingress:
+controllers:
   main:
-    enabled: false
-    ingressClassName: traefik
-    hosts:
-      - host: ""
-        paths:
-          - path: /
-            pathType: Prefix
+    annotations:
+      reloader.staketer.com/auto: "true"
 
-    tls:
-      - secretName: qbittorrent-tls
+    pod:
+      securityContext:
+        runAsUser: 501
+        fsGroup: 501
+        runAsGroup: 501
+        fsGroupChangePolicy: "OnRootMismatch"
+
+    containers:
+      main:
+        image:
+          repository: ghcr.io/rishikanthc/qbittorrent-vue
+          tag: q4.5.5-v1.7.4
+
+        securityContext:
+          runAsUser: 501
+          runAsGroup: 501
+
+      gluetun:
+        dependsOn: main
+        image:
+          repository: qmcgaw/gluetun
+          tag: v3.37
+
+        env:
+          VPN_TYPE: wireguard
+
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+
+      port-forward:
+        dependsOn: gluetun
+        image:
+          repository: snoringdragon/gluetun-qbittorrent-port-manager
+          tag: 1.3
+        env:
+          - name: QBITTORRENT_SERVER
+            value: localhost
+          - name: QBITTORRENT_PORT
+            value: "8080"
+          - name: PORT_FORWARDED
+            value: "/tmp/gluetun/forwarded_port"
 
 service:
   main:
+    type: ClusterIP
     ports:
       http:
-        protocol: TCP
         port: 8080
-        targetPort: 8080
-  # torrent:
-  #   enabled: true
-  #   type: LoadBalancer
-  #   externalTrafficPolicy: Local
-  #   ports:
-  #     torrent:
-  #       protocol: TCP
-  #       port: 50413
-  #       targetPort: 50413
 
-env:
-  TZ: America/Los_Angeles
-
-podSecurityContext:
-  runAsUser: 1000
-  fsGroup: 1000
-  runAsGroup: 1000
-  fsGroupChangePolicy: "OnRootMismatch"
+ingress:
+  main:
+    enabled: true
 
 persistence:
   config:
     enabled: true
     mountPath: /config
 
-# resources:
-#   requests:
-#     cpu: 100m
-#     memory: 256Mi
-#   limits:
-#     cpu: 500m
-#     memory: 512Mi
-
-addons:
-  vpn:
-    enabled: false
-
-    gluetun:
-      image:
-        repository: docker.io/qmcgaw/gluetun
-        tag: latest
-
-    scripts:
-      down: |-
-        #!/bin/bash
-        echo "disconnected" > /shared/vpnstatus
-
-      up: |-
-        #!/bin/bash
-        echo "connected" > /shared/vpnstatus
-
-    securityContext:
-      runAsUser: 0
-      runAsGroup: 0
+  gluetun-data:
+    type: emptyDir
+    advancedMounts:
+      main:
+        gluetun:
+          - path: /tmp/gluetun
+        port-forward:
+          - path: /tmp/gluetun
+            readOnly: true
