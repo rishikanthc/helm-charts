@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/onedr0p/sabnzbd
-  tag: 4.1.0
+  tag: 4.2.1
 
 service:
   main:
@@ -9,7 +9,6 @@ service:
         protocol: TCP
         port: 8080
         targetPort: 8080
-
 
 ingress:
   main:
@@ -87,12 +86,10 @@ addons:
       runAsGroup: 0
 
     scripts:
-      up:
-        |-
+      up: |-
         !/bin/sh
         echo "connected" > /shared/vpnstatus
 
-      down:
-        |-
+      down: |-
         !/bin/sh
         echo "disconnected" > /shared/vpnstatus
