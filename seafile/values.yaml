@@ -29,11 +29,11 @@ controllers:
           - name: FORCE_HTTPS_IN_CONF
             value: "true"
 
-      securityContext:
-        runAsUser: 0
-        fsGroup: 0
-        runAsGroup: 0
-        fsGroupChangePolicy: "OnRootMismatch"
+        securityContext:
+          runAsUser: 0
+          fsGroup: 0
+          runAsGroup: 0
+          fsGroupChangePolicy: "OnRootMismatch"
 
 service:
   main:
