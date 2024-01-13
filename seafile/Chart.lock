@@ -2,5 +2,8 @@ dependencies:
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
   version: 14.0.0
-digest: sha256:43a4392971c861a59fc2b1e4f7ecff657ecd3c53f7a8a51538a32207cc904012
-generated: "2024-01-12T17:34:39.783361-08:00"
+- name: seafile
+  repository: https://300481.github.io/charts/
+  version: 0.11.3
+digest: sha256:9fc1bbb7c9a0ea7e7b342c30ced84fb203f81058d08934388ff8d6f15cf3456c
+generated: "2024-01-12T18:06:38.675294-08:00"

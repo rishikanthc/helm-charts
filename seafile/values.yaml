@@ -1,3 +1,7 @@
+seafile:
+  database:
+    hostname: seafile-db.seafile.svc.cluster.local
+
 mariadb:
   nameOverride: seafile-db
   fullnameOverride: seafile-db
