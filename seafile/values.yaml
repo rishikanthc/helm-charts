@@ -1,6 +1,56 @@
-seafile:
-  database:
-    hostname: seafile-db.seafile.svc.cluster.local
+controllers:
+  main:
+    enabled: true
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    type: statefulset
+    replicas: 1
+
+    containers:
+      main:
+        image:
+          repository: docker.io/seafileltd/seafile-mc
+          tag: 11.0.3
+          pullPolicy: IfNotPresent
+
+        env:
+          - name: DB_HOST
+            value: seafile-db.seafile.svc.cluster.local
+          - name: DB_ROOT_PASSWD
+            valueFrom:
+              secretKeyRef:
+                name: seafile-db-auth
+                key: mariadb-root-password
+          - name: TIME_ZONE
+            value: "America/Los_Angeles"
+          - name: SEAFILE_SERVER_LETSENCRYPT
+            value: "false"
+          - name: FORCE_HTTPS_IN_CONF
+            value: "true"
+
+service:
+  main:
+    enabled: true
+    controller: main
+    primary: true
+    type: ClusterIP
+
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 80
+
+ingress:
+  main:
+    enabled: true
+
+persistence:
+  shared:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 8Gi
 
 mariadb:
   nameOverride: seafile-db
