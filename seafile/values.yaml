@@ -45,6 +45,13 @@ service:
 ingress:
   main:
     enabled: true
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
 
 persistence:
   shared:
