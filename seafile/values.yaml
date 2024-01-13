@@ -16,7 +16,6 @@ mariadb:
 
     persistence:
       enabled: true
-      storageClass: longhorn
       size: 8Gi
 
   secondary:
@@ -31,8 +30,4 @@ mariadb:
 
     persistence:
       enabled: true
-      storageClass: longhorn
       size: 8Gi
-
-      labels:
-        velero.io/exclude-from-backup: "true"
