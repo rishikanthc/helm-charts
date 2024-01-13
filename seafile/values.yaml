@@ -1,83 +1,38 @@
-defaultPodOptions:
-  labels:
-    app: seafile
-
-controllers:
-  main:
-    containers:
-      main:
-        envFrom:
-          - secretRef:
-              name: seafile-secret
-        image:
-          # -- image repository
-          repository:  seafileltd/seafile-mc
-          # -- image tag
-          tag: latest
-          # -- image pull policy
-          pullPolicy: Always
-
-
-service:
-  main:
-    enabled: true
-    ports:
-      http:
-        port: 80
-        targetPort: 80
-
-ingress:
-  main:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: traefik
-    hosts:
-      - host: ""
-        paths:
-          - path: /
-            pathType: Prefix
-            service:
-              name: main
-
-    tls:
-      - secretName: seafile-tls
-
 mariadb:
-  enabled: true
   nameOverride: seafile-db
   fullnameOverride: seafile-db
-  image:
-    tag: 10.11
-
-  commonLabels:
-    app: seafile
 
   auth:
-    # usePasswordFiles: true
-    existingSecret: seafile-db-secret
+    existingSecret: seafile-db-auth
 
   primary:
-    podSecurityContext:
-      runAsUser: 0
-      fsGroup: 0
-      runAsGroup: 0
-    # extraEnvVars:
-    #   - name: MYSQL_ROOT_PASSWORD
-    #     value: "PJXMXhEn4WBDwmxMphzHa7wyqKHQm9ZN"
-    # configuration: |
-    #   [mysqld]
-    #   skip-name-resolve=0
-    #   max_allowed_packet=256M
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+
     persistence:
       enabled: true
-      storageClass: "longhorn"
-      size: 3Gi
+      storageClass: longhorn
+      size: 8Gi
 
   secondary:
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+
     persistence:
       enabled: true
-      storageClass: "longhorn"
-      size: 3Gi
+      storageClass: longhorn
+      size: 8Gi
 
-memcached:
-  enabled: true
+      labels:
+        velero.io/exclude-from-backup: "true"
