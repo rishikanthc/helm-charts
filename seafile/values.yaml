@@ -7,11 +7,11 @@ controllers:
     type: statefulset
     replicas: 1
 
-    securityContext:
-      runAsUser: 0
-      fsGroup: 0
-      runAsGroup: 0
-      fsGroupChangePolicy: "OnRootMismatch"
+    # securityContext:
+    #   runAsUser: 0
+    #   fsGroup: 0
+    #   runAsGroup: 0
+    #   fsGroupChangePolicy: "OnRootMismatch"
 
     containers:
       main:
