@@ -8,9 +8,9 @@ controllers:
     replicas: 1
 
     securityContext:
-      runAsUser: 501
-      fsGroup: 501
-      runAsGroup: 501
+      runAsUser: 0
+      fsGroup: 0
+      runAsGroup: 0
       fsGroupChangePolicy: "OnRootMismatch"
 
     containers:
