@@ -4,7 +4,7 @@ description: A Helm chart for radarr
 type: application
 
 version: 0.1.0
-appVersion: "5.2.6"
+appVersion: "5.3.1.8438"
 kubeVersion: ">=1.22.0-0"
 
 dependencies:
