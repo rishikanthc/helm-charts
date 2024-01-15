@@ -18,8 +18,6 @@ controllers:
         env:
           - name: APP_NAME
             value: "2FAuth"
-          - name: APP_ENV
-            value: "local"
           - name: SITE_OWNER
             value: "rcnoetic@gmail.com"
           - name: APP_KEY
@@ -42,12 +40,12 @@ controllers:
             value: "2fauth@rkth.io"
           - name: AUTHENTICATION_GUARD
             value: "reverse-proxy-guard"
-          - name: AUTH_PROXY_HEADER_FOR_USER
-            value: "HTTP_REMOTE_USER"
-          - name: AUTH_PROXY_HEADER_FOR_EMAIL
-            value: "HTTP_REMOTE_EMAIL"
-          - name: PROXY_LOGOUT_URL
-            value: "https://auth.rkth.io/logout"
+          # - name: AUTH_PROXY_HEADER_FOR_USER
+          #   value: "HTTP_REMOTE_USER"
+          # - name: AUTH_PROXY_HEADER_FOR_EMAIL
+          #   value: "HTTP_REMOTE_EMAIL"
+          # - name: PROXY_LOGOUT_URL
+          #   value: "https://auth.rkth.io/logout"
           - name: WEBAUTHN_USER_VERIFICATION
             value: "required"
 
