@@ -1,0 +1,22 @@
+controllers:
+  main:
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    containers:
+      main:
+        env:
+          - name: LOG_LEVEL
+            value: "info"
+
+        image:
+          repository: ghcr.io/flaresolverr/flaresolverr
+          tag: latest
+          pullPolicy: Always
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8191
