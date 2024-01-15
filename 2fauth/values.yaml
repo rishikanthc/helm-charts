@@ -25,7 +25,7 @@ controllers:
           - name: APP_URL
             value: "https://2fa.rkth.io"
           - name: MAIL_DRIVER
-            value: smtp
+            value: SMTP
           - name: MAIL_HOST
             value: smtp.gmail.com
           - name: MAIL_PORT
