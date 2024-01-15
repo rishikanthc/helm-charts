@@ -11,8 +11,8 @@ controllers:
           pullPolicy: IfNotPresent
 
         securityContext:
-          runAsUser: 501
-          runAsGroup: 501
+          runAsUser: 0
+          runAsGroup: 0
           # fsGroupChangePolicy: "OnRootMismatch"
 
         env:
