@@ -1,0 +1,63 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: 2fauth/2fauth
+          tag: 5.0.2
+          pullPolicy: IfNotPresent
+
+        env:
+          - name: APP_NAME
+            value: "2FAuth"
+          - name: APP_ENV
+            value: "local"
+          - name: SITE_OWNER
+            value: "rcnoetic@gmail.com"
+          - name: APP_KEY
+            value: ifaij3kkralmDjL9exDy6UuSnj9wu8c
+          - name: APP_URL
+            value: "https://2fa.rkth.io"
+          - name: MAIL_DRIVER
+            value: smtp
+          - name: MAIL_HOST
+            value: smtp.gmail.com
+          - name: MAIL_PORT
+            value: 587
+          - name: MAIL_USERNAME
+            value: rcnoetic@gmail.com
+          - name: MAIL_PASSWORD
+            value: "ffrfuvigkbueikpd"
+          - name: MAIL_FROM_NAME
+            value: "2FAuth"
+          - name: MAIL_FROM_ADDRESS
+            value: "2fauth@rkth.io"
+          - name: AUTHENTICATION_GUARD
+            value: "reverse-proxy-guard"
+          - name: AUTH_PROXY_HEADER_FOR_USER
+            value: "HTTP_REMOTE_USER"
+          - name: AUTH_PROXY_HEADER_FOR_EMAIL
+            value: "HTTP_REMOTE_EMAIL"
+          - name: PROXY_LOGOUT_URL
+            value: "https://auth.rkth.io/logout"
+          - name: WEBAUTHN_USER_VERIFICATION
+            value: "required"
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8000
+        protocol: TCP
+
+persistence:
+  2fauth:
+    enabled: true
+    type: persistentVolumeClaim
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
