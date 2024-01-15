@@ -10,6 +10,12 @@ controllers:
           tag: 5.0.2
           pullPolicy: IfNotPresent
 
+        securityContext:
+          runAsUser: 0
+          fsGroup: 0
+          # runAsGroup: 501
+          # fsGroupChangePolicy: "OnRootMismatch"
+
         env:
           - name: APP_NAME
             value: "2FAuth"
