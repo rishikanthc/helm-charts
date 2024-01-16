@@ -1,0 +1,52 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: nvidia/cuda
+          tag: 12.3.1-runtime-ubuntu22.04
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+        resources:
+          requests:
+            nvidia.com/gpu: 1
+          limits:
+            nvidia.com/gpu: 1
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: auth-secured@kubernetescrd
+    className: traefik
+    hosts:
+      - host: "dev.rkth.io"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
+    tls:
+      - secretName: emby-tls
+
+persistence:
+  cookiejar:
+    enabled: true
+    type: hostPath
+    hostPath:
+      path: /home/rishi/cookiejar
+    accessMode: ReadWriteMany
+    retain: true
