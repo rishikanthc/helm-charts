@@ -8,8 +8,8 @@ controllers:
       main:
         image:
           repository: emby/embyserver
-          tag: latest
-          pullPolicy: Always
+          tag: beta
+          pullPolicy: IfNotPresent
 
 service:
   main:
