@@ -29,7 +29,7 @@ controllers:
           AUTH0_DOMAIN: dev-e8ee77vb4qjit4oj.us.auth0.com
           AUTH0_CLIENT_ID: naj64sWR1RFvgU0IjUnLkxYsLke42VcF
           AUTH0_AUDIENCE: https://nb.rkth.io
-          NETBIRD_MGMT_API_ENDPOINT: https://netbird-mgmt.netbird.svc.cluster.local
+          NETBIRD_MGMT_API_ENDPOINT: http://localhost:33071
           NGINX_SSL_PORT: 443
           LETSENCRYPT_DOMAIN: nb.rkth.io
           LETSENCRYPT_EMAIL: rcnoetic@gmail.com
@@ -41,14 +41,15 @@ service:
       http:
         primary: false
         port: 80
-  mgmt:
-    controller: main
-    type: ClusterIP
-    ports:
-      http:
-        enabled: true
+      https:
         port: 443
-        targetPort: 33071
+  # mgmt:
+  #   controller: main
+  #   type: ClusterIP
+  #   ports:
+  #     http:
+  #       enabled: true
+  #       port: 33071
 
 ingress:
   main:
