@@ -15,6 +15,10 @@ controllers:
               - NET_ADMIN
               - SYS_ADMIN
               - SYS_RESOURCE
+
+        env:
+          NB_SETUP_KEY: 8A8A90B3-981C-4D3D-B4AC-E25CC93FEC84
+
       daashboard:
         image:
           repository: wiretrustee/dashboard
