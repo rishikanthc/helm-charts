@@ -28,7 +28,7 @@ controllers:
           AUTH0_DOMAIN: dev-e8ee77vb4qjit4oj.us.auth0.com
           AUTH0_CLIENT_ID: naj64sWR1RFvgU0IjUnLkxYsLke42VcF
           AUTH0_AUDIENCE: https://nb.rkth.io
-          NETBIRD_MGMT_API_ENDPOINT: http://main:33071
+          NETBIRD_MGMT_API_ENDPOINT: https://nb.rkth.io:33071
 
 service:
   main:
