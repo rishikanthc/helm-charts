@@ -1,0 +1,70 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: netbirdio/netbird
+          tag: 0.25.4
+
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+              - SYS_ADMIN
+              - SYS_RESOURCE
+      daashboard:
+        image:
+          repository: wiretrustee/dashboard
+          tag: main
+
+        env:
+          AUTH0_DOMAIN: dev-e8ee77vb4qjit4oj.us.auth0.com
+          AUTH0_CLIENT_ID: ieo2gKd7A2Gpowqs2yx376QPZG2hMD9L
+          AUTH0_AUDIENCE: https://dev-e8ee77vb4qjit4oj.us.auth0.com/api/v2/
+          NETBIRD_MGMT_API_ENDPOINT: http://localhost:33071
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 443
+
+ingress:
+  main:
+    annotations:
+      kubernetes.io/ingress.class: "traefik"
+      cert-manager.io/cluster-issuer: "acme-issuer"
+      # gethomepage.dev/enabled: "true"
+      # gethomepage.dev/name: "Redlib"
+      # gethomepage.dev/description: "Reddit frontend"
+      # gethomepage.dev/group: "Social"
+      # gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/libreddit.png"
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: auth-secured@kubernetescrd
+    hosts:
+      - host: "nb.rkth.io"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+    tls:
+      - hosts:
+          - "nb.rkth.io"
+        secretName: redlib-tls
+
+persistence:
+  client:
+    enabled: true
+    mountPath: /client
+    storageClass: longhorn
+    size: 1Gi
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        main:
+          - path: /etc/netbird
