@@ -1,0 +1,21 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: quay.io/redlib/redlib
+          tag: 0.31.0
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
