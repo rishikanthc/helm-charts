@@ -7,7 +7,7 @@ controllers:
       main:
         image:
           repository: quay.io/redlib/redlib
-          tag: 0.31.0
+          tag: latest
 
 service:
   main:
