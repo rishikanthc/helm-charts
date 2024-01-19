@@ -1,6 +1,3 @@
-defaultPodOptions:
-  hostname: netbird
-
 controllers:
   main:
     annotations:
@@ -24,7 +21,7 @@ controllers:
 
         ports:
           - name: http
-            containerPort: 33073
+            containerPort: 33071
             protocol: TCP
 
       daashboard:
@@ -36,7 +33,7 @@ controllers:
           AUTH0_DOMAIN: dev-e8ee77vb4qjit4oj.us.auth0.com
           AUTH0_CLIENT_ID: naj64sWR1RFvgU0IjUnLkxYsLke42VcF
           AUTH0_AUDIENCE: https://nb.rkth.io
-          NETBIRD_MGMT_API_ENDPOINT: http://netbird:33073
+          NETBIRD_MGMT_API_ENDPOINT: http://localhost:33071
           NGINX_SSL_PORT: 443
           LETSENCRYPT_DOMAIN: anb.rkth.io
           LETSENCRYPT_EMAIL: rcnoetic@gmail.com
