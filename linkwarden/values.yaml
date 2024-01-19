@@ -41,7 +41,7 @@ persistence:
     accessMode: ReadWriteOnce
 
 postgresql:
-  enabled: false
+  enabled: true
   nameOverride: linkwarden-db
   fullnameOverride: linkwarden-db
   auth:
