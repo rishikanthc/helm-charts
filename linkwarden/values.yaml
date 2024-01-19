@@ -42,7 +42,7 @@ persistence:
     advancedMounts:
       main:
         main:
-          path: /data/data
+          - path: /data/data
 
 postgresql:
   enabled: true
