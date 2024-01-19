@@ -49,7 +49,6 @@ postgresql:
   nameOverride: linkwarden-db
   fullnameOverride: linkwarden-db
   auth:
-    database: linkwarden
     existingSecret: linkwarden-secret
 
     secretKeys:
