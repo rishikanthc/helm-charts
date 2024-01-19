@@ -64,7 +64,7 @@ ingress:
       # gethomepage.dev/group: "Social"
       # gethomepage.dev/icon: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/libreddit.png"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: auth-secured@kubernetescrd
+      # traefik.ingress.kubernetes.io/router.middlewares: auth-secured@kubernetescrd
     hosts:
       - host: "nb.rkth.io"
         paths:
