@@ -22,6 +22,11 @@ controllers:
         env:
           NB_SETUP_KEY: 0443621E-C54E-4854-99BD-C6122F56F9DF
 
+        ports:
+          - name: http
+            containerPort: 33073
+            protocol: TCP
+
       daashboard:
         image:
           repository: wiretrustee/dashboard
