@@ -48,6 +48,7 @@ service:
     type: ClusterIP
     ports:
       http:
+        primary: true
         enabled: true
         port: 33071
 
