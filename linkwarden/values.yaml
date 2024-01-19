@@ -39,6 +39,10 @@ persistence:
     storageClass: longhorn
     size: 4Gi
     accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        main:
+          path: /data/data
 
 postgresql:
   enabled: true
