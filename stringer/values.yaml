@@ -60,6 +60,14 @@ controllers:
                 name: stringer-secret
                 key: postgres_password
 
+    initContainers:
+      - name: clear-pgdata
+        image: busybox
+        command: ["sh", "-c", "rm -rf /var/lib/postgresql/data/pgdata/*"]
+        volumeMounts:
+          - name: postgresql-data
+            mountPath: /var/lib/postgresql/data
+
 service:
   main:
     type: ClusterIP
