@@ -1,0 +1,77 @@
+controllers:
+  main:
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: stringerrss/stringer
+          tag: sha-d31b6e7
+
+        env:
+          PORT: 8080
+          DATABASE_URL:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: database_url
+          SECRET_KEY_BASE:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: secret_key_base
+          ENCRYTPION_PRIMARY_KEY:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: encryption_primary_key
+          ENCRYPTION_DETERMINISTIC_KEY:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: encryption_deterministic_key
+          ENCRYPTION_KEY_DERIVATION_SALT:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: encryption_key_derivation_salt
+
+      postgres:
+        image:
+          repository: postgres
+          tag: 9.5-alpine
+
+        env:
+          POSTGRES_DB:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: postgres_db
+          POSTGRES_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: stringer-secret
+                key: postgres_password
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
+
+persistence:
+  pgres:
+    enabled: true
+    advancedMounts:
+      main:
+        postgres:
+          - path: /var/lib/postgresql/data
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: longhorn
