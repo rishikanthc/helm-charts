@@ -39,7 +39,7 @@ service:
     type: ClusterIP
     ports:
       http:
-        primary: false
+        primary: true
         port: 80
       https:
         port: 443
