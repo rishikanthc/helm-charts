@@ -87,7 +87,8 @@ persistence:
     advancedMounts:
       main:
         postgres:
-          - path: /var/lib/postgresql/data/pgdata
+          - path: /var/lib/postgresql/data
+            subPath: pgdata
     accessMode: ReadWriteOnce
     size: 1Gi
     storageClass: longhorn
