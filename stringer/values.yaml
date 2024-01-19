@@ -63,8 +63,8 @@ controllers:
     initContainers:
       clear-pgdata:
         image:
-          repository: busybox
-          tag: latest
+          repository: ghcr.io/onedr0p/postgres-init
+          tag: 14.9
         command: ["sh", "-c", "rm -rf /var/lib/postgresql/data/pgdata/*"]
         volumeMounts:
           - name: postgresql-data
