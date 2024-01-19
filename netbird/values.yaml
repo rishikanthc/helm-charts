@@ -88,8 +88,6 @@ ingress:
             pathType: Prefix
             service:
               name: mgmt
-              port:
-                number: 33071
     tls:
       - hosts:
           - "mnb.rkth.io"
