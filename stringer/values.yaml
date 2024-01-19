@@ -62,7 +62,9 @@ controllers:
 
     initContainers:
       - name: clear-pgdata
-        image: busybox
+        image:
+          repository: busybox
+          tag: latest
         command: ["sh", "-c", "rm -rf /var/lib/postgresql/data/pgdata/*"]
         volumeMounts:
           - name: postgresql-data
