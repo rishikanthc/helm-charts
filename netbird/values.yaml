@@ -29,7 +29,7 @@ controllers:
           AUTH0_DOMAIN: dev-e8ee77vb4qjit4oj.us.auth0.com
           AUTH0_CLIENT_ID: naj64sWR1RFvgU0IjUnLkxYsLke42VcF
           AUTH0_AUDIENCE: https://nb.rkth.io
-          NETBIRD_MGMT_API_ENDPOINT: http://netbird-mgmt.netbird.svc.local:33071
+          NETBIRD_MGMT_API_ENDPOINT: https://mnb.rkth.io
           NGINX_SSL_PORT: 443
           LETSENCRYPT_DOMAIN: nb.rkth.io
           LETSENCRYPT_EMAIL: rcnoetic@gmail.com
@@ -75,6 +75,25 @@ ingress:
       - hosts:
           - "nb.rkth.io"
         secretName: redlib-tls
+  mgmt:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "traefik"
+      cert-manager.io/cluster-issuer: "acme-issuer"
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    hosts:
+      - host: "mnb.rkth.io"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: mgmt
+              port:
+                number: 33071
+    tls:
+      - hosts:
+          - "mnb.rkth.io"
+        secretName: mgmt-tls
 
 persistence:
   client:
