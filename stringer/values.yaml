@@ -61,7 +61,7 @@ controllers:
                 key: postgres_password
 
     initContainers:
-      - name: clear-pgdata
+      clear-pgdata:
         image:
           repository: busybox
           tag: latest
