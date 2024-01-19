@@ -50,7 +50,7 @@ service:
       http:
         primary: true
         enabled: true
-        port: 33071
+        port: 33073
 
 ingress:
   main:
