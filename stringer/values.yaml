@@ -62,6 +62,8 @@ controllers:
 
     initContainers:
       clear-pgdata:
+        dependsOn:
+          - postgres
         image:
           repository: busybox
           tag: latest
