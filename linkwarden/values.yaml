@@ -1,0 +1,54 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: ghcr.io/linkwarden/linkwarden
+          tag: v2.4.9
+
+        env:
+          DATABASE_URL:
+            valueFrom:
+              secretKeyRef:
+                name: linkwarden-secret
+                key: db_url
+          NEXTAUTH_SECRET:
+            valueFrom:
+              secretKeyRef:
+                name: linkwarden-secret
+                key: nextauth_secret
+          NEXTAUTH_URL: https://linkwarden.example.com
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 3000
+
+persistence:
+  data:
+    enabled: true
+    storageClass: longhorn
+    size: 4Gi
+    accessMode: ReadWriteOnce
+
+postgresql:
+  enabled: false
+  nameOverride: linkwarden-db
+  fullnameOverride: linkwarden-db
+  auth:
+    username: postgres
+    database: linkwarden
+    existingSecret: linkwarden-secret
+
+    secretKeys:
+      adminPasswordKey: admin-password
+      userPasswordKey: user-password
+      replicationPasswordKey: replication-password
+  primary:
+    persistence:
+      storageClass: longhorn
