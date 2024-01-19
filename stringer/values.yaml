@@ -35,7 +35,7 @@ controllers:
             valueFrom:
               secretKeyRef:
                 name: stringer-secret
-                key: encryption_key_derivation_salt
+                key: encryption_salt
 
       postgres:
         image:
