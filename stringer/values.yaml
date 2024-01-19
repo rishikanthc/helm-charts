@@ -21,7 +21,7 @@ controllers:
               secretKeyRef:
                 name: stringer-secret
                 key: secret_key_base
-          ENCRYTPION_PRIMARY_KEY:
+          ENCRYPTION_PRIMARY_KEY:
             valueFrom:
               secretKeyRef:
                 name: stringer-secret
