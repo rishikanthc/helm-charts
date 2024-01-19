@@ -18,7 +18,7 @@ controllers:
               - SYS_RESOURCE
 
         env:
-          NB_SETUP_KEY: 8A8A90B3-981C-4D3D-B4AC-E25CC93FEC84
+          NB_SETUP_KEY: 0443621E-C54E-4854-99BD-C6122F56F9DF
 
       daashboard:
         image:
