@@ -24,7 +24,7 @@ controllers:
           TIME_ZONE: "America/Los_Angeles"
           SEAFILE_SERVER_LETSENCRYPT: "false"
           FORCE_HTTPS_IN_CONF: "true"
-          NON_ROOT: "true"
+          # NON_ROOT: "true"
 
         # securityContext:
         #   runAsUser: 501
