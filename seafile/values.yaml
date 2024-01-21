@@ -20,7 +20,7 @@ controllers:
             valueFrom:
               secretKeyRef:
                 name: seafile-db-auth
-                key: mariadb-password
+                key: mariadb-root-password
           TIME_ZONE: "America/Los_Angeles"
           SEAFILE_SERVER_LETSENCRYPT: "false"
           FORCE_HTTPS_IN_CONF: "true"
