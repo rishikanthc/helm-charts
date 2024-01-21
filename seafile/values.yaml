@@ -15,24 +15,21 @@ controllers:
           pullPolicy: IfNotPresent
 
         env:
-          - name: DB_HOST
-            value: seafile-db.seafile.svc.cluster.local
-          - name: DB_ROOT_PASSWD
+          DB_HOST: seafile-db.seafile.svc.cluster.local
+          DB_ROOT_PASSWD:
             valueFrom:
               secretKeyRef:
                 name: seafile-db-auth
-                key: mariadb-root-password
-          - name: TIME_ZONE
-            value: "America/Los_Angeles"
-          - name: SEAFILE_SERVER_LETSENCRYPT
-            value: "false"
-          - name: FORCE_HTTPS_IN_CONF
-            value: "true"
+                key: mariadb-password
+          TIME_ZONE: "America/Los_Angeles"
+          SEAFILE_SERVER_LETSENCRYPT: "false"
+          FORCE_HTTPS_IN_CONF: "true"
+          NON_ROOT: "true"
 
-        # securityContext:
-        #   runAsUser: 501
-        #   fsGroup: 501
-        #   # runAsGroup: 501
+        securityContext:
+          runAsUser: 501
+          runAsGroup: 501
+          # fsGroup: 501
         #   # fsGroupChangePolicy: "OnRootMismatch"
 
 service:
