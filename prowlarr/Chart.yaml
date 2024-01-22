@@ -4,7 +4,7 @@ description: A Helm chart for prowlarr
 type: application
 version: 0.1.3
 
-appVersion: "1.12.1.4201"
+appVersion: "1.12.1.4211"
 kubeVersion: ">=1.22.0-0"
 
 dependencies:
