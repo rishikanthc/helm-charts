@@ -40,6 +40,7 @@ persistence:
         main:
           - mountPath: /var/log/php7
     storageClass: "longhorn"
+    accessMode: ReadWriteOnce
     size: 512Mi
   nginx_logs:
     enabled: true
@@ -49,3 +50,4 @@ persistence:
           - mountPath: /var/log/nginx
     storageClass: "longhorn"
     size: 512Mi
+    accessMode: ReadWriteOnce
