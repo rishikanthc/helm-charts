@@ -33,7 +33,7 @@ ingress:
     enabled: true
 
 persistence:
-  php_logs:
+  php-logs:
     enabled: true
     advancedMounts:
       main:
@@ -42,7 +42,7 @@ persistence:
     storageClass: "longhorn"
     accessMode: ReadWriteOnce
     size: 512Mi
-  nginx_logs:
+  nginx-logs:
     enabled: true
     advancedMounts:
       main:
