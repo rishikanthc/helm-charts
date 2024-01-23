@@ -12,6 +12,7 @@ controllers:
 
     containers:
       main:
+        dependsOn: gluetun
         image:
           repository: ghcr.io/rishikanthc/qbittorrent-vue
           tag: q4.6.2-v2.4.0
@@ -21,7 +22,6 @@ controllers:
           runAsGroup: 501
 
       gluetun:
-        dependsOn: main
         image:
           repository: qmcgaw/gluetun
           tag: v3.37
