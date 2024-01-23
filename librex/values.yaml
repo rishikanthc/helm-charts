@@ -1,0 +1,51 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: librex/librex
+          tag: latest
+          pullPolicy: Always
+
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+
+        env:
+          PUID: 1000
+          PGID: 1000
+          TZ: "America/Los_Angeles"
+          CONFIG_GOOGLE_DOMAIN: com
+          CONFIG_GOOGLE_LANGUAGE: en
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
+
+persistence:
+  php_logs:
+    enabled: true
+    advancedMounts:
+      main:
+        main:
+          - mountPath: /var/log/php7
+    storageClass: "longhorn"
+    size: 512Mi
+  nginx_logs:
+    enabled: true
+    advancedMounts:
+      main:
+        main:
+          - mountPath: /var/log/nginx
+    storageClass: "longhorn"
+    size: 512Mi
