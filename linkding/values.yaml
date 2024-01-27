@@ -57,5 +57,5 @@ postgresql:
       replicationPasswordKey: replication-password
   primary:
     persistence:
-      storageClass: longhorn-custom
+      storageClass: longhorn
       size: 4Gi
