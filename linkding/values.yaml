@@ -1,0 +1,61 @@
+controllers:
+  main:
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: sissbruecker/linkding
+          tag: 1.24.0-alpine
+
+        env:
+          LD_DB_ENGINE: postgres
+          LD_DB_DATABASE: linkding
+          LD_DB_USER:
+            valueFrom:
+              secretKeyRef:
+                name: linkding-secret
+                key: username
+          LD_DB_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: linkding-secret
+                key: user-password
+          LD_DB_HOST: linkding-db.links.svc.cluster.local
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 9090
+
+persistence:
+  data:
+    enabled: true
+    accessMode: ReadWriteMany
+    storageClassName: longhorn
+    size: 4Gi
+    advancedMounts:
+      main:
+        main:
+          - path: /etc/linkding/data
+
+postgresql:
+  enabled: true
+  nameOverride: linkding-db
+  fullnameOverride: linkding-db
+  auth:
+    username: linkding
+    database: linkding
+    existingSecret: linkding-secret
+
+    secretKeys:
+      adminPasswordKey: admin-password
+      userPasswordKey: user-password
+      replicationPasswordKey: replication-password
+  primary:
+    persistence:
+      storageClass: longhorn-custom
+      size: 4Gi
