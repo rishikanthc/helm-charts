@@ -1,0 +1,21 @@
+controllers:
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: benbusby/whoogle-search
+          tag: 0.8.4
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 5000
+
+ingress:
+  main:
+    enabled: true
