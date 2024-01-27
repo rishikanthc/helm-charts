@@ -26,9 +26,3 @@ persistence:
     storageClass: longhorn
     accessMode: ReadWriteOnce
     size: 16Gi
-  media:
-    enabled: false
-  transcode:
-    enabled: true
-    type: emptyDir
-    medium: Memory
