@@ -1,49 +1,34 @@
-image:
-  repository: ghcr.io/onedr0p/jellyfin
-  tag: 10.8.10
-
-ingress:
+controllers:
   main:
-    enabled: false
-    ingressClassName: traefik
-    hosts:
-      - host: ""
-        paths:
-          - path: /
-            pathType: Prefix
+    annotations:
+      reloader.staketer.com/auto: "true"
 
-    tls:
-      - secretName: jellyfin-tls
+    containers:
+      main:
+        image:
+          repository: ghcr.io/onedr0p/jellyfin
+          tag: 10.8
 
 service:
   main:
+    type: ClusterIP
     ports:
       http:
-        protocol: TCP
         port: 8096
-        targetPort: 8096
 
-env:
-  TZ: America/Los_Angeles
+ingress:
+  main:
+    enabled: true
 
 persistence:
   config:
     enabled: true
-    retain: true
-    mountPath: /config
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 16Gi
   media:
-    enabled: true
-    mountPath: /data/media
-    retain: true
+    enabled: false
   transcode:
     enabled: true
     type: emptyDir
     medium: Memory
-
-podSecurityContext:
-  runAsUser: 568
-  fsGroup: 568
-  runAsGroup: 568
-  fsGroupChangePolicy: "OnRootMismatch"
-  supplementalGroups:
-    - 100
