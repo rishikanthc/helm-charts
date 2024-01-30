@@ -6,8 +6,8 @@ controllers:
     containers:
       main:
         image:
-          repository: ghcr.io/onedr0p/jellyfin
-          tag: 10.8
+          repository: jellyfin/jellyfin
+          tag: latest
 
 service:
   main:
