@@ -8,6 +8,7 @@ controllers:
         image:
           repository: jellyfin/jellyfin
           tag: latest
+          pullPolicy: Always
 
 service:
   main:
