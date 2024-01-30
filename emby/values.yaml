@@ -8,7 +8,7 @@ controllers:
       main:
         image:
           repository: emby/embyserver
-          tag: beta
+          tag: 4.7.14.0
           pullPolicy: Always
 
 service:
