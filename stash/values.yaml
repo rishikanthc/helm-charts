@@ -1,0 +1,70 @@
+controllers:
+  main:
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: stashapp/stash
+          tag: latest
+        env:
+          STASH_STASH: /data/
+          STASH_GENERATED: /generated/
+          STASH_METADATA: /metadata/
+          STASH_CACHE: /cache/
+          STASH_PORT: 9999
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 9999
+
+ingress:
+  main:
+    enabled: true
+
+persistence:
+  config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: "longhorn"
+    retain: false
+    advancedMounts:
+      main:
+        main:
+          - path: /root/.stash
+  metadata:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: "longhorn"
+    retain: false
+  cache:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: "longhorn"
+    retain: false
+  blobs:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: "longhorn"
+    retain: false
+  generated:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: "longhorn"
+    retain: false
+  time:
+    enabled: true
+    type: hostPath
+    hostPath: /etc/localtime
+    readOnly: true
+    globalMounts:
+      - path: /etc/localtime
