@@ -11,6 +11,11 @@ controllers:
           tag: 4.8.1.0
           pullPolicy: Always
 
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          privileged: true
+
 service:
   main:
     # type: ClusterIP
@@ -52,12 +57,11 @@ persistence:
     accessMode: ReadWriteOnce
     size: 32Gi
     mountPath: /transcode
-
-defaultPodOptions:
-  dnsPolicy: ClusterFirstWithHostNet
-  hostNetwork: true
-  securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
-    fsGroupChangePolicy: "OnRootMismatch"
+# defaultPodOptions:
+#   dnsPolicy: ClusterFirstWithHostNet
+#   hostNetwork: true
+#   securityContext:
+#     runAsUser: 1000
+#     runAsGroup: 1000
+#     fsGroup: 1000
+#     fsGroupChangePolicy: "OnRootMismatch"
