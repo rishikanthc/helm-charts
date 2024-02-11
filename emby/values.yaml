@@ -18,7 +18,7 @@ controllers:
 
 service:
   main:
-    # type: ClusterIP
+    type: LoadBalancer
     ports:
       http:
         port: 8096
