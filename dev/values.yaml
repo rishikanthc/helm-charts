@@ -20,6 +20,17 @@ controllers:
           - "/bin/sh"
           - "-c"
           - "while true; do sleep 3600; done"
+      syncthing:
+        image:
+          repository: syncthing/syncthing
+          tag: 1.27.3
+        resources:
+          requests:
+            cpu: 15m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 200M
 
 service:
   main:
@@ -33,6 +44,24 @@ service:
     ports:
       ssh:
         port: 22
+  syncui:
+    # ipFamilyPolicy: PreferDualStack
+    ports:
+      http:
+        port: 8384
+  listen:
+    controller: main
+    externalTrafficPolicy: Local
+    # ipFamilyPolicy: PreferDualStack
+    ports:
+      listen:
+        port: 22000
+  discovery:
+    controller: main
+    ports:
+      discovery:
+        port: 21027
+        protocol: UDP
 
 persistence:
   cookiejar:
