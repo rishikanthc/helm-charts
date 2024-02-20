@@ -45,6 +45,7 @@ service:
       ssh:
         port: 22
   syncui:
+    controller: main
     # ipFamilyPolicy: PreferDualStack
     ports:
       http:
