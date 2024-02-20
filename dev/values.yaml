@@ -22,14 +22,14 @@ controllers:
           limits:
             nvidia.com/gpu: 1
         command:
-          - "nvidia-smi"
+          - "/bin/bash"
+          - "-c"
+          - "while true; do sleep 30; done;"
         probes:
           readiness:
             exec:
               command:
-                - /bin/sh
-                - -c
-                - "while true; sleep 5; done"
+                - nvidia-smi
             # initialDelaySeconds: 10
             # periodSeconds: 5
 service:
