@@ -48,7 +48,7 @@ service:
     controller: main
     # ipFamilyPolicy: PreferDualStack
     ports:
-      http:
+      syncui:
         port: 8384
   listen:
     controller: main
