@@ -35,6 +35,6 @@ persistence:
     enabled: true
     type: hostPath
     hostPath:
-      path: /home/rishi/cookiejar
+      - path: "/home/rishi/cookiejar"
     accessMode: ReadWriteMany
     retain: true
