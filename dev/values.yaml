@@ -46,7 +46,8 @@ service:
         port: 22
   syncui:
     controller: main
-    # ipFamilyPolicy: PreferDualStack
+    selector:
+      app: syncthing
     ports:
       syncui:
         port: 8384
