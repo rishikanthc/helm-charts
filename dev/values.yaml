@@ -21,8 +21,6 @@ service:
     enabled: true
     type: LoadBalancer
     controller: main
-    annotations:
-      io.cilium/lb-ipam-ips: "10.96.69.230"
     ports:
       discovery:
         enabled: true
