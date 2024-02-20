@@ -29,6 +29,14 @@ service:
       ssh:
         port: 22
 
+ingress:
+  main:
+    enabled: true
+    controller: main
+  ssh:
+    enabled: true
+    controller: main
+
 persistence:
   cookiejar:
     enabled: true
