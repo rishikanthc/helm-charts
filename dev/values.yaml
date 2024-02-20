@@ -16,6 +16,10 @@ controllers:
             nvidia.com/gpu: 1
           limits:
             nvidia.com/gpu: 1
+        command:
+          - "/bin/sh"
+          - "-c"
+          - "while true; do sleep 3600; done"
 
 service:
   main:
