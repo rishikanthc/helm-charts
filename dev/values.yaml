@@ -23,24 +23,11 @@ service:
     ports:
       http:
         port: 8080
-
-ingress:
-  main:
-    enabled: true
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: auth-secured@kubernetescrd
-    className: traefik
-    hosts:
-      - host: "dev.rkth.io"
-        paths:
-          - path: /
-            pathType: Prefix
-            service:
-              name: main
-              port: http
-    tls:
-      - secretName: emby-tls
+  ssh:
+    type: ClusterIP
+    ports:
+      ssh:
+        port: 22
 
 persistence:
   cookiejar:
