@@ -12,6 +12,17 @@ controllers:
           limits:
             cpu: 100m
             memory: 128M
+      cuda:
+        image:
+          repository: nvidia/cuda
+          tag: 12.3.1-runtime-ubuntu22.04
+        resources:
+          requests:
+            nvidia.com/gpu: 1
+          limits:
+            nvidia.com/gpu: 1
+        command:
+          - "nvidia-smi"
 service:
   main:
     ports:
