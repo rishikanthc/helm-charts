@@ -30,8 +30,6 @@ controllers:
             exec:
               command:
                 - nvidia-smi
-            # initialDelaySeconds: 10
-            # periodSeconds: 5
 service:
   main:
     ports:
@@ -54,6 +52,16 @@ service:
         enabled: true
         port: 22000
         protocol: UDP
+  cuda:
+    enabled: true
+    controller: cuda
+    ports:
+      plots:
+        enabled: true
+        port: 9000
+      ssh:
+        enabled: true
+        port: 43
 
 persistence:
   cookiejar:
