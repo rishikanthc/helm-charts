@@ -29,7 +29,7 @@ controllers:
               command:
                 - /bin/sh
                 - -c
-                - "your readiness check command here"
+                - "while true; sleep 5; done"
             # initialDelaySeconds: 10
             # periodSeconds: 5
 service:
