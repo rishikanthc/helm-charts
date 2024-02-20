@@ -52,7 +52,7 @@ service:
         port: 8384
   listen:
     controller: main
-    externalTrafficPolicy: Local
+    # externalTrafficPolicy: Local
     # ipFamilyPolicy: PreferDualStack
     ports:
       listen:
