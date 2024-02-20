@@ -5,22 +5,22 @@ controllers:
 
     containers:
       main:
-        image:
-          repository: nvidia/cuda
-          tag: 12.3.1-runtime-ubuntu22.04
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-        resources:
-          requests:
-            nvidia.com/gpu: 1
-          limits:
-            nvidia.com/gpu: 1
-        command:
-          - "/bin/sh"
-          - "-c"
-          - "while true; do sleep 3600; done"
-      syncthing:
+        #   image:
+        #     repository: nvidia/cuda
+        #     tag: 12.3.1-runtime-ubuntu22.04
+        #   securityContext:
+        #     runAsUser: 1000
+        #     runAsGroup: 1000
+        #   resources:
+        #     requests:
+        #       nvidia.com/gpu: 1
+        #     limits:
+        #       nvidia.com/gpu: 1
+        #   command:
+        #     - "/bin/sh"
+        #     - "-c"
+        #     - "while true; do sleep 3600; done"
+        # syncthing:
         image:
           repository: syncthing/syncthing
           tag: 1.27.3
@@ -46,8 +46,8 @@ service:
         port: 22
   syncui:
     controller: main
-    selector:
-      app: syncthing
+    # selector:
+    #   app: syncthing
     ports:
       syncui:
         port: 8384
