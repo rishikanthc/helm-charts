@@ -23,6 +23,15 @@ controllers:
             nvidia.com/gpu: 1
         command:
           - "nvidia-smi"
+        probes:
+          readiness:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - "your readiness check command here"
+            # initialDelaySeconds: 10
+            # periodSeconds: 5
 service:
   main:
     ports:
