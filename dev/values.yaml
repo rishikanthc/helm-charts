@@ -25,17 +25,10 @@ service:
         port: 8080
   ssh:
     type: ClusterIP
+    controller: main
     ports:
       ssh:
         port: 22
-
-ingress:
-  main:
-    enabled: true
-    controller: main
-  ssh:
-    enabled: true
-    controller: main
 
 persistence:
   cookiejar:
