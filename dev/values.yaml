@@ -27,7 +27,7 @@ controllers:
           - "while true; do sleep 30; done;"
         probes:
           readiness:
-            custom: true
+            custom: false
             exec:
               command:
                 - nvidia-smi
