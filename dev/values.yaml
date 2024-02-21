@@ -68,6 +68,14 @@ service:
       http:
         enabled: true
         port: 9000
+  ssh:
+    enabled: true
+    controller: main
+    ports:
+      ssh:
+        enabled: true
+        port: 22
+        targetPort: 22
 
 persistence:
   cookiejar:
