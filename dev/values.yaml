@@ -68,15 +68,6 @@ service:
       http:
         enabled: true
         port: 9000
-  ssh:
-    enabled: true
-    controller: main
-    type: LoadBalancer
-    ports:
-      ssh:
-        enabled: true
-        port: 22
-        targetPort: 22
 
 persistence:
   cookiejar:
