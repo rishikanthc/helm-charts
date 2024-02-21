@@ -1,17 +1,17 @@
 controllers:
   main:
     containers:
-      main:
-        image:
-          repository: syncthing/syncthing
-          tag: 1.27.3
-        resources:
-          requests:
-            cpu: 15m
-            memory: 64M
-          limits:
-            cpu: 100m
-            memory: 128M
+      # main:
+      #   image:
+      #     repository: syncthing/syncthing
+      #     tag: 1.27.3
+      #   resources:
+      #     requests:
+      #       cpu: 15m
+      #       memory: 64M
+      #     limits:
+      #       cpu: 100m
+      #       memory: 128M
       cuda:
         image:
           repository: ghcr.io/rishikanthc/cuda-ssh
@@ -31,37 +31,37 @@ controllers:
               command:
                 - nvidia-smi
 service:
-  main:
-    ports:
-      http:
-        port: 8384
-  listen:
-    enabled: true
-    type: LoadBalancer
-    controller: main
-    ports:
-      discovery:
-        enabled: true
-        port: 21027
-        protocol: UDP
-      listen:
-        enabled: true
-        port: 22000
-        protocol: TCP
-      listen-udp:
-        enabled: true
-        port: 22000
-        protocol: UDP
+  # main:
+  #   ports:
+  #     http:
+  #       port: 8384
+  # listen:
+  #   enabled: true
+  #   type: LoadBalancer
+  #   controller: main
+  #   ports:
+  #     discovery:
+  #       enabled: true
+  #       port: 21027
+  #       protocol: UDP
+  #     listen:
+  #       enabled: true
+  #       port: 22000
+  #       protocol: TCP
+  #     listen-udp:
+  #       enabled: true
+  #       port: 22000
+  #       protocol: UDP
   cuda:
     enabled: true
-    controller: cuda
+    controller: main
     ports:
       plots:
         enabled: true
         port: 9000
       ssh:
         enabled: true
-        port: 43
+        port: 22
         targetPort: 22
 
 persistence:
