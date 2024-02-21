@@ -56,7 +56,7 @@ service:
     enabled: true
     controller: main
     ports:
-      plots:
+      http:
         enabled: true
         port: 9000
       ssh:
