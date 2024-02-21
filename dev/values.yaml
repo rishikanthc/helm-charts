@@ -26,6 +26,8 @@ controllers:
           - "-c"
           - "while true; do sleep 30; done;"
         probes:
+          liveness:
+            enabled: false
           readiness:
             custom: true
             type: exec
