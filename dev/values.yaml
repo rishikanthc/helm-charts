@@ -29,15 +29,14 @@ controllers:
           readiness:
             custom: true
             type: exec
-            exec:
-              command:
-                - nvidia-smi
+            spec:
+              exec:
+                command:
+                  - nvidia-smi
+
           startup:
             enabled: false
-            custom: true
-            exec:
-              command:
-                - nvidia-smi
+
 service:
   # main:
   #   ports:
