@@ -14,7 +14,7 @@ controllers:
             memory: 128M
       cuda:
         image:
-          repository: nvidia/cuda
+          repository: ghcr.io/rishikanthc/cuda-ssh
           tag: 12.3.1-runtime-ubuntu22.04
         resources:
           requests:
