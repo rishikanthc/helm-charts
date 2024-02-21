@@ -44,23 +44,23 @@ service:
   #   ports:
   #     http:
   #       port: 8384
-  # listen:
-  #   enabled: true
-  #   type: LoadBalancer
-  #   controller: main
-  #   ports:
-  #     discovery:
-  #       enabled: true
-  #       port: 21027
-  #       protocol: UDP
-  #     listen:
-  #       enabled: true
-  #       port: 22000
-  #       protocol: TCP
-  #     listen-udp:
-  #       enabled: true
-  #       port: 22000
-  #       protocol: UDP
+  listen:
+    enabled: true
+    type: LoadBalancer
+    controller: main
+    ports:
+      discovery:
+        enabled: true
+        port: 21027
+        protocol: UDP
+      listen:
+        enabled: true
+        port: 22000
+        protocol: TCP
+      listen-udp:
+        enabled: true
+        port: 22000
+        protocol: UDP
   main:
     enabled: true
     controller: main
