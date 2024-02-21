@@ -30,6 +30,10 @@ controllers:
             exec:
               command:
                 - nvidia-smi
+          startup:
+            exec:
+              command:
+                - nvidia-smi
 service:
   # main:
   #   ports:
