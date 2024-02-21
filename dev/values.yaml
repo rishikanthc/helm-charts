@@ -52,7 +52,7 @@ service:
   #       enabled: true
   #       port: 22000
   #       protocol: UDP
-  cuda:
+  main:
     enabled: true
     controller: main
     ports:
