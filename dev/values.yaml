@@ -15,7 +15,7 @@ controllers:
       main:
         image:
           repository: ghcr.io/rishikanthc/cuda-ssh
-          tag: 12.3.1-runtime-ubuntu22.04
+          tag: v0.0.1
         resources:
           requests:
             nvidia.com/gpu: 1
