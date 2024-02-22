@@ -1,18 +1,18 @@
 controllers:
   main:
     containers:
-      # main:
-      #   image:
-      #     repository: syncthing/syncthing
-      #     tag: 1.27.3
-      #   resources:
-      #     requests:
-      #       cpu: 15m
-      #       memory: 64M
-      #     limits:
-      #       cpu: 100m
-      #       memory: 128M
       main:
+        image:
+          repository: syncthing/syncthing
+          tag: 1.27.3
+        resources:
+          requests:
+            cpu: 15m
+            memory: 64M
+          limits:
+            cpu: 100m
+            memory: 128M
+      cuda:
         image:
           repository: ghcr.io/rishikanthc/cuda-ssh
           tag: v0.0.2
@@ -40,10 +40,10 @@ controllers:
             enabled: false
 
 service:
-  # main:
-  #   ports:
-  #     http:
-  #       port: 8384
+  main:
+    ports:
+      http:
+        port: 8384
   listen:
     enabled: true
     type: LoadBalancer
@@ -61,24 +61,16 @@ service:
         enabled: true
         port: 22000
         protocol: UDP
-  main:
+  cuda:
     enabled: true
     controller: main
     ports:
       http:
         enabled: true
         port: 9000
-      sync:
-        enabled: true
-        port: 8384
-  ssh:
-    enabled: true
-    controller: main
-    ports:
       ssh:
         enabled: true
         port: 22
-        targetPort: 22
 
 persistence:
   cookiejar:
