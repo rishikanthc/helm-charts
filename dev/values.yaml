@@ -48,6 +48,8 @@ service:
     enabled: true
     type: LoadBalancer
     controller: main
+    externalTrafficPolicy: Local
+    ipFamilyPolicy: PreferDualStack
     ports:
       discovery:
         enabled: true
