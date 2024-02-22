@@ -84,3 +84,12 @@ persistence:
     hostPath: /home/rishi/cookiejar
     accessMode: ReadWriteMany
     retain: true
+  syncthing:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: longhorn
+    advancedMounts:
+      main:
+        syncthing:
+          - path: /var/syncthing
