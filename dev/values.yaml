@@ -22,9 +22,11 @@ controllers:
           limits:
             nvidia.com/gpu: 1
         command:
-          - "/bin/bash"
-          - "-c"
-          - "while true; do sleep 30; done;"
+          - "/usr/sbin/sshd"
+          - "-D"
+          # - "/bin/bash"
+          # - "-c"
+          # - "while true; do sleep 30; done;"
         probes:
           liveness:
             enabled: false
