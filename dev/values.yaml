@@ -63,6 +63,9 @@ service:
         enabled: true
         port: 22000
         protocol: UDP
+      ssh:
+        enabled: true
+        port: 22
   cuda:
     enabled: true
     controller: main
@@ -70,9 +73,6 @@ service:
       http:
         enabled: true
         port: 9000
-      ssh:
-        enabled: true
-        port: 22
 
 persistence:
   cookiejar:
