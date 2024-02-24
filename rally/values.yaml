@@ -26,34 +26,34 @@ controllers:
           SECRET_PASSWORD:
             valueFrom:
               secretKeyRef:
-                name: rally_secret
+                name: rally-secret
                 key: passwd
           DATABASE_URL:
             valueFrom:
               secretKeyRef:
-                name: rally_secretdb
+                name: rally-secretdb
                 key: db_url
           SUPPORT_EMAIL:
             valueFrom:
               secretKeyRef:
-                name: rally_secret
+                name: rally-secret
                 key: support_email
           SMTP_HOST:
             valueFrom:
               secretKeyRef:
-                name: rally_secret
+                name: rally-secret
                 key: smtp_host
           SMTP_PORT: 587
           SMTP_SECURE: false
           SMTP_USER:
             valueFrom:
               secretKeyRef:
-                name: rally_secret
+                name: rally-secret
                 key: smtp_user
           SMTP_PWD:
             valueFrom:
               secretKeyRef:
-                name: rally_secret
+                name: rally-secret
                 key: smtp_pass
 
 service:
