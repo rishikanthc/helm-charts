@@ -14,7 +14,7 @@ controllers:
           POSTGRES_PASSWORD:
             valueFrom:
               secretKeyRef:
-                name: rally
+                name: rally-secret
                 key: db_passwd
       main:
         dependsOn: rallydb
