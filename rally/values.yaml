@@ -16,6 +16,17 @@ controllers:
               secretKeyRef:
                 name: rally-secret
                 key: db_passwd
+
+        probes:
+          readiness:
+            custom: true
+            type: exec
+            spec:
+              exec:
+                command:
+                  - pg_isready
+                  - "-U"
+                  - postgres
       main:
         dependsOn: rallydb
         image:
