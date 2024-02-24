@@ -63,6 +63,7 @@ service:
       http:
         port: 3000
   db:
+    enabled: true
     type: ClusterIP
     controller: main
     ports:
