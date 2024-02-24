@@ -1,0 +1,82 @@
+controllers:
+  main:
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    containers:
+      rallydb:
+        image:
+          repository: postgres
+          tag: 14.2
+
+        env:
+          POSTGRES_DB: db
+          POSTGRES_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: rally
+                key: db_passwd
+      main:
+        dependsOn: rallydb
+        image:
+          repository: lukevella/rallly
+          tag: 3.6.1
+
+        env:
+          SECRET_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: rally
+                key: passwd
+          DATABASE_URL:
+            valueFrom:
+              secretKeyRef:
+                name: rallydb
+                key: db_url
+          SUPPORT_EMAIL:
+            valueFrom:
+              secretKeyRef:
+                name: rally
+                key: support_email
+          SMTP_HOST:
+            valueFrom:
+              secretKeyRef:
+                name: rally
+                key: smtp_host
+          SMTP_PORT: 587
+          SMTP_SECURE: false
+          SMTP_USER:
+            valueFrom:
+              secretKeyRef:
+                name: rally
+                key: smtp_user
+          SMTP_PWD:
+            valueFrom:
+              secretKeyRef:
+                name: rally
+                key: smtp_pass
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 3000
+  db:
+    type: ClusterIP
+    controller: main
+    ports:
+      db:
+        enabled: true
+        port: 5432
+
+persistence:
+  dbdata:
+    storageClass: longhorn
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    retain: false
+    advancedMounts:
+      main:
+        rallydb:
+          - path: /var/lib/postgresql/data
