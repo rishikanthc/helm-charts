@@ -31,7 +31,7 @@ controllers:
           DATABASE_URL:
             valueFrom:
               secretKeyRef:
-                name: rally-secretdb
+                name: rally-secret
                 key: db_url
           SUPPORT_EMAIL:
             valueFrom:
