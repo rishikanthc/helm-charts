@@ -8,6 +8,7 @@ controllers:
         image:
           repository: actualbudget/actual-server
           tag: latest
+          pullPolicy: Always
 
 service:
   main:
