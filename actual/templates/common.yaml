@@ -1,0 +1,15 @@
+---
+{{- include "bjw-s.common.loader.init" . }}
+
+{{- define "actual.hardcodedValues" -}}
+
+  {{- if not .Values.global.nameOverride }}
+  global:
+    nameOverride: "{{ .Release.Name }}"
+  {{- end }}
+
+{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "actual.hardcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.generate" . }}

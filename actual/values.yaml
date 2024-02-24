@@ -1,0 +1,25 @@
+controllers:
+  main:
+    annotations:
+      reloader.staketer.com/auto: "true"
+
+    containers:
+      main:
+        image:
+          repository: actualbudget/actual-server
+          tag: latest
+
+service:
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 5006
+
+persistence:
+  data:
+    enabled: true
+    storageClass: "longhorn"
+    accessMode: "ReadWriteOnce"
+    size: "1Gi"
+    retain: false
