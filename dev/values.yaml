@@ -12,9 +12,9 @@ controllers:
           limits:
             cpu: 100m
             memory: 128M
-        securityContext:
-          runAsUser: 0
-          runAsGroup: 0
+        # securityContext:
+        #   runAsUser: 0
+        #   runAsGroup: 0
 
       cuda:
         image:
