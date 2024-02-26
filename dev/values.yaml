@@ -87,17 +87,17 @@ persistence:
     type: hostPath
     hostPath: /home/rishi/cookiejar
     accessMode: ReadWriteMany
-    retain: true
+    retain: false
     advancedMounts:
       main:
         cookiejar:
           - path: /cookiejar
-  syncthing:
-    enabled: true
-    accessMode: ReadWriteOnce
-    size: 1Gi
-    storageClass: longhorn
-    advancedMounts:
-      main:
-        syncthing:
-          - path: /var/syncthing
+  # syncthing:
+  #   enabled: true
+  #   accessMode: ReadWriteOnce
+  #   size: 1Gi
+  #   storageClass: longhorn
+  #   advancedMounts:
+  #     main:
+  #       syncthing:
+  #         - path: /var/syncthing
