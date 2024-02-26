@@ -25,6 +25,9 @@ controllers:
             nvidia.com/gpu: 1
           limits:
             nvidia.com/gpu: 1
+        securityContext:
+          runAsUser: 0
+          runAsGroup: 0
         command:
           - "/usr/sbin/sshd"
           - "-D"
