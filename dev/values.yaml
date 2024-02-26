@@ -88,6 +88,10 @@ persistence:
     hostPath: /home/rishi/cookiejar
     accessMode: ReadWriteMany
     retain: true
+    advancedMounts:
+      main:
+        cookiejar:
+          - path: /cookiejar
   syncthing:
     enabled: true
     accessMode: ReadWriteOnce
