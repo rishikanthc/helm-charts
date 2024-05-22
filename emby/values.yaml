@@ -12,8 +12,8 @@ controllers:
           pullPolicy: Always
 
         securityContext:
-          runAsUser: 0
-          runAsGroup: 0
+          runAsUser: 501
+          runAsGroup: 1000
           # privileged: true
 
 service:
