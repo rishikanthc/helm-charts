@@ -12,7 +12,7 @@ controllers:
           pullPolicy: Always
 
         securityContext:
-          runAsUser: 501
+          runAsUser: 0
           runAsGroup: 1000
           # privileged: true
 
