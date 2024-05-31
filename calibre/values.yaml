@@ -9,6 +9,19 @@ controllers:
         image:
           repository: linuxserver/calibre-web
           tag: 0.6.21
+    initContainers:
+      init-calibre: # This is a unique identifier for the init container
+        name: initcalibre
+        image:
+          repository: busybox
+          tag: latest
+        command:
+          - "sh"
+          - "-c"
+          - "chown -R 1000:1000 /config && chmod -R 700 /config"
+        volumeMounts:
+          - name: config
+            mountPath: /config
 
 service:
   main:
