@@ -10,7 +10,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/kareadita/kavita
           # -- image tag
-          tag: 0.7.9
+          tag: latest
           # -- image pull policy
           pullPolicy: Always
 
