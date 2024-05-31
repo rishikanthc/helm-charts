@@ -18,7 +18,7 @@ controllers:
         command:
           - "sh"
           - "-c"
-          - "chown -R 1000:1000 /config && chmod -R 755 /config"
+          - "curl -O /config/metadata.db https://github.com/janeczku/calibre-web/raw/master/library/metadata.db chown -R 1000:1000 /config && chmod -R 755 /config"
         volumeMounts:
           - name: config
             mountPath: /config
