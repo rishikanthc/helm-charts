@@ -2,12 +2,10 @@ apiVersion: v2
 name: audiobookshelf
 description: A Helm chart for audiobookshelf
 
-
 type: application
 version: 0.1.0
 
-
-appVersion: "2.4.4"
+appVersion: "2.10.1"
 
 dependencies:
   - name: common

@@ -10,10 +10,7 @@ controllers:
           # -- image repository
           repository: ghcr.io/advplyr/audiobookshelf
           # -- image tag
-          tag: 2.4.4
-          # -- image pull policy
-          pullPolicy: Always
-
+          tag: 2.10.1
 service:
   main:
     enabled: true
@@ -52,7 +49,9 @@ persistence:
   #   enabled: true
   #   mountPath: /podcasts
   #   accessMode: ReadWriteOnce
-  # metadata:
-  #   enabled: true
-  #   mountPath: /metadata
-  #   accessMode: ReadWriteOnce
+  metadata:
+    enabled: true
+    mountPath: /metadata
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    storageClass: longhorn
