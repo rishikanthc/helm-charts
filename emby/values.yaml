@@ -13,7 +13,7 @@ controllers:
 
         securityContext:
           runAsUser: 0
-          runAsGroup: 1000
+          runAsGroup: 0
           # privileged: true
 
 service:
