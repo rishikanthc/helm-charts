@@ -7,7 +7,7 @@ controllers:
       main:
         image:
           repository: actualbudget/actual-server
-          tag: latest
+          tag: 24.10.1
           pullPolicy: Always
 
 service:
