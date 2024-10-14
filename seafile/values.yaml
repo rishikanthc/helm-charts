@@ -19,7 +19,7 @@ controllers:
           DB_ROOT_PASSWD:
             valueFrom:
               secretKeyRef:
-                name: seafile-db-auth
+                name: seafile-db-secret
                 key: mariadb-root-password
           TIME_ZONE: "America/Los_Angeles"
           SEAFILE_SERVER_LETSENCRYPT: "false"
