@@ -67,7 +67,7 @@ mariadb:
   fullnameOverride: seafile-db
 
   auth:
-    existingSecret: seafile-db-auth
+    existingSecret: seafile-db-secret
 
   primary:
     resources:
