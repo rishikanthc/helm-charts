@@ -15,7 +15,7 @@ controllers:
         dependsOn: gluetun
         image:
           repository: ghcr.io/rishikanthc/qbittorrent-vue
-          tag: q4.6.2-v2.4.0
+          tag: latest
 
         securityContext:
           runAsUser: 501
@@ -28,7 +28,7 @@ controllers:
 
         env:
           VPN_TYPE: wireguard
-          VPN_INTERFACE: wg0
+          VPN_INTERFACE: wg1
 
         securityContext:
           runAsUser: 0
