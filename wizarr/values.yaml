@@ -46,9 +46,12 @@ persistence:
   config:
     enabled: true
     type: persistentVolumeClaim
-    path: /data/database
+    mountPath: /data/database
     accessMode: ReadWriteOnce
     size: 1Gi
     retain: true
+    globalMounts:
+      - path: /data/database
+        readOnly: false
 
 
