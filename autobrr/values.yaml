@@ -26,8 +26,8 @@ service:
         enabled: true
         primary: true
         protocol: TCP
-        port: 1000
-        targetPort: 1000
+        port: 7474
+        targetPort: 7474
 
 ingress:
   main:
@@ -40,7 +40,7 @@ ingress:
             pathType: Prefix
             service:
               identifier: main
-              port: 1000
+              port: 7474
     tls:
       - secretName: autobrr-tls
 
