@@ -26,6 +26,9 @@ controllers:
           repository: qmcgaw/gluetun
           tag: v3.40
 
+        commands:
+          - "update -enduser -providers airvpn"
+
         env:
           VPN_TYPE: wireguard
           VPN_INTERFACE: wg1
