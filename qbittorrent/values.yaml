@@ -29,6 +29,7 @@ controllers:
         env:
           VPN_TYPE: wireguard
           VPN_INTERFACE: wg1
+          UPDATER_PERIOD: 1h
 
         securityContext:
           runAsUser: 0
