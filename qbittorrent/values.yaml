@@ -24,7 +24,7 @@ controllers:
       gluetun:
         image:
           repository: qmcgaw/gluetun
-          tag: v3.39
+          tag: v3.40
 
         env:
           VPN_TYPE: wireguard
