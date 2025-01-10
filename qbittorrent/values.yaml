@@ -33,6 +33,7 @@ controllers:
           VPN_TYPE: wireguard
           VPN_INTERFACE: wg1
           UPDATER_PERIOD: 1h
+          DOT: off
 
         securityContext:
           runAsUser: 0
