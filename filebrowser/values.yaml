@@ -15,10 +15,8 @@ controllers:
           pullPolicy: Always
         env:
           FB_DATABASE: /config/filebrowser.db
-          FB_BASEURL: ls.rkth.io
           FB_LOG: stdout
           FB_NOAUTH: true
-          FB_ROOT: /data
 
 service:
   main:
@@ -55,7 +53,7 @@ persistence:
     accessMode: ReadWriteOnce
     size: 8Gi
     retain: true
-  data:
+  srv:
     enabled: true
     type: nfs
     server: 10.0.0.243
