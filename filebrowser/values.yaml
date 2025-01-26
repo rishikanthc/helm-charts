@@ -15,6 +15,7 @@ controllers:
           pullPolicy: Always
         env:
           FB_DATABASE: /config/filebrowser.db
+          FB_BASEURL: ls.rkth.io
           FB_LOG: stdout
           FB_NOAUTH: true
           FB_ROOT: /data
