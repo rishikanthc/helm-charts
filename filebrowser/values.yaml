@@ -1,7 +1,3 @@
-global:
-  nameOverride: filebrowser
-  fullnameOverride: filebrowser
-
 controllers:
   main:
     enabled: true
@@ -26,9 +22,7 @@ service:
       http:
         enabled: true
         primary: true
-        protocol: TCP
         port: 80
-        targetPort: 80
 
 ingress:
   main:
