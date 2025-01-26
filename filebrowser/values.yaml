@@ -13,9 +13,6 @@ controllers:
           repository: filebrowser/filebrowser
           tag: v2
           pullPolicy: Always
-        args:
-          - "--database=/db/database.db"
-          - "--root=/srv"
 
 service:
   main:
@@ -50,8 +47,10 @@ persistence:
     storageClass: longhorn
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
-    size: 1Gi
+    size: 8Gi
     retain: true
+    globalMounts:
+      - path: /
   srv:
     enabled: true
     type: nfs
