@@ -13,6 +13,11 @@ controllers:
           repository: filebrowser/filebrowser
           tag: v2
           pullPolicy: Always
+        env:
+          FB_DATABASE: /config/filebrowser.db
+          FB_LOG: stdout
+          FB_NOAUTH: true
+          FB_ROOT: /data
 
 service:
   main:
@@ -42,15 +47,13 @@ ingress:
       - secretName: filebrowser-tls
 
 persistence:
-  db:
+  config:
     enabled: true
     storageClass: longhorn
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     size: 8Gi
     retain: true
-    globalMounts:
-      - path: /
   srv:
     enabled: true
     type: nfs
