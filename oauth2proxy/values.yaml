@@ -29,34 +29,34 @@ controllers:
           OAUTH2_PROXY_CLIENT_SECRET: "WVrTP3jE8TQPRAaXXAOVFq77OMBNxNrT"
           OAUTH2_PROXY_COOKIE_SECRET: "cXB2a1hWbWI1TDBmdVplSm9iOE4vSkV2R0tkbnprZUg="
 
-        probes:
-          liveness:
-            enabled: true
-            custom: true
-            spec:
-              httpGet:
-                path: /ping
-                port: 4180
-              initialDelaySeconds: 10
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-          readiness:
-            enabled: true
-            custom: true
-            spec:
-              httpGet:
-                path: /ready
-                port: 4180
-              initialDelaySeconds: 10
-              periodSeconds: 10
-              timeoutSeconds: 1
-              failureThreshold: 3
-          startup:
-            enabled: true
-            spec:
-              failureThreshold: 30
-              periodSeconds: 10
+        # probes:
+        #   liveness:
+        #     enabled: true
+        #     custom: true
+        #     spec:
+        #       httpGet:
+        #         path: /ping
+        #         port: 4180
+        #       initialDelaySeconds: 10
+        #       periodSeconds: 10
+        #       timeoutSeconds: 1
+        #       failureThreshold: 3
+        #   readiness:
+        #     enabled: true
+        #     custom: true
+        #     spec:
+        #       httpGet:
+        #         path: /ready
+        #         port: 4180
+        #       initialDelaySeconds: 10
+        #       periodSeconds: 10
+        #       timeoutSeconds: 1
+        #       failureThreshold: 3
+        #   startup:
+        #     enabled: true
+        #     spec:
+        #       failureThreshold: 30
+        #       periodSeconds: 10
 
 service:
   main:
