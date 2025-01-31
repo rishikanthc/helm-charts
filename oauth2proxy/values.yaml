@@ -1,0 +1,84 @@
+controllers:
+  main:
+    enabled: true
+    type: deployment
+
+    containers:
+      main:
+        image:
+          repository: quay.io/oauth2-proxy/oauth2-proxy
+          tag: v7.8.1
+          pullPolicy: Always
+        env:
+          OAUTH2_PROXY_PROVIDER: oidc
+          OAUTH2_PROXY_COOKIE_DOMAINS: rkth.io
+          OAUTH2_PROXY_COOKIE_SECURE: "true"
+          OAUTH2_PROXY_EMAIL_DOMAINS: "*"
+          OAUTH2_PROXY_SCOPE: openid profile email
+          OAUTH2_PROXY_PASS_AUTHORIZATION_HEADER: "true"
+          OAUTH2_PROXY_PASS_HOST_HEADER: "true"
+          OAUTH2_PROXY_PASS_ACCESS_TOKEN: "true"
+          OAUTH2_PROXY_PASS_USER_HEADERS: "true"
+          OAUTH2_PROXY_PREFER_EMAIL_TO_USER: "true"
+          OAUTH2_PROXY_SET_AUTHORIZATION-HEADER: "true"
+          OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+          OAUTH2_PROXY_REVERSE_PROXY: "true"
+          OAUTH2_PROXY_SILENCE_PING_LOGGING: "true"
+          OAUTH2_PROXY_OIDC_ISSUER_URL: https://pid.rkth.io
+          OAUTH2_PROXY_CLIENT_ID: "881538c4-fd48-4a85-9ae8-775051711638"
+          OAUTH2_PROXY_CLIENT_SECRET: "WVrTP3jE8TQPRAaXXAOVFq77OMBNxNrT"
+          OAUTH2_PROXY_COOKIE_SECRET: "cXB2a1hWbWI1TDBmdVplSm9iOE4vSkV2R0tkbnprZUg="
+
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /ping
+                port: 4180
+              initialDelaySeconds: 10
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /ready
+                port: 4180
+              initialDelaySeconds: 10
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 10
+
+service:
+  main:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 4180
+
+ingress:
+  main:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 4180
+    tls:
+      - secretName: oauth-tls
