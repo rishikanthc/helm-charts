@@ -12,6 +12,7 @@ controllers:
         env:
           PUBLIC_APP_URL: https://pid.rkth.io
           TRUST_PROXY: true
+          SQLITE_DB_PATH: /data/pocket-id.db
 
 service:
   main:
@@ -46,4 +47,3 @@ persistence:
     accessMode: ReadWriteOnce
     size: 1Gi
     retain: true
-    path: /app/backend/data
