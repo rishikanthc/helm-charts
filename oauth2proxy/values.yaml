@@ -26,6 +26,7 @@ controllers:
           OAUTH2_PROXY_REVERSE_PROXY: "true"
           OAUTH2_PROXY_SILENCE_PING_LOGGING: "true"
           OAUTH2_PROXY_OIDC_ISSUER_URL: https://pid.rkth.io
+          OAUTH2_PROXY_REDIRECT_URL: https://o2.rkth.io/oauth2/callback
           OAUTH2_PROXY_CLIENT_ID: "881538c4-fd48-4a85-9ae8-775051711638"
           OAUTH2_PROXY_CLIENT_SECRET: "WVrTP3jE8TQPRAaXXAOVFq77OMBNxNrT"
           OAUTH2_PROXY_COOKIE_SECRET: "cXB2a1hWbWI1TDBmdVplSm9iOE4vSkV2R0tkbnprZUg="
