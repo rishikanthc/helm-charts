@@ -29,7 +29,7 @@ controllers:
           OAUTH2_PROXY_REDIRECT_URL: https://o2.rkth.io/oauth2/callback
           OAUTH2_PROXY_CLIENT_ID: "881538c4-fd48-4a85-9ae8-775051711638"
           OAUTH2_PROXY_CLIENT_SECRET: "WVrTP3jE8TQPRAaXXAOVFq77OMBNxNrT"
-          OAUTH2_PROXY_COOKIE_SECRET: "sYgDGHu3beM8h4PQmMJwrt7AhrwFMADtzgN7v2hRRcM4evmyG6rTZ7b2tgCmvhph"
+          OAUTH2_PROXY_COOKIE_SECRET: "kB6wCUc2jh4ZuokWGjs9yovXjGoPoNZb"
 
         # probes:
         #   liveness:
