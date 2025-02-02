@@ -1,0 +1,77 @@
+controllers:
+  main:
+    enabled: true
+    type: deployment
+
+    containers:
+      main:
+        image:
+          repository: youegraillot/lidarr-on-steroids
+          tag: latest
+          pullPolicy: Always
+
+service:
+  main:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 8686
+  deemix:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 6595
+
+ingress:
+  main:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 8686
+    tls:
+      - secretName: lidarr-tls
+  deemix:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: deemix
+              port: 6595
+    tls:
+      - secretName: lidarr-deemix-tls
+
+persistence:
+  config:
+    enabled: true
+    storageClass: longhorn
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    retain: true
+  configd:
+    enabled: true
+    storageClass: longhorn
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    retain: true
+    globalMounts:
+      - path: /config_deemix
+        readOnly: false
+      
