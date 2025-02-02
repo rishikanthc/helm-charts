@@ -28,10 +28,10 @@ dependencies:
     repository: https://bjw-s.github.io/helm-charts
     version: 1.5.1
   - name: postgresql
-    repository: https://charts.bitnami.com/bitnami
+    repository: oci://registry-1.docker.io/bitnamicharts
     version: 12.10.0
     condition: postgresql.enabled
   - name: postgresql-ha
-    repository: https://charts.bitnami.com/bitnami
+    repository: oci://registry-1.docker.io/bitnamicharts
     version: 11.9.2
     condition: postgresql-ha.enabled

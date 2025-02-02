@@ -3,10 +3,10 @@ dependencies:
   repository: https://bjw-s.github.io/helm-charts
   version: 1.5.1
 - name: postgresql
-  repository: https://charts.bitnami.com/bitnami
+  repository: oci://registry-1.docker.io/bitnamicharts
   version: 12.10.0
 - name: postgresql-ha
-  repository: https://charts.bitnami.com/bitnami
+  repository: oci://registry-1.docker.io/bitnamicharts
   version: 11.9.2
-digest: sha256:c789b8d9134c3759f669286f96c6fa823acb6122bcc8caae7251586624ee4fde
-generated: "2023-09-13T20:03:48.581095-04:00"
+digest: sha256:f4b835b0c5a0d40dabcdd5dc51216fae0936eabdb25f2cb13b8574219d986e98
+generated: "2025-02-02T11:21:23.021589-08:00"
