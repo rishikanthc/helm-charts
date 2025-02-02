@@ -12,6 +12,7 @@ controllers:
         env:
           OAUTH_WELLKNOWN_URL: https://pid.rkth.io/.well-known/openid-configuration
           OAUTH_CLIENT_SECRET: "kONoNDJHaqmLeu1ZgX0YgbbdMx3aoCg2"
+          DISABLE_PASSWORD_AUTH: "true"
           OAUTH_CLIENT_ID: "8af90ea3-4b6f-457f-a520-fd5e423dbf37"
           OAUTH_PROVIDER_NAME: "Pocket-Id"
           MEILI_ADDR: http://localhost:7700
