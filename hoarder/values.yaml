@@ -10,6 +10,7 @@ controllers:
           tag: 0.21.0
           pullPolicy: Always
         env:
+          NEXTAUTH_URL: https://il.rkth.io
           MEILI_ADDR: http://localhost:7700
           BROWSER_WEB_URL: http://localhost:9222
           # OPENAI_API_KEY: ...
