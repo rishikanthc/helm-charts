@@ -12,6 +12,11 @@ controllers:
         env:
           PUBLIC_APP_URL: https://pid.rkth.io
           TRUST_PROXY: true
+          MAXMIND_LICENSE_KEY:
+            valueFrom:
+              secretKeyRef:
+                name: pocketid-secret
+                key: license
 
 service:
   main:
