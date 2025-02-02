@@ -51,4 +51,6 @@ persistence:
     accessMode: ReadWriteOnce
     size: 1Gi
     retain: true
-    path: /app/backend/data
+    globalMounts:
+      - path: /app/backend/data
+        readOnly: false
