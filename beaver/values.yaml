@@ -10,7 +10,7 @@ controllers:
           tag: 0.4.4
           pullPolicy: Always
         env:
-          HABITS_STORAGE: USER_DISK
+          HABITS_STORAGE: DATABASE
           MAX_USER_COUNT: 1
           ENABLE_IOS_STANDALONE: true
           TRUSTED_LOCAL_EMAIL: dray@tuta.com
