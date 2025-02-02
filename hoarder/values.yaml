@@ -11,8 +11,8 @@ controllers:
           pullPolicy: Always
         env:
           OAUTH_WELLKNOWN_URL: https://pid.rkth.io/.well-known/openid-configuration
-          OAUTH_CLIENT_SECRET: "MGk64NANIJQGdXwsfIcEYnF9uUh6uzb0"
-          OAUTH_CLIENT_ID: "637c6c62-da7e-4f15-a63c-f191b95e2715"
+          OAUTH_CLIENT_SECRET: "kONoNDJHaqmLeu1ZgX0YgbbdMx3aoCg2"
+          OAUTH_CLIENT_ID: "8af90ea3-4b6f-457f-a520-fd5e423dbf37"
           OAUTH_PROVIDER_NAME: "Pocket-Id"
           MEILI_ADDR: http://localhost:7700
           NEXTAUTH_URL: https://il.rkth.io
