@@ -10,14 +10,44 @@ controllers:
           tag: 0.21.0
           pullPolicy: Always
         env:
-          OAUTH_WELLKNOWN_URL: https://pid.rkth.io/.well-known/openid-configuration
-          OAUTH_CLIENT_SECRET: "kONoNDJHaqmLeu1ZgX0YgbbdMx3aoCg2"
-          DISABLE_PASSWORD_AUTH: "true"
-          OAUTH_CLIENT_ID: "8af90ea3-4b6f-457f-a520-fd5e423dbf37"
-          OAUTH_PROVIDER_NAME: "Pocket-Id"
-          MEILI_ADDR: http://localhost:7700
-          NEXTAUTH_URL: https://il.rkth.io
-          NEXTAUTH_SECRET: "KCLjLjVEb3Vf0GGn3LxcB4RpvIGoVTG2R6JuoJ86VhHnBLUp"
+          OPENAI_API_KEY:
+            valuesFrom:
+              secretKeyRef:
+                name: hoarder-secret
+                key: openai_api
+          OAUTH_WELLKNOWN_URL:
+            valuesFrom:
+              secretKeyRef:
+                name: hoarder-secret
+                key: oauth_wellknown
+          OAUTH_CLIENT_SECRET:
+            valuesFrom:
+              secretKeyRef:
+                name: hoarder-secret
+                key: oauth_secret
+          OAUTH_CLIENT_ID:
+            valuesFrom:
+              secretKeyRef:
+                name: hoarder-secret
+                key: oauth_id
+          NEXTAUTH_URL:
+            valuesFrom:
+              secretKeyRef:
+                name: hoarder-secret
+                key: nextauth_url
+          NEXTAUTH_SECRET:
+            valuesFrom:
+              secretKeyRef:
+                name: hoarder-secret
+                key: nextauth_secret
+          # OAUTH_WELLKNOWN_URL: https://pid.rkth.io/.well-known/openid-configuration
+          # OAUTH_CLIENT_SECRET: "kONoNDJHaqmLeu1ZgX0YgbbdMx3aoCg2"
+          # DISABLE_PASSWORD_AUTH: "true"
+          # OAUTH_CLIENT_ID: "8af90ea3-4b6f-457f-a520-fd5e423dbf37"
+          # OAUTH_PROVIDER_NAME: "Pocket-Id"
+          # MEILI_ADDR: http://localhost:7700
+          # NEXTAUTH_URL: https://il.rkth.io
+          # NEXTAUTH_SECRET: "KCLjLjVEb3Vf0GGn3LxcB4RpvIGoVTG2R6JuoJ86VhHnBLUp"
           BROWSER_WEB_URL: http://localhost:9222
           # OPENAI_API_KEY: ...
           DATA_DIR: /data
