@@ -1,0 +1,76 @@
+controllers:
+  main:
+    enabled: true
+    type: deployment
+
+    containers:
+      main:
+        image:
+          repository: ghcr.io/hoarder-app/hoarder
+          tag: 0.21.0
+          pullPolicy: Always
+        env:
+          MEILI_ADDR: http://localhost:7700
+          BROWSER_WEB_URL: http://localhost:9222
+          # OPENAI_API_KEY: ...
+          DATA_DIR: /data
+      chrome:
+        image:
+          repository: gcr.io/zenika-hub/alpine-chrome
+          tag: 123
+          pullPolicy: Always
+        command:
+          - "--no-sandbox"
+          - "--disable-gpu"
+          - "--disable-dev-shm-usage"
+          - "--remote-debugging-address=0.0.0.0"
+          - "--remote-debugging-port=9222"
+          - "--hide-scrollbars"
+      meilisearch:
+        image:
+          repository: getmeili/meilisearch
+          tag: v1.11.1
+          pullPolicy: Always
+        env:
+          MEILI_NO_ANALYTICS: "true"
+
+service:
+  main:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 3000
+
+ingress:
+  main:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 3000
+    tls:
+      - secretName: hoarder-tls
+
+persistence:
+  data:
+    enabled: true
+    storageClass: longhorn
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    retain: true
+  meili_data:
+    enabled: true
+    storageClass: longhorn
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    retain: true
