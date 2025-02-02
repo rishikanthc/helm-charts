@@ -73,7 +73,7 @@ persistence:
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     size: 8Gi
-    retain: true
+    retain: false
   meilidata:
     enabled: true
     storageClass: longhorn
