@@ -11,32 +11,32 @@ controllers:
           pullPolicy: Always
         env:
           OPENAI_API_KEY:
-            valuesFrom:
+            valueFrom:
               secretKeyRef:
                 name: hoarder-secret
                 key: openai_api
           OAUTH_WELLKNOWN_URL:
-            valuesFrom:
+            valueFrom:
               secretKeyRef:
                 name: hoarder-secret
                 key: oauth_wellknown
           OAUTH_CLIENT_SECRET:
-            valuesFrom:
+            valueFrom:
               secretKeyRef:
                 name: hoarder-secret
                 key: oauth_secret
           OAUTH_CLIENT_ID:
-            valuesFrom:
+            valueFrom:
               secretKeyRef:
                 name: hoarder-secret
                 key: oauth_id
           NEXTAUTH_URL:
-            valuesFrom:
+            valueFrom:
               secretKeyRef:
                 name: hoarder-secret
                 key: nextauth_url
           NEXTAUTH_SECRET:
-            valuesFrom:
+            valueFrom:
               secretKeyRef:
                 name: hoarder-secret
                 key: nextauth_secret
