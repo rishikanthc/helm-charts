@@ -74,4 +74,8 @@ persistence:
     accessMode: ReadWriteOnce
     size: 8Gi
     retain: true
-    path: /meili_data
+    advancdedMounds:
+      main:
+        meilisearch:
+          - path: /meili_data
+            readOnly: false
