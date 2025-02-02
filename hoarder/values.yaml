@@ -67,10 +67,11 @@ persistence:
     accessMode: ReadWriteOnce
     size: 8Gi
     retain: true
-  meili_data:
+  meilidata:
     enabled: true
     storageClass: longhorn
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     size: 8Gi
     retain: true
+    path: /meili_data
