@@ -19,7 +19,7 @@ controllers:
           repository: gcr.io/zenika-hub/alpine-chrome
           tag: 123
           pullPolicy: Always
-        command:
+        args:
           - "--no-sandbox"
           - "--disable-gpu"
           - "--disable-dev-shm-usage"
@@ -74,8 +74,6 @@ persistence:
     accessMode: ReadWriteOnce
     size: 8Gi
     retain: true
-    advancdedMounts:
-      main:
-        meilisearch:
-          - path: /meili_data
-            readOnly: false
+    globalMounts:
+      - path: /meili_data
+        readOnly: false
