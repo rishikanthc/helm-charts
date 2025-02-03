@@ -108,7 +108,7 @@ persistence:
   config:
     enabled: true
     type: configMap
-    identifiers: config
+    identifier: config
     advancedMounts:
       main:
         main:
