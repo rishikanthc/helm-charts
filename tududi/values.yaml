@@ -1,0 +1,64 @@
+controllers:
+  main:
+    enabled: true
+    type: deployment
+
+    containers:
+      main:
+        image:
+          repository: chrisvel/tududi
+          tag: 0.37
+          pullPolicy: Always
+        env:
+          TUDUDI_USER_EMAIL:
+            valueFrom:
+              secretKeyRef:
+                name: tududi-secret
+                key: email
+          TUDUDI_USER_PASSWORD:
+            valueFrom:
+              secretKeyRef:
+                name: tududi-secret
+                key: password
+          TUDUDI_SESSION_SECRET:
+            valueFrom:
+              secretKeyRef:
+                name: tududi-secret
+                key: secret
+
+service:
+  main:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 9292
+
+ingress:
+  main:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 9292
+    tls:
+      - secretName: tududi-tls
+
+persistence:
+  data:
+    enabled: true
+    storageClass: longhorn
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    retain: false
+    globalMounts:
+      - path: /usr/src/app/tududi_db
+        readOnly: false
