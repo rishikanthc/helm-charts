@@ -108,7 +108,7 @@ persistence:
   config:
     enabled: true
     type: configMap
-    name: glance-config
+    identifiers: config
     advancedMounts:
       main:
         main:
