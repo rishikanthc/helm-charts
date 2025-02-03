@@ -110,7 +110,7 @@ persistence:
     type: configMap
     accessMode: ReadWriteOnce
     retain: false
-    name: config
+    name: glance-config
     globalMounts:
       - subPath: glance.yaml
         readOnly: false
