@@ -13,7 +13,7 @@ controllers:
           - --config
           - /config/glance.yaml
         env:
-          TZ: "USA/Los_Angeles"
+          TZ: "America/Los_Angeles"
 
 service:
   main:
@@ -51,6 +51,25 @@ configMaps:
               - size: small
                 widgets:
                   - type: calendar
+                  - type: bookmarks
+                    groups:
+                      - links:
+                          - title: Noetic
+                            url: https://mail.google.com/mail/u/0/
+                          - title: Dray
+                            url: https://app.tuta.com/mail/OHi6UUG-1o-9
+                          - title: Google
+                            url: https://google.com
+                      - work:
+                          - title: Hub
+                            url: https://hub.corp.ebay.com/
+                          - title: Notebooks
+                            url: https://aip.vip.ebay.com/notebook/list
+                      - social:
+                          - title: Whatsapp
+                            url: https://web.whatsapp.com
+                          - title: Reddit
+                            url: https://reddit.com
                   - type: rss
                     limit: 10
                     collapse-after: 3
@@ -63,14 +82,6 @@ configMaps:
                       - url: https://awesomekling.github.io/feed.xml
                       - url: https://ishadeed.com/feed.xml
                         title: Ahmad Shadeed
-                  - type: twitch-channels
-                    channels:
-                      - theprimeagen
-                      - cohhcarnage
-                      - christitustech
-                      - blurbs
-                      - asmongold
-                      - jembawls
               - size: full
                 widgets:
                   - type: hacker-news
@@ -78,31 +89,23 @@ configMaps:
                     channels:
                       - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
                       - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
-                      - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
                   - type: reddit
                     subreddit: selfhosted
               - size: small
                 widgets:
                   - type: weather
-                    location: London, United Kingdom
-                  - type: markets
-                    markets:
-                      - symbol: SPY
-                        name: S&P 500
-                      - symbol: BTC-USD
-                        name: Bitcoin
-                      - symbol: NVDA
-                        name: NVIDIA
-                      - symbol: AAPL
-                        name: Apple
-                      - symbol: MSFT
-                        name: Microsoft
-                      - symbol: GOOGL
-                        name: Google
-                      - symbol: AMD
-                        name: AMD
-                      - symbol: RDDT
-                        name: Reddit
+                    location: USA, Bellevue
+                  - type: clock
+                    hour-format: 24h
+                    timezones:
+                      - timezone: America/Los_Angeles
+                        label: Bellevue
+                      - timezone: Asia/Kolkata
+                        label: India
+                      - timezone: America/Chicago
+                        label: Austin / Chicago
+                      - timezone: America/New_York
+                        label: New York
 
 persistence:
   config:
