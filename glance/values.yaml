@@ -79,7 +79,11 @@ configMaps:
                   - type: repository
                     repository: rishikanthc/Scriberr
                     pull-requests-limit: 3
-                    issues-limit: 5
+                    issues-limit: 3
+                  - type: repository
+                    repository: rishikanthc/markopolis
+                    pull-requests-limit: 3
+                    issues-limit: 3
               - size: full
                 widgets:
                   - type: hacker-news
