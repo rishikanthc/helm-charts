@@ -11,7 +11,7 @@ controllers:
           pullPolicy: Always
         args:
           - --config
-          - /config/glance.yml
+          - /config/glance.yaml
         env:
           TZ: "USA/Los_Angeles"
 
@@ -109,10 +109,11 @@ persistence:
     enabled: true
     type: configMap
     name: glance-config
+    identifier: config
     advancedMounts:
       main:
         main:
-          - path: /config/glance.yml
-            subPath: glance.yml
+          - path: /config/glance.yaml
+            subPath: glance.yaml
             readOnly: false
             
