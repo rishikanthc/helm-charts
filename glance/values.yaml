@@ -44,13 +44,12 @@ configMaps:
   config:
     enabled: true
     data:
-      pages:
+      pages: |
         - name: Home
           columns:
             - size: small
               widgets:
                 - type: calendar
-
                 - type: rss
                   limit: 10
                   collapse-after: 3
@@ -63,7 +62,6 @@ configMaps:
                     - url: https://awesomekling.github.io/feed.xml
                     - url: https://ishadeed.com/feed.xml
                       title: Ahmad Shadeed
-
                 - type: twitch-channels
                   channels:
                     - theprimeagen
@@ -72,25 +70,20 @@ configMaps:
                     - blurbs
                     - asmongold
                     - jembawls
-
             - size: full
               widgets:
                 - type: hacker-news
-
                 - type: videos
                   channels:
                     - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
                     - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
                     - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
-
                 - type: reddit
                   subreddit: selfhosted
-
             - size: small
               widgets:
                 - type: weather
                   location: London, United Kingdom
-
                 - type: markets
                   markets:
                     - symbol: SPY
@@ -109,6 +102,7 @@ configMaps:
                       name: AMD
                     - symbol: RDDT
                       name: Reddit
+
 
 persistence:
   config:
