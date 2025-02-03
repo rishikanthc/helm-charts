@@ -112,5 +112,6 @@ persistence:
     retain: false
     name: glance-config
     globalMounts:
-      - subPath: glance.yaml
+      - path: /config/glance.yml
+        subPath: glance.yaml
         readOnly: false
