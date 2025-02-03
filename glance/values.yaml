@@ -104,7 +104,7 @@ configMaps:
               - size: small
                 widgets:
                   - type: weather
-                    location: USA, Bellevue
+                    location: Bellevue, Washington, United States
                   - type: clock
                     hour-format: 24h
                     timezones:
