@@ -57,7 +57,7 @@ persistence:
     storageClass: longhorn
     type: persistentVolumeClaim
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 1Gi
     retain: false
     globalMounts:
       - path: /usr/src/app/tududi_db
