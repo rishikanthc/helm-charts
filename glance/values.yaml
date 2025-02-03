@@ -111,7 +111,9 @@ persistence:
     accessMode: ReadWriteOnce
     retain: false
     name: glance-config
-    globalMounts:
-      - path: /config
-        subPath: glance.yaml
-        readOnly: false
+    advancedMounts:
+      main:
+        main:
+          - path: /config
+            subPath: glance.yaml
+            readOnly: false
