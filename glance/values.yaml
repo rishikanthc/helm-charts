@@ -108,12 +108,10 @@ persistence:
   config:
     enabled: true
     type: configMap
-    accessMode: ReadWriteOnce
-    retain: false
     name: glance-config
     advancedMounts:
       main:
         main:
-          - path: /config
-            subPath: glance.yaml
+          - path: /config/glance.yml
+            subPath: glance.yml
             readOnly: false
