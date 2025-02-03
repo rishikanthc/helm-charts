@@ -112,6 +112,7 @@ persistence:
     advancedMounts:
       main:
         main:
-          - path: /config/glance.yml
+          - path: /config
             subPath: glance.yml
             readOnly: false
+            
