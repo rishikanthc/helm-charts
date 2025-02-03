@@ -1,0 +1,121 @@
+controllers:
+  main:
+    enabled: true
+    type: deployment
+
+    containers:
+      main:
+        image:
+          repository: glanceapp/glance
+          tag: v0.6.4
+          pullPolicy: Always
+        args:
+          - --config
+          - /config/glance.yml
+        env:
+          TZ: "USA/Los_Angeles"
+
+service:
+  main:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 8080
+
+ingress:
+  main:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 8080
+    tls:
+      - secretName: glance-tls
+
+configMaps:
+  config:
+    enabled: true
+    data:
+      pages:
+        - name: Home
+          columns:
+            - size: small
+              widgets:
+                - type: calendar
+
+                - type: rss
+                  limit: 10
+                  collapse-after: 3
+                  cache: 3h
+                  feeds:
+                    - url: https://ciechanow.ski/atom.xml
+                    - url: https://www.joshwcomeau.com/rss.xml
+                      title: Josh Comeau
+                    - url: https://samwho.dev/rss.xml
+                    - url: https://awesomekling.github.io/feed.xml
+                    - url: https://ishadeed.com/feed.xml
+                      title: Ahmad Shadeed
+
+                - type: twitch-channels
+                  channels:
+                    - theprimeagen
+                    - cohhcarnage
+                    - christitustech
+                    - blurbs
+                    - asmongold
+                    - jembawls
+
+            - size: full
+              widgets:
+                - type: hacker-news
+
+                - type: videos
+                  channels:
+                    - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+                    - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
+                    - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+
+                - type: reddit
+                  subreddit: selfhosted
+
+            - size: small
+              widgets:
+                - type: weather
+                  location: London, United Kingdom
+
+                - type: markets
+                  markets:
+                    - symbol: SPY
+                      name: S&P 500
+                    - symbol: BTC-USD
+                      name: Bitcoin
+                    - symbol: NVDA
+                      name: NVIDIA
+                    - symbol: AAPL
+                      name: Apple
+                    - symbol: MSFT
+                      name: Microsoft
+                    - symbol: GOOGL
+                      name: Google
+                    - symbol: AMD
+                      name: AMD
+                    - symbol: RDDT
+                      name: Reddit
+
+persistence:
+  config:
+    enabled: true
+    type: configMap
+    accessMode: ReadWriteOnce
+    retain: false
+    globalMounts:
+      - subPath: glance.yaml
+        readOnly: false
