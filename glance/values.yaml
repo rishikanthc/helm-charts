@@ -60,12 +60,16 @@ configMaps:
                             url: https://app.tuta.com/mail/OHi6UUG-1o-9
                           - title: Google
                             url: https://google.com
-                      - work:
+                      - title: work
+                        color: 10 70 50
+                        links:
                           - title: Hub
                             url: https://hub.corp.ebay.com/
                           - title: Notebooks
                             url: https://aip.vip.ebay.com/notebook/list
-                      - social:
+                      - title: social
+                        color: 10 70 50
+                        links:
                           - title: Whatsapp
                             url: https://web.whatsapp.com
                           - title: Reddit
