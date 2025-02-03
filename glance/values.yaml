@@ -60,6 +60,8 @@ configMaps:
                             url: https://app.tuta.com/mail/OHi6UUG-1o-9
                           - title: Google
                             url: https://google.com
+                          - title: YouTube
+                            url: https://www.youtube.com/
                       - title: work
                         color: 10 70 50
                         links:
@@ -68,24 +70,16 @@ configMaps:
                           - title: Notebooks
                             url: https://aip.vip.ebay.com/notebook/list
                       - title: social
-                        color: 10 70 50
+                        color: 200 50 50
                         links:
                           - title: Whatsapp
                             url: https://web.whatsapp.com
                           - title: Reddit
                             url: https://reddit.com
-                  - type: rss
-                    limit: 10
-                    collapse-after: 3
-                    cache: 3h
-                    feeds:
-                      - url: https://ciechanow.ski/atom.xml
-                      - url: https://www.joshwcomeau.com/rss.xml
-                        title: Josh Comeau
-                      - url: https://samwho.dev/rss.xml
-                      - url: https://awesomekling.github.io/feed.xml
-                      - url: https://ishadeed.com/feed.xml
-                        title: Ahmad Shadeed
+                  - type: repository
+                    repository: rishikanthc/Scriberr
+                    pull-requests-limit: 3
+                    issues-limit: 5
               - size: full
                 widgets:
                   - type: hacker-news
@@ -93,8 +87,16 @@ configMaps:
                     channels:
                       - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
                       - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
-                  - type: reddit
-                    subreddit: selfhosted
+                      - UCYO_jab_esuFRV4b17AJtAw # 3Blue1Brown
+                      - UCXuqSBlHAE6Xw-yeJA0Tunw # LinusTechTips
+                  - type: group
+                    widgets:
+                      - type: reddit
+                        subreddit: selfhosted
+                      - type: reddit
+                        subreddit: technology
+                      - type: reddit
+                        subreddit: news
               - size: small
                 widgets:
                   - type: weather
