@@ -10,7 +10,6 @@ controllers:
           tag: 1.5
           pullPolicy: Always
         env:
-          BASE_PATH: "https://bs.rkth.io"
           JWT_SECRET:
             valueFrom:
               secretKeyRef:
