@@ -1,0 +1,75 @@
+controllers:
+  main:
+    enabled: true
+    type: deployment
+
+    containers:
+      main:
+        image:
+          repository: "ghcr.io/jordan-dalby/bytestash"
+          tag: 1.5
+          pullPolicy: Always
+        env:
+          BASE_PATH: "https://bs.rkth.io"
+          JWT_SECRET:
+            valueFrom:
+              secretKeyRef:
+                name: bytestash-secret
+                key: jwt
+          TOKEN_EXPIRY: 24h
+          ALLOW_NEW_ACCOUNTS: "false"
+          DEBUG: "false"
+          DISABLE_ACCOUNTS: "false"
+          DISABLE_INTERNAL_ACCOUNTS: "false"
+
+          # See https://github.com/jordan-dalby/ByteStash/wiki/Single-Sign%E2%80%90on-Setup for more info
+          OIDC_ENABLED: "true"
+          OIDC_DISPLAY_NAME: "BS"
+          OIDC_ISSUER_URL: "https://pid.rkth.io"
+          OIDC_CLIENT_ID:
+            valueFrom:
+              secretKeyRef:
+                name: bytestash-secret
+                key: clientid
+          OIDC_CLIENT_SECRET:
+            valueFrom:
+              secretKeyRef:
+                name: bytestash-secret
+                key: clientid
+
+service:
+  main:
+    enabled: true
+    controller: main
+    ports:
+      http:
+        enabled: true
+        primary: true
+        port: 5000
+
+ingress:
+  main:
+    enabled: false
+    className: traefik
+    hosts:
+      - host: ""
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: 5000
+    tls:
+      - secretName: filebrowser-tls
+
+persistence:
+  snippets:
+    enabled: true
+    storageClass: longhorn
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 8Gi
+    retain: false
+    globalMounts:
+      - path: /data/snippets
+        readOnly: false
