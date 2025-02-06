@@ -35,7 +35,7 @@ controllers:
             valueFrom:
               secretKeyRef:
                 name: bytestash-secret
-                key: clientid
+                key: clientsecret
 
 service:
   main:
