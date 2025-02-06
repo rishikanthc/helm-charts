@@ -19,7 +19,7 @@ controllers:
           ALLOW_NEW_ACCOUNTS: "false"
           DEBUG: "false"
           DISABLE_ACCOUNTS: "false"
-          DISABLE_INTERNAL_ACCOUNTS: "false"
+          DISABLE_INTERNAL_ACCOUNTS: "true"
 
           # See https://github.com/jordan-dalby/ByteStash/wiki/Single-Sign%E2%80%90on-Setup for more info
           OIDC_ENABLED: "true"
