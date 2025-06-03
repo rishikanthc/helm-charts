@@ -6,7 +6,7 @@ controllers:
     containers:
       main:
         image:
-          repository: stonith404/pocket-id
+          repository: ghcr.io/pocket-id/pocket-id
           tag: v1.1.0
           pullPolicy: Always
         env:
