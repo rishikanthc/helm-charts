@@ -52,5 +52,5 @@ persistence:
     size: 1Gi
     retain: true
     globalMounts:
-      - path: /app/backend/data
+      - path: /app/data
         readOnly: false
